@@ -1,0 +1,3220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-01-31 Mon 12:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Advent of Code: 2021</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Prashanth Kumar" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org.css"/>
+
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2019 Free Software Foundation, Inc.
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "1");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "0");
+org_html_manager.set("VIEW_BUTTONS", "1");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Advent of Code: 2021</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org58c68ac">About</a></li>
+<li><a href="#orgf3eeb85">Day 01: Sonar Sweep</a></li>
+<li><a href="#org8b18267">Day 02: Dive!</a></li>
+<li><a href="#org3258d4a">Day 03: Binary Diagnostic</a></li>
+<li><a href="#org04adcfa">Day 04: Giant Squid</a></li>
+<li><a href="#org403a3cd">Day 05: Hydrothermal Venture</a></li>
+<li><a href="#orgfa2a3ad">Day 06: Lanternfish</a></li>
+<li><a href="#org04271a5">Day 07: The Treachery of Whales</a></li>
+<li><a href="#org1dbf9f1">Day 08: Seven Segment Search</a></li>
+<li><a href="#org5aa154a">Day 09: Smoke Basin</a></li>
+<li><a href="#orgf64d26e">Day 10: Syntax Scoring</a></li>
+<li><a href="#org7ae717e">Day 11: Dumbo Octopus</a></li>
+<li><a href="#org912991c">Day 0X: Template</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org58c68ac" class="outline-2">
+<h2 id="org58c68ac">About</h2>
+<div class="outline-text-2" id="text-org58c68ac">
+<p>
+Solutions to <a href="https://adventofcode.com/2021">Advent of Code: 2021</a> in the array programming language <a href="https://www.jsoftware.com/#/">J</a>. 
+</p>
+
+<p>
+Language and IDE details,
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Engine</td>
+<td class="org-left"><b>j901/j64/linux</b></td>
+</tr>
+
+<tr>
+<td class="org-left">Release-c</td>
+<td class="org-left"><b>commercial/2020-01-11T10:39:00</b></td>
+</tr>
+
+<tr>
+<td class="org-left">Library</td>
+<td class="org-left"><b>9.01.24</b></td>
+</tr>
+
+<tr>
+<td class="org-left">Qt IDE</td>
+<td class="org-left"><b>1.8.7/5.7.1(5.9.5)</b></td>
+</tr>
+
+<tr>
+<td class="org-left">Platform</td>
+<td class="org-left"><b>Linux 64</b></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org1be634f" class="outline-3">
+<h3 id="org1be634f">Conventions</h3>
+<div class="outline-text-3" id="text-org1be634f">
+</div>
+<div id="outline-container-org3c039c2" class="outline-4">
+<h4 id="org3c039c2">General</h4>
+<div class="outline-text-4" id="text-org3c039c2">
+<div class="note">
+<p>
+Before we start, I should point out a convention of J: if a dyadic verb is asymmetric, 
+for mnemonic purposes you should think of x as operating on y.  One way to express this is to say that x is control 
+information and y is data.  Another way is to say that if you were applying the verb many times, you would expect to 
+apply the same x to different ys rather than the other way around.
+</p>
+
+<p>
+&#x2013; <a href="https://www.jsoftware.com/help/jforc/more_verbs.htm">https://www.jsoftware.com/help/jforc/more_verbs.htm</a>
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf927427" class="outline-4">
+<h4 id="orgf927427">Naming</h4>
+<div class="outline-text-4" id="text-orgf927427">
+<ul class="org-ul">
+<li>All variable and function names are lower case and do <i>not</i> include any underscores</li>
+<li>All variable and function names, in tacit and explicit definitions, are at least two characters long to avoid confusion with 
+built-in single character J verbs. Exceptions to this are for variables defined in,
+<ul class="org-ul">
+<li>Single line quoted expressions</li>
+<li>Anonymous verbs</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0750bd1" class="outline-4">
+<h4 id="org0750bd1">AOC specific</h4>
+<div class="outline-text-4" id="text-org0750bd1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Convention</th>
+<th scope="col" class="org-left">Type</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>getin</code></td>
+<td class="org-left">Monadic function</td>
+<td class="org-left">Read and process data from input file</td>
+<td class="org-left"><code>getin =: ;: readin</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>in</code></td>
+<td class="org-left">Variable</td>
+<td class="org-left">Input data for problem</td>
+<td class="org-left"><code>in =: getin 'inputs/day-01.txt'</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>inx</code>; <code>inx1</code>; <code>inx2</code>; <code>...</code></td>
+<td class="org-left">Variable(s)</td>
+<td class="org-left">Example input data for problem</td>
+<td class="org-left"><code>inx =: getin 'inpus/day-01-example.txt'</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>part1</code>; <code>part2</code></td>
+<td class="org-left">Monadic functions</td>
+<td class="org-left">Solutions to respective parts of problems with <code>y = data</code></td>
+<td class="org-left"><code>part1 in</code></td>
+</tr>
+</tbody>
+</table>
+
+<div class="attention">
+<p>
+General functions that would be useful beyond the scope of the solution are indicated with the ❖ symbol.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga3a104c" class="outline-3">
+<h3 id="orga3a104c">Site</h3>
+<div class="outline-text-3" id="text-orga3a104c">
+<p>
+This site was generated using <b>Emacs 26.3</b> with <b>Org mode 9.1.9</b>. A custom CSS and <a href="https://orgmode.org/worg/code/org-info-js/">Org-Info.JS</a> were used to style the exported HTML.
+</p>
+
+<p>
+This site is best viewed with <a href="https://fonts.google.com/specimen/Fira+Sans">Fira Sans</a> and <a href="https://fonts.google.com/specimen/Fira+Code">Fira Code</a> fonts.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf3eeb85" class="outline-2">
+<h2 id="orgf3eeb85"><a href="https://adventofcode.com/2021/day/1">Day 01: Sonar Sweep</a></h2>
+<div class="outline-text-2" id="text-orgf3eeb85">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3d29203">Setup</a></li>
+<li><a href="#orgae201e4">Read data</a></li>
+<li><a href="#org98a2172">General function definition</a></li>
+<li><a href="#org25f66bd">Part 1</a>
+<ul>
+<li><a href="#org63850da">Function definition</a></li>
+<li><a href="#orgf6bafdd">Test</a></li>
+<li><a href="#org868b640">Solution</a></li>
+</ul>
+</li>
+<li><a href="#orgf26c582">Part 2</a>
+<ul>
+<li><a href="#orgfef53a5">Function definition</a></li>
+<li><a href="#orgbe0a205">Test</a></li>
+<li><a href="#orgedbf09b">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3d29203" class="outline-3">
+<h3 id="org3d29203">Setup</h3>
+<div class="outline-text-3" id="text-org3d29203">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day01'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae201e4" class="outline-3">
+<h3 id="orgae201e4">Read data</h3>
+<div class="outline-text-3" id="text-orgae201e4">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span> readin
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98a2172" class="outline-3">
+<h3 id="org98a2172">General function definition</h3>
+<div class="outline-text-3" id="text-org98a2172">
+<p>
+Generic function to calculate number of increases in data for a given moving window size,
+</p>
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Calculate number of increases</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = data</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = moving window size</span>
+<span style="color: #BA36A5;">ninc</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #0000ff;">@</span> (2 <span style="color: #ff0000;">&lt;</span><span style="color: #00ff00;">/\</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/\</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org25f66bd" class="outline-3">
+<h3 id="org25f66bd">Part 1</h3>
+<div class="outline-text-3" id="text-org25f66bd">
+</div>
+<div id="outline-container-org63850da" class="outline-4">
+<h4 id="org63850da">Function definition</h4>
+<div class="outline-text-4" id="text-org63850da">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> 1<span style="color: #0000ff;">&amp;</span>ninc
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf6bafdd" class="outline-4">
+<h4 id="orgf6bafdd">Test</h4>
+<div class="outline-text-4" id="text-orgf6bafdd">
+<div class="org-src-container">
+<pre class="src src-j">assert 7 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-01-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org868b640" class="outline-4">
+<h4 id="org868b640">Solution</h4>
+<div class="outline-text-4" id="text-org868b640">
+<div class="org-src-container">
+<pre class="src src-j">assert 1602 <span style="color: #ff0000;">=</span> part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-01.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf26c582" class="outline-3">
+<h3 id="orgf26c582">Part 2</h3>
+<div class="outline-text-3" id="text-orgf26c582">
+</div>
+<div id="outline-container-orgfef53a5" class="outline-4">
+<h4 id="orgfef53a5">Function definition</h4>
+<div class="outline-text-4" id="text-orgfef53a5">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> 3<span style="color: #0000ff;">&amp;</span>ninc
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbe0a205" class="outline-4">
+<h4 id="orgbe0a205">Test</h4>
+<div class="outline-text-4" id="text-orgbe0a205">
+<div class="org-src-container">
+<pre class="src src-j">assert 7 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-01-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgedbf09b" class="outline-4">
+<h4 id="orgedbf09b">Solution</h4>
+<div class="outline-text-4" id="text-orgedbf09b">
+<div class="org-src-container">
+<pre class="src src-j">assert 1633 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-01.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b18267" class="outline-2">
+<h2 id="org8b18267"><a href="https://adventofcode.com/2021/day/2">Day 02: Dive!</a></h2>
+<div class="outline-text-2" id="text-org8b18267">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga105fbb">Setup</a></li>
+<li><a href="#orga97c563">Read data</a></li>
+<li><a href="#org6f42103">General function definition</a></li>
+<li><a href="#orgd1e5228">Part 1</a>
+<ul>
+<li><a href="#org378948b">Function definition</a></li>
+<li><a href="#org6683316">Test</a></li>
+<li><a href="#org77170b6">Solution</a></li>
+</ul>
+</li>
+<li><a href="#orgfa748bf">Part 2</a>
+<ul>
+<li><a href="#org405574f">Function definition</a></li>
+<li><a href="#org258311e">Test</a></li>
+<li><a href="#orgd58c37c">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga105fbb" class="outline-3">
+<h3 id="orga105fbb">Setup</h3>
+<div class="outline-text-3" id="text-orga105fbb">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day02'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga97c563" class="outline-3">
+<h3 id="orga97c563">Read data</h3>
+<div class="outline-text-3" id="text-orga97c563">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">;:</span> readin
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6f42103" class="outline-3">
+<h3 id="org6f42103">General function definition</h3>
+<div class="outline-text-3" id="text-org6f42103">
+</div>
+<div id="outline-container-orgef27028" class="outline-5">
+<h5 id="orgef27028">Displacements</h5>
+<div class="outline-text-5" id="text-orgef27028">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Horizontal and vertical displacement vectors</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Returns two column matrix</span>
+<span style="color: #8D8D84;">NB.   </span><span style="color: #8D8D84; font-style: italic;">- Column 1 = horizonal displacement = forward</span>
+<span style="color: #8D8D84;">NB.   </span><span style="color: #8D8D84; font-style: italic;">- Column 2 = vertical displacement = down - up</span>
+<span style="color: #BA36A5;">disp</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> (<span style="color: #ff0000;">{.</span> <span style="color: #ff0000;">,.</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">-</span><span style="color: #00ff00;">/</span><span style="color: #ff0000;">|.</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">}.</span>) (<span style="color: #ff0000;">".</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">&gt;</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">{:</span><span style="color: #0000ff;">"</span>1<span style="color: #0000ff;">@</span><span style="color: #ff0000;">]</span>) <span style="color: #ff0000;">*</span><span style="color: #0000ff;">"</span>1 (<span style="color: #008000;">'forward'</span><span style="color: #ff0000;">;</span> <span style="color: #008000;">'up'</span><span style="color: #ff0000;">;</span> <span style="color: #008000;">'down'</span>) <span style="color: #ff0000;">E.</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">"</span>0 1 <span style="color: #ff0000;">{.</span><span style="color: #0000ff;">"</span>1<span style="color: #0000ff;">@</span><span style="color: #ff0000;">]</span>
+</pre>
+</div>
+
+<p>
+Reading from right to left, <code>disp</code> works as follows,
+</p>
+
+<ul class="org-ul">
+<li><code>('forward'; 'up'; 'down') E./"0 1 {."1@]</code>: Binary 3 row matrix with 1s in each row corresponding to individual directions.</li>
+<li><code>(".@&gt;@{:"1@]) *"1</code>: Displacements corresponding to each direction.</li>
+<li><code>({. ,. [: -/|.@}.)</code>: Forward (horizontal) stitched with vertical <code>down - up</code> displacement.</li>
+</ul>
+
+<pre class="example">
+┌───────────┬─────────────────┬──────────────────────┬───────────────────────┬──────┐
+│y          │d                │(b=. d E./"0 1 {."1) y│((".@&gt;@{:"1@]) *"1 b) y│disp y│
+├───────────┼─────────────────┼──────────────────────┼───────────────────────┼──────┤
+│┌───────┬─┐│┌───────┬──┬────┐│1 0 1 0 0 1           │5 0 8 0 0 2            │5  0  │
+││forward│5│││forward│up│down││0 0 0 1 0 0           │0 0 0 3 0 0            │0  5  │
+│├───────┼─┤│└───────┴──┴────┘│0 1 0 0 1 0           │0 5 0 0 8 0            │8  0  │
+││down   │5││                 │                      │                       │0 _3  │
+│├───────┼─┤│                 │                      │                       │0  8  │
+││forward│8││                 │                      │                       │2  0  │
+│├───────┼─┤│                 │                      │                       │      │
+││up     │3││                 │                      │                       │      │
+│├───────┼─┤│                 │                      │                       │      │
+││down   │8││                 │                      │                       │      │
+│├───────┼─┤│                 │                      │                       │      │
+││forward│2││                 │                      │                       │      │
+│└───────┴─┘│                 │                      │                       │      │
+└───────────┴─────────────────┴──────────────────────┴───────────────────────┴──────┘
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd1e5228" class="outline-3">
+<h3 id="orgd1e5228">Part 1</h3>
+<div class="outline-text-3" id="text-orgd1e5228">
+</div>
+<div id="outline-container-org378948b" class="outline-4">
+<h4 id="org378948b">Function definition</h4>
+<div class="outline-text-4" id="text-org378948b">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> 3 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'+/ h * +/ v [ v=. {:"1 d [ h=. {."1 d [ d=. disp y'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6683316" class="outline-4">
+<h4 id="org6683316">Test</h4>
+<div class="outline-text-4" id="text-org6683316">
+<div class="org-src-container">
+<pre class="src src-j">assert 150 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-02-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org77170b6" class="outline-4">
+<h4 id="org77170b6">Solution</h4>
+<div class="outline-text-4" id="text-org77170b6">
+<div class="org-src-container">
+<pre class="src src-j">assert 1868935 <span style="color: #ff0000;">=</span> part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-02.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfa748bf" class="outline-3">
+<h3 id="orgfa748bf">Part 2</h3>
+<div class="outline-text-3" id="text-orgfa748bf">
+</div>
+<div id="outline-container-org405574f" class="outline-4">
+<h4 id="org405574f">Function definition</h4>
+<div class="outline-text-4" id="text-org405574f">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> 3 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'+/ h * +/ h * +/\ v [ v=. {:"1 d [ h=. {."1 d [ d=. disp y'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org258311e" class="outline-4">
+<h4 id="org258311e">Test</h4>
+<div class="outline-text-4" id="text-org258311e">
+<div class="org-src-container">
+<pre class="src src-j">assert 900 <span style="color: #ff0000;">=</span> part2 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-02-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd58c37c" class="outline-4">
+<h4 id="orgd58c37c">Solution</h4>
+<div class="outline-text-4" id="text-orgd58c37c">
+<div class="org-src-container">
+<pre class="src src-j">assert 1965970888 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-02.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3258d4a" class="outline-2">
+<h2 id="org3258d4a"><a href="https://adventofcode.com/2021/day/3">Day 03: Binary Diagnostic</a></h2>
+<div class="outline-text-2" id="text-org3258d4a">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org87d93f8">Setup</a></li>
+<li><a href="#orgbd6814b">Read data</a></li>
+<li><a href="#org6848829">Part 1</a>
+<ul>
+<li><a href="#org6853b11">Function definition</a></li>
+<li><a href="#org768c5cb">Test</a></li>
+<li><a href="#org93e0e89">Solution</a></li>
+</ul>
+</li>
+<li><a href="#org0d37310">Part 2: Approach 1</a>
+<ul>
+<li><a href="#org4aa3e1d">Function definitions</a></li>
+<li><a href="#org6bbb3a8">Test</a></li>
+<li><a href="#org6924342">Solution</a></li>
+</ul>
+</li>
+<li><a href="#org0505dd9">Part 2: Approach 2</a>
+<ul>
+<li><a href="#org5cd2c3a">Function definitions</a></li>
+<li><a href="#org465c3cc">Test</a></li>
+<li><a href="#org931ec2d">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org87d93f8" class="outline-3">
+<h3 id="org87d93f8">Setup</h3>
+<div class="outline-text-3" id="text-org87d93f8">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day03'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd6814b" class="outline-3">
+<h3 id="orgbd6814b">Read data</h3>
+<div class="outline-text-3" id="text-orgbd6814b">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span><span style="color: #0000ff;">"</span>0 readin
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6848829" class="outline-3">
+<h3 id="org6848829">Part 1</h3>
+<div class="outline-text-3" id="text-org6848829">
+</div>
+<div id="outline-container-org6853b11" class="outline-4">
+<h4 id="org6853b11">Function definition</h4>
+<div class="outline-text-4" id="text-org6853b11">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> (<span style="color: #ff0000;">*</span><span style="color: #0000ff;">&amp;:</span><span style="color: #ff0000;">#.</span> <span style="color: #ff0000;">-.</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">-:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">#</span> <span style="color: #ff0000;">&lt;</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span>)  <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">(epsilon =: -. gamma)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org768c5cb" class="outline-4">
+<h4 id="org768c5cb">Test</h4>
+<div class="outline-text-4" id="text-org768c5cb">
+<div class="org-src-container">
+<pre class="src src-j">assert 198 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org93e0e89" class="outline-4">
+<h4 id="org93e0e89">Solution</h4>
+<div class="outline-text-4" id="text-org93e0e89">
+<div class="org-src-container">
+<pre class="src src-j">assert 2595824 <span style="color: #ff0000;">=</span> part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0d37310" class="outline-3">
+<h3 id="org0d37310">Part 2: Approach 1</h3>
+<div class="outline-text-3" id="text-org0d37310">
+</div>
+<div id="outline-container-org4aa3e1d" class="outline-4">
+<h4 id="org4aa3e1d">Function definitions</h4>
+<div class="outline-text-4" id="text-org4aa3e1d">
+<p>
+The approach is to recursively filter rows by the most (or least) common element in the first column and then move the first column 
+to the end of the input matrix until only one row remains. However, this only works when the number of iterations required is equal to 
+the number of columns, since in this case the order of the columns is unchanged at the end of the iterations cycle. The general case, 
+where the number of iterations is less than the number of columns, is handled by adding column numbers as the first row to the input and 
+then using the resulting permutation of column numbers at the end of the iterations to restore the original column order.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">rating</span><span style="color: #000000;">=:</span> 1 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'[: ({: {~ /:@{.) [: (1&amp;|.)"1@({. , u filtrows@}.)^:(2: &lt; #)^:_ (i.@{:@$ , ])'</span>
+</pre>
+</div>
+
+<p>
+where,
+</p>
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">filtrows</span><span style="color: #000000;">=:</span> 1 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'] #~ {."1 = -:@# u [: +/ {."1'</span>
+</pre>
+</div>
+
+<p>
+Reading from right to left, the <code>rating</code> function works as follows,
+</p>
+
+<ul class="org-ul">
+<li><code>(i.@{:@$ , ])</code>: Prepend a row of column numbers (header) to the input.</li>
+<li><code>(1&amp;│.)"1@({. , u filtrows@}.)^:(2: &lt; #)^:_</code>: 
+<ul class="org-ul">
+<li>Filter rows, <i>without header</i>, from input matrix corresponding to <code>u</code> (most or least) common elements in the first column.</li>
+<li>Add back header, and move first column to end of filtered input.</li>
+<li>Stop when two rows remain (1 header row + 1 input row).</li>
+</ul></li>
+<li><code>({: {~ /:@{.)</code>: Reorder second row (input) by first row (column numbers).</li>
+</ul>
+
+<pre class="example">
+┌───────────────────────────────┬─────────┐
+│y                              │0 0 1 0 1│
+│                               │0 1 1 0 1│
+│                               │1 1 1 0 1│
+│                               │0 1 0 1 1│
+├───────────────────────────────┼─────────┤
+│(h=. i.@{:@$ , ]) y            │0 1 2 3 4│
+│                               │0 0 1 0 1│
+│                               │0 1 1 0 1│
+│                               │1 1 1 0 1│
+│                               │0 1 0 1 1│
+├───────────────────────────────┼─────────┤
+│(t=. ({. , &lt;: filtrows@}.)) h y│0 1 2 3 4│
+│                               │0 0 1 0 1│
+│                               │0 1 1 0 1│
+│                               │0 1 0 1 1│
+├───────────────────────────────┼─────────┤
+│(s=. (1&amp;|.)"1)@t^:1 h y        │1 2 3 4 0│
+│                               │0 1 0 1 0│
+│                               │1 1 0 1 0│
+│                               │1 0 1 1 0│
+├───────────────────────────────┼─────────┤
+│s@t^:2 h y                     │2 3 4 0 1│
+│                               │1 0 1 0 1│
+│                               │0 1 1 0 1│
+├───────────────────────────────┼─────────┤
+│r=. s@t^:3 h y                 │3 4 0 1 2│
+│                               │0 1 0 1 1│
+├───────────────────────────────┼─────────┤
+│({: {~ /:@{.) r                │0 1 1 0 1│
+├───────────────────────────────┼─────────┤
+│&lt;: rating y                    │0 1 1 0 1│
+└───────────────────────────────┴─────────┘
+</pre>
+</div>
+
+<div id="outline-container-org53a8c41" class="outline-5">
+<h5 id="org53a8c41">Life support rating</h5>
+<div class="outline-text-5" id="text-org53a8c41">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">*</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">@:</span><span style="color: #ff0000;">#.</span><span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;</span> rating <span style="color: #ff0000;">,:</span> <span style="color: #ff0000;">&lt;:</span> rating)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6bbb3a8" class="outline-4">
+<h4 id="org6bbb3a8">Test</h4>
+<div class="outline-text-4" id="text-org6bbb3a8">
+<div class="org-src-container">
+<pre class="src src-j">assert 230 <span style="color: #ff0000;">=</span> part2 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6924342" class="outline-4">
+<h4 id="org6924342">Solution</h4>
+<div class="outline-text-4" id="text-org6924342">
+<div class="org-src-container">
+<pre class="src src-j">assert 2135254 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0505dd9" class="outline-3">
+<h3 id="org0505dd9">Part 2: Approach 2</h3>
+<div class="outline-text-3" id="text-org0505dd9">
+</div>
+<div id="outline-container-org5cd2c3a" class="outline-4">
+<h4 id="org5cd2c3a">Function definitions</h4>
+<div class="outline-text-4" id="text-org5cd2c3a">
+<p>
+Approach is to iteratively remove all rows with the most (or least) common elements across each column.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">rating</span><span style="color: #000000;">=:</span> 1 <span style="color: #ff0000;">:</span> 0
+<span style="color: #BA36A5;">ix</span><span style="color: #000000;">=.</span> <span style="color: #ff0000;">{.</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">I.</span><span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">-.</span> <span style="color: #0000ff;">@</span> (<span style="color: #ff0000;">-:</span> 1<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">|.</span>)<span style="color: #0000ff;">"</span>1 <span style="color: #0000ff;">@</span> <span style="color: #ff0000;">|:</span>) <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">index of first column where elements differ</span>
+<span style="color: #BA36A5;">cm</span><span style="color: #000000;">=.</span> <span style="color: #ff0000;">{</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> u<span style="color: #00ff00;">~</span> <span style="color: #ff0000;">#</span> <span style="color: #ff0000;">-</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span>        <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">common elements 'u' in x = column of y = data</span>
+<span style="color: #BA36A5;">fr</span><span style="color: #000000;">=.</span> ix (<span style="color: #ff0000;">]</span> <span style="color: #ff0000;">#</span><span style="color: #00ff00;">~</span> cm <span style="color: #ff0000;">=</span> <span style="color: #ff0000;">{</span><span style="color: #0000ff;">"</span>1) <span style="color: #ff0000;">]</span>  <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">filter all rows with 'c' common elements in column (ix y)</span>
+fr<span style="color: #0000ff;">`</span><span style="color: #ff0000;">]</span><span style="color: #0000ff;">@.</span>(1 <span style="color: #ff0000;">=</span> <span style="color: #ff0000;">#</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">]</span>)<span style="color: #0000ff;">^:</span>_ y       <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">iterate until one row remains</span>
+)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">*</span><span style="color: #00ff00;">/</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">#.</span> <span style="color: #ff0000;">&gt;</span> rating <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">&lt;:</span> rating
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org465c3cc" class="outline-4">
+<h4 id="org465c3cc">Test</h4>
+<div class="outline-text-4" id="text-org465c3cc">
+<div class="org-src-container">
+<pre class="src src-j">assert 230 <span style="color: #ff0000;">=</span> part2 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org931ec2d" class="outline-4">
+<h4 id="org931ec2d">Solution</h4>
+<div class="outline-text-4" id="text-org931ec2d">
+<div class="org-src-container">
+<pre class="src src-j">assert 2135254 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org04adcfa" class="outline-2">
+<h2 id="org04adcfa"><a href="https://adventofcode.com/2021/day/4">Day 04: Giant Squid</a></h2>
+<div class="outline-text-2" id="text-org04adcfa">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org804fc88">Setup</a></li>
+<li><a href="#org6b1d598">Read data</a></li>
+<li><a href="#org2bb01c8">General function definitions</a>
+<ul>
+<li><a href="#org5f7a402">Winning Sequence</a></li>
+<li><a href="#org0066a34">Score</a></li>
+</ul>
+</li>
+<li><a href="#orgd470a78">Part 1</a>
+<ul>
+<li><a href="#org40d6566">Function definition</a></li>
+<li><a href="#org43fc663">Test</a></li>
+<li><a href="#org0aa6cea">Solution</a></li>
+</ul>
+</li>
+<li><a href="#orgfc42bd3">Part 2</a>
+<ul>
+<li><a href="#org28a4a0c">Function definition</a></li>
+<li><a href="#orgb63fd38">Test</a></li>
+<li><a href="#org7eb6ad2">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org804fc88" class="outline-3">
+<h3 id="org804fc88">Setup</h3>
+<div class="outline-text-3" id="text-org804fc88">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day04'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6b1d598" class="outline-3">
+<h3 id="org6b1d598">Read data</h3>
+<div class="outline-text-3" id="text-org6b1d598">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> a<span style="color: #ff0000;">:</span> <span style="color: #ff0000;">-.</span><span style="color: #00ff00;">~</span> <span style="color: #ff0000;">&lt;</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">".</span> readin<span style="color: #0000ff;">@</span><span style="color: #ff0000;">]</span>
+</pre>
+</div>
+
+<p>
+Split list of calls and boards in input data,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">calls</span><span style="color: #000000;">=:</span> 0<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">{::</span>
+<span style="color: #BA36A5;">boards</span><span style="color: #000000;">=:</span> _5 <span style="color: #ff0000;">[</span><span style="color: #00ff00;">\</span> <span style="color: #ff0000;">&gt;</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">}.</span> 
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2bb01c8" class="outline-3">
+<h3 id="org2bb01c8">General function definitions</h3>
+<div class="outline-text-3" id="text-org2bb01c8">
+</div>
+<div id="outline-container-org5f7a402" class="outline-4">
+<h4 id="org5f7a402">Winning Sequence</h4>
+<div class="outline-text-4" id="text-org5f7a402">
+<p>
+One approach to obtaining the winning sequence of boards and corresponding calls is described below.
+</p>
+
+<p>
+Consider the following set of calls,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">excalls</span><span style="color: #000000;">=:</span> 45 41 47 36 46 27 44 24 33 35 26 38 43 28 23 32 34 25 29 39 31 40 37 42 30
+</pre>
+</div>
+
+<p>
+and the corresponding board,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">exboard</span><span style="color: #000000;">=:</span> _5 <span style="color: #ff0000;">[</span><span style="color: #00ff00;">\</span> 23 <span style="color: #ff0000;">+</span> 25<span style="color: #ff0000;">?.</span>25
+exboard
+</pre>
+</div>
+
+<pre class="example">
+42 44 31 26 32
+36 34 40 45 43
+28 24 25 41 46
+30 35 29 47 33
+39 23 37 38 27
+
+</pre>
+
+<p>
+The call number (index) at which an element on the board is marked is,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j">excalls <span style="color: #ff0000;">i.</span> exboard
+</pre>
+</div>
+
+<pre class="example">
+23  6 20 10 15
+ 3 16 21  0 12
+13  7 17  1  4
+24  9 18  2  8
+19 14 22 11  5
+
+</pre>
+
+<div class="important">
+<p>
+The <b>maximum</b> in each row (or column) above is the call index at which all numbers in that row (or column) are marked.
+</p>
+
+</div>
+
+<p>
+For example, all numbers in the first row are not marked until the 23<sup>rd</sup> number is called. For the second row, it is the 21<sup>st</sup> number called and so on.
+Thus,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j">excalls ((<span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">"</span>1 <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">@</span><span style="color: #ff0000;">i.</span>) exboard
+</pre>
+</div>
+
+<pre class="example">
+23 21 17 24 22 24 16 22 11 15
+
+</pre>
+
+<div class="important">
+<p>
+The earliest a board can win <i>Bingo!</i> is given by the <b>minimum</b> of the (maximum row and column) indices. 
+</p>
+
+</div>
+
+<p>
+In the example above, the board wins after the 11<sup>th</sup> number is called because after that all numbers in the 4<sup>th</sup> column will be marked,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j">excalls ((<span style="color: #ff0000;">&lt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">"</span>1 <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">@</span><span style="color: #ff0000;">i.</span>) exboard
+</pre>
+</div>
+
+<pre class="example">
+11
+
+</pre>
+
+<p>
+Now consider the example set of calls and the three boards in the problem,
+</p>
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-04-example.txt'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">calls inx
+</pre>
+</div>
+<pre class="example">
+7 4 9 5 11 17 23 2 0 14 21 24 10 16 13 6 15 25 12 22 18 20 8 19 3 26 1
+
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-j">boards inx
+</pre>
+</div>
+
+<pre class="example">
+22 13 17 11  0
+ 8  2 23  4 24
+21  9 14 16  7
+ 6 10  3 18  5
+ 1 12 20 15 19
+
+ 3 15  0  2 22
+ 9 18 13 17  5
+19  8  7 25 23
+20 11 10 24  4
+14 21 16 12  6
+
+14 21 17 24  4
+10 16 15  9 19
+18  8 23 26 20
+22 11 13  6  5
+ 2  0 12  3  7
+</pre>
+
+<p>
+The call indices at which each board wins <i>Bingo!</i> ⇒ 1 row or column is completely marked,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j">(calls (<span style="color: #ff0000;">&lt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">"</span>1 <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">"</span>_1<span style="color: #0000ff;">@</span><span style="color: #ff0000;">i.</span> boards) inx
+</pre>
+</div>
+
+<pre class="example">
+13 14 11
+
+</pre>
+
+<p>
+Calls up to the n<sup>th</sup> index = <code>(n + 1) {. calls</code> ⇒ above results must be incremented by one,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j">(calls <span style="color: #ff0000;">&gt;:</span><span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&lt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">"</span>1 <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">"</span>_1<span style="color: #0000ff;">@</span><span style="color: #ff0000;">i.</span> boards) inx
+</pre>
+</div>
+
+<pre class="example">
+14 15 12
+
+</pre>
+
+<div class="attention">
+<p>
+<b>Grading-up</b> the winning call indices gives the corresponding boards.
+</p>
+
+</div>
+
+<p>
+So a two column list of boards and corresponding win call indices, ordered by the call indices, is
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j">(calls (<span style="color: #ff0000;">/:</span> <span style="color: #ff0000;">,.</span> <span style="color: #ff0000;">/:</span><span style="color: #00ff00;">~</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;:</span><span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&lt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">"</span>1 <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">"</span>_1<span style="color: #0000ff;">@</span><span style="color: #ff0000;">i.</span>) boards) inx
+</pre>
+</div>
+
+<pre class="example">
+2 12
+0 14
+1 15
+
+</pre>
+
+<p>
+⇒ the 2<sup>nd</sup> board wins after the 12<sup>th</sup> call, the 0<sup>th</sup> board after the 14<sup>th</sup> and the 1<sup>st</sup> board after the 15<sup>th</sup> call.
+</p>
+
+<p>
+The winning sequence function is thus defined,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">winseq</span><span style="color: #000000;">=:</span> (<span style="color: #ff0000;">/:</span> <span style="color: #ff0000;">,.</span> <span style="color: #ff0000;">/:</span><span style="color: #00ff00;">~</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;:</span><span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&lt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">"</span>1 <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">&gt;.</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">"</span>_1<span style="color: #0000ff;">@</span><span style="color: #ff0000;">i.</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0066a34" class="outline-4">
+<h4 id="org0066a34">Score</h4>
+<div class="outline-text-4" id="text-org0066a34">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Calculate score</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = boards</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = calls</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">u = monadic function to select nth winning board</span>
+<span style="color: #BA36A5;">score</span><span style="color: #000000;">=:</span> 1 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'(c {:@{. x) * +/ (, b { y) -. (c {. x) [ ''b c''=. x u @ winseq y'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd470a78" class="outline-3">
+<h3 id="orgd470a78">Part 1</h3>
+<div class="outline-text-3" id="text-orgd470a78">
+</div>
+<div id="outline-container-org40d6566" class="outline-4">
+<h4 id="org40d6566">Function definition</h4>
+<div class="outline-text-4" id="text-org40d6566">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> calls <span style="color: #ff0000;">{.</span> score boards
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org43fc663" class="outline-4">
+<h4 id="org43fc663">Test</h4>
+<div class="outline-text-4" id="text-org43fc663">
+<div class="org-src-container">
+<pre class="src src-j">assert 4512 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-04-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0aa6cea" class="outline-4">
+<h4 id="org0aa6cea">Solution</h4>
+<div class="outline-text-4" id="text-org0aa6cea">
+<div class="org-src-container">
+<pre class="src src-j">assert 2496 <span style="color: #ff0000;">=</span> part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-04.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfc42bd3" class="outline-3">
+<h3 id="orgfc42bd3">Part 2</h3>
+<div class="outline-text-3" id="text-orgfc42bd3">
+</div>
+<div id="outline-container-org28a4a0c" class="outline-4">
+<h4 id="org28a4a0c">Function definition</h4>
+<div class="outline-text-4" id="text-org28a4a0c">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> calls <span style="color: #ff0000;">{:</span> score boards
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb63fd38" class="outline-4">
+<h4 id="orgb63fd38">Test</h4>
+<div class="outline-text-4" id="text-orgb63fd38">
+<div class="org-src-container">
+<pre class="src src-j">assert 1924 <span style="color: #ff0000;">=</span> part2 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-04-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7eb6ad2" class="outline-4">
+<h4 id="org7eb6ad2">Solution</h4>
+<div class="outline-text-4" id="text-org7eb6ad2">
+<div class="org-src-container">
+<pre class="src src-j">assert 25925 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-04.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org403a3cd" class="outline-2">
+<h2 id="org403a3cd"><a href="https://adventofcode.com/2021/day/5">Day 05: Hydrothermal Venture</a></h2>
+<div class="outline-text-2" id="text-org403a3cd">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org51b7ddf">Setup</a></li>
+<li><a href="#org3b544e3">Read data</a></li>
+<li><a href="#org68dda01">General function definitions</a>
+<ul>
+<li><a href="#orgfd20269">❖ Sequence generator</a></li>
+<li><a href="#org0c20329">❖ Points</a></li>
+<li><a href="#org353c395">Intersections</a></li>
+<li><a href="#orge4d5ccc">Filter vertical and horizontal lines</a></li>
+</ul>
+</li>
+<li><a href="#org346b093">Part 1</a>
+<ul>
+<li><a href="#orgb2b6b9c">Function definition</a></li>
+<li><a href="#orgbe8c421">Test</a></li>
+<li><a href="#orgfb93212">Solution</a></li>
+</ul>
+</li>
+<li><a href="#org4c6f6c7">Part 2</a>
+<ul>
+<li><a href="#org590f208">Function definition</a></li>
+<li><a href="#org60b25f0">Test</a></li>
+<li><a href="#orgc2ee0f2">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org51b7ddf" class="outline-3">
+<h3 id="org51b7ddf">Setup</h3>
+<div class="outline-text-3" id="text-org51b7ddf">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day05'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3b544e3" class="outline-3">
+<h3 id="org3b544e3">Read data</h3>
+<div class="outline-text-3" id="text-org3b544e3">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span><span style="color: #0000ff;">@</span>(rplc<span style="color: #0000ff;">&amp;</span>(<span style="color: #008000;">'-&gt;'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">',:'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">','</span><span style="color: #ff0000;">;</span><span style="color: #008000;">' '</span>)) readin
+</pre>
+</div>
+
+<p>
+Note that &rsquo;-&gt;&rsquo; is replaced with &rsquo;,:&rsquo; so that executing each row casts the <code>(x, y)</code> coordinates in each row to a \(2 \times 2\) matrix. This results in 
+an \(N \times 2 \times 2\) matrix for \(N\) points (rows) in the file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org68dda01" class="outline-3">
+<h3 id="org68dda01">General function definitions</h3>
+<div class="outline-text-3" id="text-org68dda01">
+</div>
+<div id="outline-container-orgfd20269" class="outline-4">
+<h4 id="orgfd20269">❖ Sequence generator</h4>
+<div class="outline-text-4" id="text-orgfd20269">
+<p>
+Generate sequence in closed interval <code>(x, y)</code>,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Generate sequence in closed interval (x, y)</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x &lt; y: Ascending  ]  5 seq 8  =&gt; 5 6 7 8</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x &gt; y: Descending ] _2 seq _5 =&gt; _2 _3 _4 _5</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = y: Constant   ]  0 seq 0  =&gt; 0</span>
+<span style="color: #BA36A5;">seq</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[</span> <span style="color: #ff0000;">+</span> (<span style="color: #ff0000;">-</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">*</span> <span style="color: #ff0000;">*</span> <span style="color: #ff0000;">i.</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">&gt;:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">|</span>)<span style="color: #0000ff;">@</span><span style="color: #ff0000;">-</span>
+</pre>
+</div>
+
+<pre class="example">
+┌──────────────────┬─────────┬───────┐
+│_3 seq 4          │7 seq 3  │9 seq 9│
+├──────────────────┼─────────┼───────┤
+│_3 _2 _1 0 1 2 3 4│7 6 5 4 3│9      │
+└──────────────────┴─────────┴───────┘
+
+</pre>
+
+<p>
+For 2-element <code>x = (x1, y1)</code> and <code>y = (x2, y2)</code>, <code>seq</code> can be considered to interpolate between the coordinates. 
+Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal lines!
+</p>
+
+<pre class="example">
+┌───────────────┬───────────────┬───────────────┐
+│(0 9) seq (5 9)│(3 2) seq (3 7)│(4 4) seq (8 8)│
+├───────────────┼───────────────┼───────────────┤
+│0 1 2 3 4 5    │3 3 3 3 3 3    │4 5 6 7 8      │
+│9 9 9 9 9 9    │2 3 4 5 6 7    │4 5 6 7 8      │
+└───────────────┴───────────────┴───────────────┘
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0c20329" class="outline-4">
+<h4 id="org0c20329">❖ Points</h4>
+<div class="outline-text-4" id="text-org0c20329">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Interpolate points across coordinate endpoints</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = N x 2 x 2 matrix of N points</span>
+<span style="color: #8D8D84;">NB.         </span><span style="color: #8D8D84; font-style: italic;">2 x 2 submatrices are (x1 y1 ,: x2 y2) coordinates for each point</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Returns 2-column list of interpolated (x, y) pairs for all points</span>
+<span style="color: #BA36A5;">pts</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">;</span> _2 <span style="color: #ff0000;">&lt;</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">|:</span><span style="color: #0000ff;">@</span>seq<span style="color: #0000ff;">"</span>1<span style="color: #00ff00;">/\</span><span style="color: #0000ff;">"</span>_1 <span style="color: #ff0000;">]</span>
+</pre>
+</div>
+
+
+<pre class="example">
+┌───┬─────┐
+│y  │pts y│
+├───┼─────┤
+│0 9│0 9  │
+│5 9│1 9  │
+│   │2 9  │
+│3 2│3 9  │
+│3 7│4 9  │
+│   │5 9  │
+│4 4│3 2  │
+│8 8│3 3  │
+│   │3 4  │
+│   │3 5  │
+│   │3 6  │
+│   │3 7  │
+│   │4 4  │
+│   │5 5  │
+│   │6 6  │
+│   │7 7  │
+│   │8 8  │
+└───┴─────┘
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org353c395" class="outline-4">
+<h4 id="org353c395">Intersections</h4>
+<div class="outline-text-4" id="text-org353c395">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Count number of intersections between N lines</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = N x 2 x 2 matrix of N points</span>
+<span style="color: #8D8D84;">NB.         </span><span style="color: #8D8D84; font-style: italic;">2 x 2 submatrices are (x1 y1 ,: x2 y2) coordinates for each point</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x is minimum number of intersections</span>
+<span style="color: #BA36A5;">intersect</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #ff0000;">[</span> <span style="color: #ff0000;">&lt;:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">#</span><span style="color: #00ff00;">/.~</span> pts 
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge4d5ccc" class="outline-4">
+<h4 id="orge4d5ccc">Filter vertical and horizontal lines</h4>
+<div class="outline-text-4" id="text-orge4d5ccc">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Filter coordinates of vertical and horizontal lines</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = N x 2 x 2 matrix of N points</span>
+<span style="color: #8D8D84;">NB.         </span><span style="color: #8D8D84; font-style: italic;">2 x 2 submatrices are (x1 y1 ,: x2 y2) coordinates for each point</span>
+<span style="color: #BA36A5;">filtvh</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">]</span> <span style="color: #ff0000;">#</span><span style="color: #00ff00;">~</span> (<span style="color: #ff0000;">+.</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">"</span>1 <span style="color: #0000ff;">@:</span> <span style="color: #ff0000;">=</span><span style="color: #00ff00;">/</span>)<span style="color: #0000ff;">"</span>_1
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org346b093" class="outline-3">
+<h3 id="org346b093">Part 1</h3>
+<div class="outline-text-3" id="text-org346b093">
+</div>
+<div id="outline-container-orgb2b6b9c" class="outline-4">
+<h4 id="orgb2b6b9c">Function definition</h4>
+<div class="outline-text-4" id="text-orgb2b6b9c">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> 2<span style="color: #0000ff;">&amp;</span>intersect <span style="color: #0000ff;">@</span> filtvh
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbe8c421" class="outline-4">
+<h4 id="orgbe8c421">Test</h4>
+<div class="outline-text-4" id="text-orgbe8c421">
+<div class="org-src-container">
+<pre class="src src-j">assert 5 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-05-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfb93212" class="outline-4">
+<h4 id="orgfb93212">Solution</h4>
+<div class="outline-text-4" id="text-orgfb93212">
+<div class="org-src-container">
+<pre class="src src-j">assert 7473 <span style="color: #ff0000;">=</span> part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-05.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4c6f6c7" class="outline-3">
+<h3 id="org4c6f6c7">Part 2</h3>
+<div class="outline-text-3" id="text-org4c6f6c7">
+</div>
+<div id="outline-container-org590f208" class="outline-4">
+<h4 id="org590f208">Function definition</h4>
+<div class="outline-text-4" id="text-org590f208">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> 2<span style="color: #0000ff;">&amp;</span>intersect
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org60b25f0" class="outline-4">
+<h4 id="org60b25f0">Test</h4>
+<div class="outline-text-4" id="text-org60b25f0">
+<div class="org-src-container">
+<pre class="src src-j">assert 12 <span style="color: #ff0000;">=</span> part2 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-05-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc2ee0f2" class="outline-4">
+<h4 id="orgc2ee0f2">Solution</h4>
+<div class="outline-text-4" id="text-orgc2ee0f2">
+<div class="org-src-container">
+<pre class="src src-j">assert 24164 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-05.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfa2a3ad" class="outline-2">
+<h2 id="orgfa2a3ad"><a href="https://adventofcode.com/2021/day/6">Day 06: Lanternfish</a></h2>
+<div class="outline-text-2" id="text-orgfa2a3ad">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8a752fd">Setup</a></li>
+<li><a href="#org6958a10">Read data</a></li>
+<li><a href="#org3028585">General function definitions</a>
+<ul>
+<li><a href="#org01d9c0c">Stochastic matrix</a></li>
+<li><a href="#orgb04ea8f">Matrix operations</a></li>
+<li><a href="#org78f3abe">Number of fish</a></li>
+</ul>
+</li>
+<li><a href="#org2e63aa3">Part 1</a>
+<ul>
+<li><a href="#org2f6aa25">Function definition</a></li>
+<li><a href="#orgc99b780">Test</a></li>
+<li><a href="#orgc2f44e7">Solution</a></li>
+</ul>
+</li>
+<li><a href="#org3199d97">Part 2</a>
+<ul>
+<li><a href="#orgb46f658">Function definition</a></li>
+<li><a href="#org2965fb6">Test</a></li>
+<li><a href="#org1998872">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8a752fd" class="outline-3">
+<h3 id="org8a752fd">Setup</h3>
+<div class="outline-text-3" id="text-org8a752fd">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day06'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6958a10" class="outline-3">
+<h3 id="org6958a10">Read data</h3>
+<div class="outline-text-3" id="text-org6958a10">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">".</span> readin
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3028585" class="outline-3">
+<h3 id="org3028585">General function definitions</h3>
+<div class="outline-text-3" id="text-org3028585">
+</div>
+<div id="outline-container-org01d9c0c" class="outline-4">
+<h4 id="org01d9c0c">Stochastic matrix</h4>
+<div class="outline-text-4" id="text-org01d9c0c">
+<p>
+This class of problems is most easily solved using a <a href="https://en.wikipedia.org/wiki/Stochastic_matrix">stochastic matrix</a>. The function below defines a stochastic matrix per conditions of the problem,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">stochastic matrix</span>
+<span style="color: #BA36A5;">stoctrix</span><span style="color: #000000;">=:</span> (1 0) <span style="color: #ff0000;">,</span><span style="color: #00ff00;">~</span> (0 0 0 0 0 0 1 0) <span style="color: #ff0000;">,.</span> (<span style="color: #ff0000;">e.</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">i.</span> 8)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">stoctrix
+</pre>
+</div>
+
+<pre class="example">
+0 1 0 0 0 0 0 0 0
+0 0 1 0 0 0 0 0 0
+0 0 0 1 0 0 0 0 0
+0 0 0 0 1 0 0 0 0
+0 0 0 0 0 1 0 0 0
+0 0 0 0 0 0 1 0 0
+1 0 0 0 0 0 0 1 0
+0 0 0 0 0 0 0 0 1
+1 0 0 0 0 0 0 0 0
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb04ea8f" class="outline-4">
+<h4 id="orgb04ea8f">Matrix operations</h4>
+<div class="outline-text-4" id="text-orgb04ea8f">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Matrix product</span>
+<span style="color: #BA36A5;">mp</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #00ff00;">.</span> <span style="color: #ff0000;">*</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Raise matrix to nth power</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Source: https://code.jsoftware.com/wiki/Essays/Repeated_Squaring</span>
+<span style="color: #BA36A5;">mpow</span><span style="color: #000000;">=:</span> 4 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'mp/ mp~^:(I.|.#:y) x'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org78f3abe" class="outline-4">
+<h4 id="org78f3abe">Number of fish</h4>
+<div class="outline-text-4" id="text-org78f3abe">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Count number of fish after N generations</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = input/start state</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = generations (integer)</span>
+<span style="color: #BA36A5;">nfish</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> stoctrix<span style="color: #0000ff;">&amp;</span>mpow<span style="color: #0000ff;">@</span><span style="color: #ff0000;">]</span> mp (<span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">&lt;:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">#</span><span style="color: #00ff00;">/.~</span> (<span style="color: #ff0000;">i.</span>9) <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">[</span>)
+</pre>
+</div>
+
+<p>
+Reading from right to left, <code>nfish</code> works as follows, 
+</p>
+
+<ul class="org-ul">
+<li><code>([: &lt;:@#/.~ (i.9) , [)</code>: Count number of fish in input grouped by <code>x</code> (age)</li>
+<li><code>stoctrix&amp;mpow@] mp</code>: Multiply grouped fish count by stochastic matrix after <code>y</code> generations</li>
+<li><code>+/</code>: Total fish after <code>y</code> generations</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2e63aa3" class="outline-3">
+<h3 id="org2e63aa3">Part 1</h3>
+<div class="outline-text-3" id="text-org2e63aa3">
+</div>
+<div id="outline-container-org2f6aa25" class="outline-4">
+<h4 id="org2f6aa25">Function definition</h4>
+<div class="outline-text-4" id="text-org2f6aa25">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> nfish
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc99b780" class="outline-4">
+<h4 id="orgc99b780">Test</h4>
+<div class="outline-text-4" id="text-orgc99b780">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-06-example.txt'</span>
+assert 26 <span style="color: #ff0000;">=</span> inx part1 18 
+assert 5934 <span style="color: #ff0000;">=</span> inx part1 80
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc2f44e7" class="outline-4">
+<h4 id="orgc2f44e7">Solution</h4>
+<div class="outline-text-4" id="text-orgc2f44e7">
+<div class="org-src-container">
+<pre class="src src-j">assert 360761 <span style="color: #ff0000;">=</span> in part1 80 <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-06.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3199d97" class="outline-3">
+<h3 id="org3199d97">Part 2</h3>
+<div class="outline-text-3" id="text-org3199d97">
+</div>
+<div id="outline-container-orgb46f658" class="outline-4">
+<h4 id="orgb46f658">Function definition</h4>
+<div class="outline-text-4" id="text-orgb46f658">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> nfish
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2965fb6" class="outline-4">
+<h4 id="org2965fb6">Test</h4>
+<div class="outline-text-4" id="text-org2965fb6">
+<div class="org-src-container">
+<pre class="src src-j">assert 26984457539 <span style="color: #ff0000;">=</span> inx part1 256 <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-06-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1998872" class="outline-4">
+<h4 id="org1998872">Solution</h4>
+<div class="outline-text-4" id="text-org1998872">
+<div class="org-src-container">
+<pre class="src src-j">assert 1632779838045 <span style="color: #ff0000;">=</span> in part2 256 <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-06.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org04271a5" class="outline-2">
+<h2 id="org04271a5"><a href="https://adventofcode.com/2021/day/7">Day 07: The Treachery of Whales</a></h2>
+<div class="outline-text-2" id="text-org04271a5">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org154abb5">Setup</a></li>
+<li><a href="#orgb43d411">Read data</a></li>
+<li><a href="#org4e0f353">Part 1</a>
+<ul>
+<li><a href="#org08677a3">Function definition</a></li>
+<li><a href="#orgbf45533">Test</a></li>
+<li><a href="#orgdeb03b2">Solution</a></li>
+</ul>
+</li>
+<li><a href="#org6578228">Part 2</a>
+<ul>
+<li><a href="#org439d52a">Function definition</a></li>
+<li><a href="#orgf4a2150">Test</a></li>
+<li><a href="#orgb9294a7">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org154abb5" class="outline-3">
+<h3 id="org154abb5">Setup</h3>
+<div class="outline-text-3" id="text-org154abb5">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day07'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #008000;">'stats/base'</span>
+load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb43d411" class="outline-3">
+<h3 id="orgb43d411">Read data</h3>
+<div class="outline-text-3" id="text-orgb43d411">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">".</span> readin
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4e0f353" class="outline-3">
+<h3 id="org4e0f353">Part 1</h3>
+<div class="outline-text-3" id="text-org4e0f353">
+</div>
+<div id="outline-container-org08677a3" class="outline-4">
+<h4 id="org08677a3">Function definition</h4>
+<div class="outline-text-4" id="text-org08677a3">
+<p>
+See this <a href="https://math.stackexchange.com/questions/318381/on-a-1-d-line-the-point-that-minimizes-the-sum-of-the-distances-is-the-median">stackexchange</a> question for the explanation of why median minimizes the distance on a 1-D line. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #ff0000;">|</span><span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">]</span> <span style="color: #ff0000;">-</span> median)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbf45533" class="outline-4">
+<h4 id="orgbf45533">Test</h4>
+<div class="outline-text-4" id="text-orgbf45533">
+<div class="org-src-container">
+<pre class="src src-j">assert 37 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-07-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdeb03b2" class="outline-4">
+<h4 id="orgdeb03b2">Solution</h4>
+<div class="outline-text-4" id="text-orgdeb03b2">
+<div class="org-src-container">
+<pre class="src src-j">assert 329389 <span style="color: #ff0000;">=</span> part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-07.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6578228" class="outline-3">
+<h3 id="org6578228">Part 2</h3>
+<div class="outline-text-3" id="text-org6578228">
+</div>
+<div id="outline-container-org439d52a" class="outline-4">
+<h4 id="org439d52a">Function definition</h4>
+<div class="outline-text-4" id="text-org439d52a">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">x:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #ff0000;">-:</span><span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;:</span> <span style="color: #ff0000;">*</span> <span style="color: #ff0000;">]</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">]</span> <span style="color: #ff0000;">|</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">-</span> <span style="color: #ff0000;">&lt;.</span><span style="color: #0000ff;">@</span>mean)
+</pre>
+</div>
+
+<p>
+Reading from right to left, this works as follows,
+</p>
+
+<ul class="org-ul">
+<li><code>-:@(&gt;: * ])@(] |@- &lt;.@mean)</code>
+<ul class="org-ul">
+<li><code>(] |@- &lt;.@mean)</code>: Mean absolute deviation = distance from best horizontal position
+<ul class="org-ul">
+<li><code>&lt;.@mean</code>: Largest integer not tolerantly exceeding the mean</li>
+</ul></li>
+<li><code>-:@(&gt;: * ])</code>: Fuel cost for each crab = \(n (n + 1)/2\)</li>
+</ul></li>
+<li><code>+/</code>: Total fuel cost</li>
+<li><code>x:</code>: Extended integer (full precision)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf4a2150" class="outline-4">
+<h4 id="orgf4a2150">Test</h4>
+<div class="outline-text-4" id="text-orgf4a2150">
+<div class="org-src-container">
+<pre class="src src-j">assert 170 <span style="color: #ff0000;">=</span> part2 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-07-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb9294a7" class="outline-4">
+<h4 id="orgb9294a7">Solution</h4>
+<div class="outline-text-4" id="text-orgb9294a7">
+<div class="org-src-container">
+<pre class="src src-j">assert 86397080 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-07.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1dbf9f1" class="outline-2">
+<h2 id="org1dbf9f1"><a href="https://adventofcode.com/2021/day/8">Day 08: Seven Segment Search</a></h2>
+<div class="outline-text-2" id="text-org1dbf9f1">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgfd3bb73">Setup</a></li>
+<li><a href="#orgaa4afb5">Read data</a></li>
+<li><a href="#orgcd4f44f">Part 1</a>
+<ul>
+<li><a href="#org1758a38">Function definitions</a></li>
+<li><a href="#orgd026458">Test</a></li>
+<li><a href="#org9c8bae3">Solution</a></li>
+</ul>
+</li>
+<li><a href="#orgea13416">Part 2</a>
+<ul>
+<li><a href="#org9ef3518">Unique identifiers</a></li>
+<li><a href="#orgbe046e8">Function definitions</a></li>
+<li><a href="#org89aef67">Test</a></li>
+<li><a href="#org5af8486">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfd3bb73" class="outline-3">
+<h3 id="orgfd3bb73">Setup</h3>
+<div class="outline-text-3" id="text-orgfd3bb73">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day08'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaa4afb5" class="outline-3">
+<h3 id="orgaa4afb5">Read data</h3>
+<div class="outline-text-3" id="text-orgaa4afb5">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">/:</span><span style="color: #00ff00;">~</span><span style="color: #0000ff;">&amp;.</span><span style="color: #ff0000;">&gt;</span> <span style="color: #ff0000;">;:</span> readin
+</pre>
+</div>
+
+<p>
+To simplify the solution, the random-ordered entries are sorted alphabetically. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcd4f44f" class="outline-3">
+<h3 id="orgcd4f44f">Part 1</h3>
+<div class="outline-text-3" id="text-orgcd4f44f">
+</div>
+<div id="outline-container-org1758a38" class="outline-4">
+<h4 id="org1758a38">Function definitions</h4>
+<div class="outline-text-4" id="text-org1758a38">
+<p>
+This solution is from <a href="https://github.com/jitwit/aoc/blob/a/J/21/08.ijs">jitwit</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Count number of digits of given length</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = boxed list of coded digits</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = list of digit lengths</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">output is count of digits of lengths x in y</span>
+<span style="color: #BA36A5;">ndiglen</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">[</span> <span style="color: #ff0000;">e.</span><span style="color: #00ff00;">~</span> <span style="color: #ff0000;">#</span><span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&gt;</span> <span style="color: #0000ff;">@</span> <span style="color: #ff0000;">]</span>
+</pre>
+</div>
+
+<p>
+Reading from right to left, <code>ndiglen</code> works as follows,
+</p>
+
+<ul class="org-ul">
+<li><code>#&amp;&gt; @ ]</code>: Number of characters in each entry of <code>y</code></li>
+<li><code>[ e.~</code>: Flag all entry-lengths in <code>x</code></li>
+<li><code>[: +/ [: ,</code>: Flatten matrix and sum all elements</li>
+</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> (2 3 4 7) ndiglen _4<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">{.</span><span style="color: #0000ff;">"</span>1<span style="color: #0000ff;">@</span><span style="color: #ff0000;">]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd026458" class="outline-4">
+<h4 id="orgd026458">Test</h4>
+<div class="outline-text-4" id="text-orgd026458">
+<div class="org-src-container">
+<pre class="src src-j">assert 26 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-08-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9c8bae3" class="outline-4">
+<h4 id="org9c8bae3">Solution</h4>
+<div class="outline-text-4" id="text-org9c8bae3">
+<div class="org-src-container">
+<pre class="src src-j">assert 284 <span style="color: #ff0000;">=</span> part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-08.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgea13416" class="outline-3">
+<h3 id="orgea13416">Part 2</h3>
+<div class="outline-text-3" id="text-orgea13416">
+</div>
+<div id="outline-container-org9ef3518" class="outline-4">
+<h4 id="org9ef3518">Unique identifiers</h4>
+<div class="outline-text-4" id="text-org9ef3518">
+<p>
+Based on logic from: <a href="https://github.com/jitwit/aoc/blob/a/J/21/08.ijs">https://github.com/jitwit/aoc/blob/a/J/21/08.ijs</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Table of unique identifiers</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">A digit can be uniquely identified by length, </span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">intersection with 1 and intersection with 4</span>
+<span style="color: #BA36A5;">tbluids</span><span style="color: #000000;">=:</span> _3 <span style="color: #ff0000;">]</span><span style="color: #00ff00;">\</span> 6 2 3 2 2 2 5 1 2 5 2 3 4 2 4 5 1 3 6 1 3 3 2 2 7 2 4 6 2 4
+</pre>
+</div>
+
+<p>
+The first column is length. Second and third columns are intersections with 1 and 4.
+</p>
+
+<pre class="example">
+6 2 3
+2 2 2
+5 1 2
+5 2 3
+4 2 4
+5 1 3
+6 1 3
+3 2 2
+7 2 4
+6 2 4
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgbe046e8" class="outline-4">
+<h4 id="orgbe046e8">Function definitions</h4>
+<div class="outline-text-4" id="text-orgbe046e8">
+</div>
+<div id="outline-container-org1a3d28c" class="outline-5">
+<h5 id="org1a3d28c">Get identifiers</h5>
+<div class="outline-text-5" id="text-org1a3d28c">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Get identifiers of output x based on encodings in y</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = boxed list of outputs</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = boxed list of encoded entries (#y = 10)</span>
+<span style="color: #BA36A5;">getids</span><span style="color: #000000;">=:</span> (<span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">#</span><span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&gt;</span> <span style="color: #ff0000;">]</span>) <span style="color: #ff0000;">,.</span> <span style="color: #ff0000;">]</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">e.</span><span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&gt;</span><span style="color: #00ff00;">/</span> (0 2<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">{</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">/:</span> <span style="color: #ff0000;">#</span><span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&gt;</span>)<span style="color: #0000ff;">@</span><span style="color: #ff0000;">[</span>
+</pre>
+</div>
+
+<p>
+Reading from right to left, <code>getids</code> works as follows,
+</p>
+
+<ul class="org-ul">
+<li><code>] +/@e.&amp;&gt;/ (0 2&amp;{)@(/: #&amp;&gt;)@[</code>: Get intersections of each output entry in <code>y</code> with 1 and 4 in encodings <code>x</code>
+<ul class="org-ul">
+<li><code>(0 2&amp;{)@(/: #&amp;&gt;)@[</code>: Sort encodings <code>y</code> by length and select digits 1 and 4</li>
+</ul></li>
+<li><code>([: #&amp;&gt; ]) ,.</code>: Prepend column with lengths of output entries</li>
+<li>Result is a <code>(#y) x 3</code> matrix,
+<ul class="org-ul">
+<li>First column are the lengths of output entries</li>
+<li>Second and third columns are intersections of corresponding outputs with 1 and 4</li>
+</ul></li>
+</ul>
+
+<pre class="example">
+┌───────────┬────────────────────────────────────────────────────────────┐
+│e=. 10&amp;{. y│┌──┬───────┬──────┬──────┬────┬─────┬──────┬─────┬─────┬───┐│
+│           ││be│abcdefg│bcdefg│acdefg│bceg│cdefg│abdefg│bcdef│abcdf│bde││
+│           │└──┴───────┴──────┴──────┴────┴─────┴──────┴─────┴─────┴───┘│
+├───────────┼────────────────────────────────────────────────────────────┤
+│o=. _4&amp;{. y│┌───────┬─────┬──────┬────┐                                 │
+│           ││abcdefg│bcdef│bcdefg│bceg│                                 │
+│           │└───────┴─────┴──────┴────┘                                 │
+└───────────┴────────────────────────────────────────────────────────────┘
+
+</pre>
+
+<pre class="example">
+┌────────────────┬────────────────────────────────────────────────────────────┐
+│s=. (/: #&amp;&gt;) e  │┌──┬───┬────┬─────┬─────┬─────┬──────┬──────┬──────┬───────┐│
+│                ││be│bde│bceg│cdefg│bcdef│abcdf│bcdefg│acdefg│abdefg│abcdefg││
+│                │└──┴───┴────┴─────┴─────┴─────┴──────┴──────┴──────┴───────┘│
+├────────────────┼────────────────────────────────────────────────────────────┤
+│d=. (0 2&amp;{) s   │┌──┬────┐                                                   │
+│                ││be│bceg│                                                   │
+│                │└──┴────┘                                                   │
+├────────────────┼────────────────────────────────────────────────────────────┤
+│i=. o +/@e.&amp;&gt;/ d│2 4                                                         │
+│                │2 3                                                         │
+│                │2 4                                                         │
+│                │2 4                                                         │
+├────────────────┼────────────────────────────────────────────────────────────┤
+│(#&amp;&gt; o) ,. i    │7 2 4                                                       │
+│                │5 2 3                                                       │
+│                │6 2 4                                                       │
+│                │4 2 4                                                       │
+├────────────────┼────────────────────────────────────────────────────────────┤
+│e getids o      │7 2 4                                                       │
+│                │5 2 3                                                       │
+│                │6 2 4                                                       │
+│                │4 2 4                                                       │
+└────────────────┴────────────────────────────────────────────────────────────┘
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org95181bf" class="outline-5">
+<h5 id="org95181bf">Decode</h5>
+<div class="outline-text-5" id="text-org95181bf">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Return decimal number of output in y</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = encodings (first 10 columns) and outputs to decode (last four columns)</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = lookup table with unique identifiers for digits</span>
+<span style="color: #BA36A5;">decode</span><span style="color: #000000;">=:</span> 10 <span style="color: #ff0000;">#.</span> <span style="color: #ff0000;">[</span> <span style="color: #ff0000;">i.</span> (10<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">{.</span> getids _4<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">{.</span>)<span style="color: #0000ff;">@</span><span style="color: #ff0000;">]</span>
+</pre>
+</div>
+
+<p>
+Reading from right to left, <code>decode</code> works as follows,
+</p>
+
+<ul class="org-ul">
+<li><code>[ i. (10&amp;{. getids _4&amp;{.)@]</code>: Find digits in output of <code>y</code> in <code>x</code> (table of identifiers)
+<ul class="org-ul">
+<li><code>(10&amp;{. getids _4&amp;{.)@]</code>: Get identifiers for digits in output of <code>y</code> (last four columns) using encodings in <code>y</code> (first 10 columns)</li>
+</ul></li>
+<li><code>10 #.</code>: Convert individual digits to decimal number</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3b25433" class="outline-5">
+<h5 id="org3b25433">Total</h5>
+<div class="outline-text-5" id="text-org3b25433">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> (tbluids decode <span style="color: #ff0000;">]</span>)<span style="color: #0000ff;">"</span>1
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org89aef67" class="outline-4">
+<h4 id="org89aef67">Test</h4>
+<div class="outline-text-4" id="text-org89aef67">
+<div class="org-src-container">
+<pre class="src src-j">assert 61229 <span style="color: #ff0000;">=</span> part2 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-08-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5af8486" class="outline-4">
+<h4 id="org5af8486">Solution</h4>
+<div class="outline-text-4" id="text-org5af8486">
+<div class="org-src-container">
+<pre class="src src-j">assert 973499 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-08.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5aa154a" class="outline-2">
+<h2 id="org5aa154a"><a href="https://adventofcode.com/2021/day/9">Day 09: Smoke Basin</a></h2>
+<div class="outline-text-2" id="text-org5aa154a">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8a38301">Setup</a></li>
+<li><a href="#orgd0db2f4">Read data</a></li>
+<li><a href="#org82392c4">Part 1</a>
+<ul>
+<li><a href="#org8dd890f">Function definitions</a></li>
+<li><a href="#orgd24d53f">Test</a></li>
+<li><a href="#org62132ef">Solution</a></li>
+</ul>
+</li>
+<li><a href="#orgc34d012">Part 2</a>
+<ul>
+<li><a href="#org7febc1a">Function definitions</a></li>
+<li><a href="#orgfcb3b00">Test</a></li>
+<li><a href="#org1516a1b">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8a38301" class="outline-3">
+<h3 id="org8a38301">Setup</h3>
+<div class="outline-text-3" id="text-org8a38301">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day09'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd0db2f4" class="outline-3">
+<h3 id="orgd0db2f4">Read data</h3>
+<div class="outline-text-3" id="text-orgd0db2f4">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span><span style="color: #0000ff;">"</span>0 readin
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org82392c4" class="outline-3">
+<h3 id="org82392c4">Part 1</h3>
+<div class="outline-text-3" id="text-org82392c4">
+</div>
+<div id="outline-container-org8dd890f" class="outline-4">
+<h4 id="org8dd890f">Function definitions</h4>
+<div class="outline-text-4" id="text-org8dd890f">
+<p>
+This solution follows the approach in <a href="https://www.jsoftware.com/help/learning/31.htm">Golden Rule Example 2: Conway&rsquo;s &ldquo;Life&rdquo;</a>,
+</p>
+</div>
+
+<div id="outline-container-org364b36e" class="outline-5">
+<h5 id="org364b36e">Low points</h5>
+<div class="outline-text-5" id="text-org364b36e">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Find low points in matrix y</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Low points = locations that are lower than any of </span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">its adjacent (up, down, left, and right) locations</span>
+<span style="color: #BA36A5;">lowpoints</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">]</span> <span style="color: #ff0000;">&lt;</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">&lt;.</span><span style="color: #00ff00;">/</span> (_1<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">*</span> <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">]</span>)<span style="color: #0000ff;">@</span><span style="color: #ff0000;">=</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">i.</span><span style="color: #0000ff;">@</span>2<span style="color: #ff0000;">:</span> (<span style="color: #ff0000;">|.</span><span style="color: #0000ff;">!.</span>9) <span style="color: #ff0000;">]</span>
+</pre>
+</div>
+
+<pre class="example">
+┌───────────────────┬───────────────────┐
+│y                  │lowpoints y        │
+├───────────────────┼───────────────────┤
+│2 1 9 9 9 4 3 2 1 0│0 1 0 0 0 0 0 0 0 1│
+│3 9 8 7 8 9 4 9 2 1│0 0 0 0 0 0 0 0 0 0│
+│9 8 5 6 7 8 9 8 9 2│0 0 1 0 0 0 0 0 0 0│
+│8 7 6 7 8 9 6 7 8 9│0 0 0 0 0 0 0 0 0 0│
+│9 8 9 9 9 6 5 6 7 8│0 0 0 0 0 0 1 0 0 0│
+└───────────────────┴───────────────────┘
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb34bd94" class="outline-5">
+<h5 id="orgb34bd94">Risk level</h5>
+<div class="outline-text-5" id="text-orgb34bd94">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">&gt;:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">]</span> <span style="color: #ff0000;">*</span> lowpoints
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd24d53f" class="outline-4">
+<h4 id="orgd24d53f">Test</h4>
+<div class="outline-text-4" id="text-orgd24d53f">
+<div class="org-src-container">
+<pre class="src src-j">assert 15 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-09-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org62132ef" class="outline-4">
+<h4 id="org62132ef">Solution</h4>
+<div class="outline-text-4" id="text-org62132ef">
+<div class="org-src-container">
+<pre class="src src-j">assert 548 <span style="color: #ff0000;">=</span> part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-09.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc34d012" class="outline-3">
+<h3 id="orgc34d012">Part 2</h3>
+<div class="outline-text-3" id="text-orgc34d012">
+</div>
+<div id="outline-container-org7febc1a" class="outline-4">
+<h4 id="org7febc1a">Function definitions</h4>
+<div class="outline-text-4" id="text-org7febc1a">
+</div>
+<div id="outline-container-orgf7dd396" class="outline-5">
+<h5 id="orgf7dd396">Find adjacent regions</h5>
+<div class="outline-text-5" id="text-orgf7dd396">
+<p>
+The problem is greatly simplified by using <code>findadj</code> from the <a href="http://www.jsoftware.com/pipermail/general/2005-August/023886.html">Jforum</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">findadj</span><span style="color: #000000;">=:</span> (<span style="color: #ff0000;">|.</span><span style="color: #0000ff;">"</span>1<span style="color: #0000ff;">@</span><span style="color: #ff0000;">|:</span><span style="color: #0000ff;">@:</span><span style="color: #ff0000;">&gt;.</span> <span style="color: #ff0000;">*</span> <span style="color: #ff0000;">*</span> 1<span style="color: #0000ff;">&amp;</span>(<span style="color: #ff0000;">|.</span><span style="color: #0000ff;">!.</span>0))<span style="color: #0000ff;">^:</span>4<span style="color: #0000ff;">^:</span>_ <span style="color: #0000ff;">@</span> (<span style="color: #ff0000;">*&gt;:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">i.</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">$</span>)
+</pre>
+</div>
+
+<pre class="example">
+┌─────────────────┬─────────────────────────┐
+│y                │findadj y                │
+├─────────────────┼─────────────────────────┤
+│1 1 0 0 0 1 1 0 0│12 12  0 0  0 45 45  0  0│
+│1 1 1 0 0 0 1 1 0│12 12 12 0  0  0 45 45  0│
+│0 0 0 0 1 0 0 1 0│ 0  0  0 0 45  0  0 45  0│
+│0 0 0 0 1 1 1 1 1│ 0  0  0 0 45 45 45 45 45│
+│1 0 0 0 1 1 0 0 1│37  0  0 0 45 45  0  0 45│
+└─────────────────┴─────────────────────────┘
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8aba2a7" class="outline-5">
+<h5 id="org8aba2a7">Basin sizes</h5>
+<div class="outline-text-5" id="text-org8aba2a7">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Basin sizes in descending order</span>
+<span style="color: #BA36A5;">bsizes</span><span style="color: #000000;">=:</span> (<span style="color: #ff0000;">\:</span><span style="color: #00ff00;">~</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">#</span><span style="color: #00ff00;">/.~</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">]</span> <span style="color: #ff0000;">#</span><span style="color: #00ff00;">~</span> 0 <span style="color: #ff0000;">~:</span> <span style="color: #ff0000;">]</span>) <span style="color: #ff0000;">,</span><span style="color: #0000ff;">@</span>findadj<span style="color: #0000ff;">@</span>(9<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">~:</span>)
+</pre>
+</div>
+
+<p>
+Reading from right to left, <code>bsizes</code> works as follows,
+</p>
+
+<ul class="org-ul">
+<li><code>,@findadj@(9&amp;~:)</code>:
+<ul class="org-ul">
+<li><code>(9&amp;~:)</code>: Flag all heights not equal to 9.</li>
+<li><code>findadj</code>: Mark adjacent regions with unique numbers.</li>
+<li><code>,</code>: Flatten matrix.</li>
+</ul></li>
+<li><code>(\:~)@(#/.~)@(] #~ 0 ~: ])</code>:
+<ul class="org-ul">
+<li><code>(] #~ 0 ~: ])</code>: Remove 0&rsquo;s = region boundaries.</li>
+<li><code>(#/.~)</code>: Count number of points in each region.</li>
+<li><code>(\:~)</code>: Sort counts in descending order.</li>
+</ul></li>
+</ul>
+
+<pre class="example">
+┌─────────────────────┬───────────────────────────────────────────────┐
+│y                    │2 9 0 8 9 1                                    │
+│                     │6 9 5 7 9 4                                    │
+│                     │4 9 3 5 2 9                                    │
+│                     │0 8 9 1 6 9                                    │
+├─────────────────────┼───────────────────────────────────────────────┤
+│r =. (9&amp;~:) y        │1 0 1 1 0 1                                    │
+│                     │1 0 1 1 0 1                                    │
+│                     │1 0 1 1 1 0                                    │
+│                     │1 1 0 1 1 0                                    │
+├─────────────────────┼───────────────────────────────────────────────┤
+│t=. findadj r        │20  0 23 23  0 12                              │
+│                     │20  0 23 23  0 12                              │
+│                     │20  0 23 23 23  0                              │
+│                     │20 20  0 23 23  0                              │
+├─────────────────────┼───────────────────────────────────────────────┤
+│s=. (] #~ 0 ~: ]) , t│20 23 23 12 20 23 23 12 20 23 23 23 20 20 23 23│
+├─────────────────────┼───────────────────────────────────────────────┤
+│b=. #/.~ s           │5 9 2                                          │
+├─────────────────────┼───────────────────────────────────────────────┤
+│\:~ b                │9 5 2                                          │
+├─────────────────────┼───────────────────────────────────────────────┤
+│bsizes y             │9 5 2                                          │
+└─────────────────────┴───────────────────────────────────────────────┘
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf4afec8" class="outline-5">
+<h5 id="orgf4afec8">Three largest basins</h5>
+<div class="outline-text-5" id="text-orgf4afec8">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">*</span><span style="color: #00ff00;">/</span> 3<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">{.</span> bsizes
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfcb3b00" class="outline-4">
+<h4 id="orgfcb3b00">Test</h4>
+<div class="outline-text-4" id="text-orgfcb3b00">
+<div class="org-src-container">
+<pre class="src src-j">assert 1134 <span style="color: #ff0000;">=</span> part2 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-09-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1516a1b" class="outline-4">
+<h4 id="org1516a1b">Solution</h4>
+<div class="outline-text-4" id="text-org1516a1b">
+<div class="org-src-container">
+<pre class="src src-j">assert 786048 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-09.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf64d26e" class="outline-2">
+<h2 id="orgf64d26e"><a href="https://adventofcode.com/2021/day/10">Day 10: Syntax Scoring</a></h2>
+<div class="outline-text-2" id="text-orgf64d26e">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2b32cf6">Setup</a></li>
+<li><a href="#org33732f8">General function definitions</a>
+<ul>
+<li><a href="#orgdae92ed">Read data</a></li>
+</ul>
+</li>
+<li><a href="#org01b43ac">Part 1</a>
+<ul>
+<li><a href="#org82fb7c0">Function definitions</a></li>
+<li><a href="#orge9e86f5">Test</a></li>
+<li><a href="#org6359962">Solution</a></li>
+</ul>
+</li>
+<li><a href="#org693a8da">Part 2</a>
+<ul>
+<li><a href="#orgefe1953">Function definition</a></li>
+<li><a href="#org6888189">Test</a></li>
+<li><a href="#orgf1b7d01">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2b32cf6" class="outline-3">
+<h3 id="org2b32cf6">Setup</h3>
+<div class="outline-text-3" id="text-org2b32cf6">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day10'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org33732f8" class="outline-3">
+<h3 id="org33732f8">General function definitions</h3>
+<div class="outline-text-3" id="text-org33732f8">
+</div>
+<div id="outline-container-org491acfc" class="outline-5">
+<h5 id="org491acfc">Pairs</h5>
+<div class="outline-text-5" id="text-org491acfc">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">pairs</span><span style="color: #000000;">=:</span> _2 <span style="color: #ff0000;">[</span><span style="color: #00ff00;">\</span> <span style="color: #008000;">'()[]{}&lt;&gt;'</span>
+</pre>
+</div>
+
+<pre class="example">
+()
+[]
+{}
+&lt;&gt;
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1aa5374" class="outline-5">
+<h5 id="org1aa5374">❖ Remove characters</h5>
+<div class="outline-text-5" id="text-org1aa5374">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Replace characters with empty string</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input string</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = boxed list of characters to remove</span>
+<span style="color: #BA36A5;">rmchars</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">]</span> rplc <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">,</span> (<span style="color: #ff0000;">&lt;</span><span style="color: #008000;">''</span>) <span style="color: #ff0000;">,.</span><span style="color: #00ff00;">~</span> <span style="color: #ff0000;">[</span>
+</pre>
+</div>
+
+<p>
+Reading from right to left, <code>rmchars</code> works as follows,
+</p>
+
+<ul class="org-ul">
+<li><code>] rplc [: , (&lt;'') ,.~ [</code>: Replace all characters of <code>x</code> in <code>y</code> with blank character ⇒ remove characters in <code>x</code> from <code>y</code>
+<ul class="org-ul">
+<li><code>[: , (&lt;'') ,.~ [</code>: Intersperse blank character <code>''</code> with <code>x</code></li>
+</ul></li>
+</ul>
+
+<pre class="example">
+┌────────────────┬────────────────────────┐
+│y               │{([(&lt;{}[&lt;&gt;[]}&gt;{[]{[(&lt;()&gt;│
+├────────────────┼────────────────────────┤
+│r               │┌──┬─┬──┬─┐             │
+│                ││{}│[│()│&gt;│             │
+│                │└──┴─┴──┴─┘             │
+├────────────────┼────────────────────────┤
+│b               │┌┐                      │
+│                │││                      │
+│                │└┘                      │
+├────────────────┼────────────────────────┤
+│, b ,.~ r       │┌──┬┬─┬┬──┬┬─┬┐         │
+│                ││{}││[││()││&gt;││         │
+│                │└──┴┴─┴┴──┴┴─┴┘         │
+├────────────────┼────────────────────────┤
+│y rplc , b ,.~ r│{((&lt;&lt;]}{]{(&lt;            │
+├────────────────┼────────────────────────┤
+│r rmchars y     │{((&lt;&lt;]}{]{(&lt;            │
+└────────────────┴────────────────────────┘
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb665ec4" class="outline-5">
+<h5 id="orgb665ec4">Filter corrupt or incomplete entries</h5>
+<div class="outline-text-5" id="text-orgb665ec4">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Filter corrupt or incomplete entries</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input with all pairs removed from each entry</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = 0 (incomplete) and 1 (corrupt)</span>
+<span style="color: #BA36A5;">filterr</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">]</span> <span style="color: #ff0000;">#</span><span style="color: #00ff00;">~</span> <span style="color: #ff0000;">[</span> <span style="color: #ff0000;">=</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+.</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">"</span>1 ((<span style="color: #ff0000;">{:</span><span style="color: #0000ff;">"</span>1 pairs) <span style="color: #ff0000;">e.</span> <span style="color: #ff0000;">]</span>)<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&gt;</span>
+</pre>
+</div>
+
+<p>
+Reading from right to left, <code>filterr</code> works as follows,
+</p>
+
+<ul class="org-ul">
+<li><code>[: +./"1 (({:"1 pairs) e. ])&amp;&gt;</code>: Flag all entries in boxed input <code>y</code> with any closed brackets (<code>{:"1 pairs</code>). These are <i>corrupt</i> entries.</li>
+<li><code>] #~ [ \=</code>: Invert entries if <code>x = 0</code> (incomplete). Use resulting Boolean list to filter from <code>y</code>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdae92ed" class="outline-4">
+<h4 id="orgdae92ed">Read data</h4>
+<div class="outline-text-4" id="text-orgdae92ed">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> ((<span style="color: #ff0000;">&lt;</span><span style="color: #0000ff;">"</span>1 pairs) rmchars <span style="color: #ff0000;">]</span>)<span style="color: #0000ff;">&amp;.</span><span style="color: #ff0000;">&gt;</span> <span style="color: #ff0000;">&lt;</span> readin
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org01b43ac" class="outline-3">
+<h3 id="org01b43ac">Part 1</h3>
+<div class="outline-text-3" id="text-org01b43ac">
+</div>
+<div id="outline-container-org82fb7c0" class="outline-4">
+<h4 id="org82fb7c0">Function definitions</h4>
+<div class="outline-text-4" id="text-org82fb7c0">
+</div>
+<div id="outline-container-org6e10154" class="outline-5">
+<h5 id="org6e10154">Scores</h5>
+<div class="outline-text-5" id="text-org6e10154">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Corrupt entry scores</span>
+<span style="color: #BA36A5;">corrscrs</span><span style="color: #000000;">=:</span>(<span style="color: #008000;">')'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'3'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">']'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'57'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'}'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'1197'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'&gt;'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'25137'</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd578bd9" class="outline-5">
+<h5 id="orgd578bd9">First illegal character</h5>
+<div class="outline-text-5" id="text-orgd578bd9">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Get first illegal (closing) character in entry</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = boxed character list (superset or subset of pairs)</span>
+<span style="color: #BA36A5;">illchar</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">{.</span> (<span style="color: #ff0000;">&lt;</span><span style="color: #0000ff;">"</span>0 <span style="color: #ff0000;">{.</span><span style="color: #0000ff;">"</span>1 pairs) rmchars <span style="color: #ff0000;">]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2ec9807" class="outline-5">
+<h5 id="org2ec9807">Corrupt scores</h5>
+<div class="outline-text-5" id="text-org2ec9807">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Array with error scores for corrupt entries</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = boxed character list (superset or subset of pairs)</span>
+<span style="color: #BA36A5;">corrupt</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span><span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">]</span> rplc<span style="color: #0000ff;">&amp;</span>corrscrs)<span style="color: #0000ff;">@</span>illchar
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga82ffee" class="outline-5">
+<h5 id="orga82ffee">Total syntax error score</h5>
+<div class="outline-text-5" id="text-orga82ffee">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #ff0000;">[:</span> corrupt<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&gt;</span> (1<span style="color: #ff0000;">:</span> filterr <span style="color: #ff0000;">]</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge9e86f5" class="outline-4">
+<h4 id="orge9e86f5">Test</h4>
+<div class="outline-text-4" id="text-orge9e86f5">
+<div class="org-src-container">
+<pre class="src src-j">assert 26397 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-10-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6359962" class="outline-4">
+<h4 id="org6359962">Solution</h4>
+<div class="outline-text-4" id="text-org6359962">
+<div class="org-src-container">
+<pre class="src src-j">assert 370407 <span style="color: #ff0000;">=</span> part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-10.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org693a8da" class="outline-3">
+<h3 id="org693a8da">Part 2</h3>
+<div class="outline-text-3" id="text-org693a8da">
+</div>
+<div id="outline-container-orgefe1953" class="outline-4">
+<h4 id="orgefe1953">Function definition</h4>
+<div class="outline-text-4" id="text-orgefe1953">
+</div>
+<div id="outline-container-orgc287213" class="outline-5">
+<h5 id="orgc287213">Scores</h5>
+<div class="outline-text-5" id="text-orgc287213">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Incomplete entry scores</span>
+<span style="color: #BA36A5;">incmpscrs</span><span style="color: #000000;">=:</span>(<span style="color: #008000;">'('</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'1'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'['</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'2'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'{'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'3'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'&lt;'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'4'</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb60c030" class="outline-5">
+<h5 id="orgb60c030">Incomplete scores</h5>
+<div class="outline-text-5" id="text-orgb60c030">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Array with scores for incomplete entries</span>
+<span style="color: #BA36A5;">incomplete</span><span style="color: #000000;">=:</span> (<span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">{.</span> (<span style="color: #ff0000;">+</span> 5<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">*</span>)<span style="color: #00ff00;">/\.</span>)<span style="color: #0000ff;">@:</span>(<span style="color: #ff0000;">".</span><span style="color: #0000ff;">"</span>0)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">]</span> rplc<span style="color: #0000ff;">&amp;</span>incmpscrs)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb435002" class="outline-5">
+<h5 id="orgb435002">Middle score</h5>
+<div class="outline-text-5" id="text-orgb435002">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> (<span style="color: #ff0000;">&lt;.</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">-:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">#</span> <span style="color: #ff0000;">{</span> <span style="color: #ff0000;">/:</span><span style="color: #00ff00;">~</span>) <span style="color: #ff0000;">[:</span> incomplete<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&gt;</span> (0<span style="color: #ff0000;">:</span> filterr <span style="color: #ff0000;">]</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6888189" class="outline-4">
+<h4 id="org6888189">Test</h4>
+<div class="outline-text-4" id="text-org6888189">
+<div class="org-src-container">
+<pre class="src src-j">assert 288957 <span style="color: #ff0000;">=</span> part2 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-10-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf1b7d01" class="outline-4">
+<h4 id="orgf1b7d01">Solution</h4>
+<div class="outline-text-4" id="text-orgf1b7d01">
+<div class="org-src-container">
+<pre class="src src-j">assert 3249889609 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-10.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7ae717e" class="outline-2">
+<h2 id="org7ae717e"><a href="https://adventofcode.com/2021/day/11">Day 11: Dumbo Octopus</a></h2>
+<div class="outline-text-2" id="text-org7ae717e">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org51c6343">Setup</a></li>
+<li><a href="#org38f3737">Read data</a></li>
+<li><a href="#org0cb30f2">General function definition</a></li>
+<li><a href="#orge45ce57">Part 1</a>
+<ul>
+<li><a href="#org035f90a">Function definition</a></li>
+<li><a href="#org3b9fd18">Test</a></li>
+<li><a href="#orgc43b81f">Solution</a></li>
+</ul>
+</li>
+<li><a href="#org41d8c0a">Part 2</a>
+<ul>
+<li><a href="#org6603f6e">Function definitions</a></li>
+<li><a href="#org5d8d710">Test</a></li>
+<li><a href="#org8190e2a">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org51c6343" class="outline-3">
+<h3 id="org51c6343">Setup</h3>
+<div class="outline-text-3" id="text-org51c6343">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day11'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org38f3737" class="outline-3">
+<h3 id="org38f3737">Read data</h3>
+<div class="outline-text-3" id="text-org38f3737">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span><span style="color: #0000ff;">"</span>0 readin
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org0cb30f2" class="outline-3">
+<h3 id="org0cb30f2">General function definition</h3>
+<div class="outline-text-3" id="text-org0cb30f2">
+</div>
+<div id="outline-container-org78fca73" class="outline-5">
+<h5 id="org78fca73">Pad</h5>
+<div class="outline-text-5" id="text-org78fca73">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Surround matrix y with constant x</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input matrix</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = padding constant</span>
+<span style="color: #BA36A5;">pad</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[,.</span><span style="color: #00ff00;">~</span> <span style="color: #ff0000;">[,</span><span style="color: #00ff00;">~</span> <span style="color: #ff0000;">[,.</span> <span style="color: #ff0000;">,</span>
+</pre>
+</div>
+
+
+<pre class="example">
+┌─────────────┬─────────────────┐
+│i. 2 2       │0 1              │
+│             │2 3              │
+├─────────────┼─────────────────┤
+│0 pad i.2 2  │0 0 0 0          │
+│             │0 0 1 0          │
+│             │0 2 3 0          │
+│             │0 0 0 0          │
+├─────────────┼─────────────────┤
+│i. 3 4       │0 1  2  3        │
+│             │4 5  6  7        │
+│             │8 9 10 11        │
+├─────────────┼─────────────────┤
+│_4 pad i. 3 4│_4 _4 _4 _4 _4 _4│
+│             │_4  0  1  2  3 _4│
+│             │_4  4  5  6  7 _4│
+│             │_4  8  9 10 11 _4│
+│             │_4 _4 _4 _4 _4 _4│
+└─────────────┴─────────────────┘
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6f5ba67" class="outline-5">
+<h5 id="org6f5ba67">Flash</h5>
+<div class="outline-text-5" id="text-org6f5ba67">
+<p>
+Per conditions of the problem,
+</p>
+
+<ul class="org-ul">
+<li>Any octopus with an energy level greater than 9 flashes. This increases the energy level of all adjacent octopuses by 1, including octopuses that are diagonally adjacent. If this causes an octopus to have an energy level greater than 9, it also flashes. This process continues as long as new octopuses keep having their energy level increased beyond 9. (An octopus can only flash at most once per step.)</li>
+<li>Finally, any octopus that flashed during this step has its energy level set to 0, as it used all of its energy to flash.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">flash</span><span style="color: #000000;">=:</span>  ((9<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&gt;:</span>) <span style="color: #ff0000;">*.</span> (0<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&lt;</span>)) <span style="color: #ff0000;">*</span> ((1 1 <span style="color: #ff0000;">,:</span> 3 3) (<span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">,</span>)<span style="color: #0000ff;">;.</span>_3 (0<span style="color: #0000ff;">&amp;</span>pad)<span style="color: #0000ff;">@</span>(9<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&lt;</span>)) <span style="color: #ff0000;">+</span> <span style="color: #ff0000;">]</span>
+</pre>
+</div>
+
+<p>
+Reading from right to left, <code>flash</code> works as follows,
+</p>
+
+<ul class="org-ul">
+<li><code>+ ]</code>: Add the left expression to the input matrix</li>
+<li><code>((9&amp;&gt;:) *. (0&amp;&lt;)) * ((1 1 ,: 3 3) (+/@,);._3 (0&amp;pad)@(9&amp;&lt;)</code>:
+<ul class="org-ul">
+<li><code>(0&amp;pad)@(9&amp;&lt;)</code>: Flag all energy levels less than 9 and pad resulting Boolean matrix with zeros.</li>
+<li><code>((1 1 ,: 3 3) (+/@,);._3 (0&amp;pad)@(9&amp;&lt;)</code>: For a <code>3 x 3</code> tile size, with horizontal and vertical displacement of <code>1 x 1</code>, sum all elements in each tile.</li>
+<li><code>((9&amp;&gt;:) *. (0&amp;&lt;))</code>: Set all energy levels that flashed to 0.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org37c25c2" class="outline-5">
+<h5 id="org37c25c2">Step</h5>
+<div class="outline-text-5" id="text-org37c25c2">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Increase the energy level and flash until no energy levels are greater than 9</span>
+<span style="color: #BA36A5;">step</span><span style="color: #000000;">=:</span> flash<span style="color: #0000ff;">^:</span>_ <span style="color: #0000ff;">@:</span> <span style="color: #ff0000;">&gt;:</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge45ce57" class="outline-3">
+<h3 id="orge45ce57">Part 1</h3>
+<div class="outline-text-3" id="text-orge45ce57">
+</div>
+<div id="outline-container-org035f90a" class="outline-4">
+<h4 id="org035f90a">Function definition</h4>
+<div class="outline-text-4" id="text-org035f90a">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = number of steps</span>
+<span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> 4 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'(+/)@(0&amp;=)@, step^:(i.x) y'</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org3b9fd18" class="outline-4">
+<h4 id="org3b9fd18">Test</h4>
+<div class="outline-text-4" id="text-org3b9fd18">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-11-example.txt'</span>
+assert 204 <span style="color: #ff0000;">=</span> 11 part1 inx
+assert 1656 <span style="color: #ff0000;">=</span> 101 part1 inx
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc43b81f" class="outline-4">
+<h4 id="orgc43b81f">Solution</h4>
+<div class="outline-text-4" id="text-orgc43b81f">
+<div class="org-src-container">
+<pre class="src src-j">assert 1594 <span style="color: #ff0000;">=</span> 101 part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-11.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org41d8c0a" class="outline-3">
+<h3 id="org41d8c0a">Part 2</h3>
+<div class="outline-text-3" id="text-org41d8c0a">
+</div>
+<div id="outline-container-org6603f6e" class="outline-4">
+<h4 id="org6603f6e">Function definitions</h4>
+<div class="outline-text-4" id="text-org6603f6e">
+</div>
+<div id="outline-container-org5cd84d8" class="outline-5">
+<h5 id="org5cd84d8">❖ All equal</h5>
+<div class="outline-text-5" id="text-org5cd84d8">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Returns 1 if all elements are equal</span>
+<span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input (infinite rank)</span>
+<span style="color: #BA36A5;">alleq</span><span style="color: #000000;">=:</span> 1<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">=</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">#</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">~.</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">,</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5f0871e" class="outline-5">
+<h5 id="org5f0871e">Synchronization step</h5>
+<div class="outline-text-5" id="text-org5f0871e">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">&lt;:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">#</span> <span style="color: #ff0000;">[:</span> step<span style="color: #0000ff;">^:</span>(<span style="color: #ff0000;">-.</span><span style="color: #0000ff;">@</span>alleq)<span style="color: #0000ff;">^:</span>(<span style="color: #ff0000;">&lt;</span>_) <span style="color: #ff0000;">]</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5d8d710" class="outline-4">
+<h4 id="org5d8d710">Test</h4>
+<div class="outline-text-4" id="text-org5d8d710">
+<div class="org-src-container">
+<pre class="src src-j">assert 195 <span style="color: #ff0000;">=</span> part2 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-11-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8190e2a" class="outline-4">
+<h4 id="org8190e2a">Solution</h4>
+<div class="outline-text-4" id="text-org8190e2a">
+<div class="org-src-container">
+<pre class="src src-j">assert 437 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-11.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org912991c" class="outline-2">
+<h2 id="org912991c"><a href="https://adventofcode.com/2021/day/x">Day 0X: Template</a></h2>
+<div class="outline-text-2" id="text-org912991c">
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1baaef6">Setup</a></li>
+<li><a href="#orgd0fdd51">Read data</a></li>
+<li><a href="#orgf8e5f69">General function definition</a></li>
+<li><a href="#org532b454">Part 1</a>
+<ul>
+<li><a href="#org448dcd7">Function definition</a></li>
+<li><a href="#org6e27252">Test</a></li>
+<li><a href="#org026283b">Solution</a></li>
+</ul>
+</li>
+<li><a href="#org7bff482">Part 2</a>
+<ul>
+<li><a href="#org715c07e">Function definition</a></li>
+<li><a href="#org90fbf18">Test</a></li>
+<li><a href="#orgef48c5d">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1baaef6" class="outline-3">
+<h3 id="org1baaef6">Setup</h3>
+<div class="outline-text-3" id="text-org1baaef6">
+<div class="org-src-container">
+<pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day0x'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-j">load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'utils.ijs'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd0fdd51" class="outline-3">
+<h3 id="orgd0fdd51">Read data</h3>
+<div class="outline-text-3" id="text-orgd0fdd51">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span> readin
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf8e5f69" class="outline-3">
+<h3 id="orgf8e5f69">General function definition</h3>
+<div class="outline-text-3" id="text-orgf8e5f69">
+<p>
+Generic function to calculate number of increases in data for a given moving window size,
+</p>
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">f</span><span style="color: #000000;">=:</span> 1<span style="color: #ff0000;">:</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org532b454" class="outline-3">
+<h3 id="org532b454">Part 1</h3>
+<div class="outline-text-3" id="text-org532b454">
+</div>
+<div id="outline-container-org448dcd7" class="outline-4">
+<h4 id="org448dcd7">Function definition</h4>
+<div class="outline-text-4" id="text-org448dcd7">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> 1<span style="color: #ff0000;">:</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6e27252" class="outline-4">
+<h4 id="org6e27252">Test</h4>
+<div class="outline-text-4" id="text-org6e27252">
+<div class="org-src-container">
+<pre class="src src-j">assert 1 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-0x-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org026283b" class="outline-4">
+<h4 id="org026283b">Solution</h4>
+<div class="outline-text-4" id="text-org026283b">
+<div class="org-src-container">
+<pre class="src src-j">assert 1111 <span style="color: #ff0000;">=</span> part1 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-0x.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7bff482" class="outline-3">
+<h3 id="org7bff482">Part 2</h3>
+<div class="outline-text-3" id="text-org7bff482">
+</div>
+<div id="outline-container-org715c07e" class="outline-4">
+<h4 id="org715c07e">Function definition</h4>
+<div class="outline-text-4" id="text-org715c07e">
+<div class="org-src-container">
+<pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> 2<span style="color: #ff0000;">:</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org90fbf18" class="outline-4">
+<h4 id="org90fbf18">Test</h4>
+<div class="outline-text-4" id="text-org90fbf18">
+<div class="org-src-container">
+<pre class="src src-j">assert 2 <span style="color: #ff0000;">=</span> part1 inx <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-0x-example.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgef48c5d" class="outline-4">
+<h4 id="orgef48c5d">Solution</h4>
+<div class="outline-text-4" id="text-orgef48c5d">
+<div class="org-src-container">
+<pre class="src src-j">assert 2222 <span style="color: #ff0000;">=</span> part2 in <span style="color: #ff0000;">[</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-0x.txt'</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2021-12-01</p>
+<p class="author">Author: Prashanth Kumar</p>
+<p class="date">Created: 2022-01-31 Mon 12:58</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.1.9)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
