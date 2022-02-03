@@ -31,7 +31,7 @@
 : /mnt/c/Users/pkumar162722/OneDrive - Applied Materials/Scratch/Analytics Exercises/Scripts/advent-of-code-2021
 
 ** About
-Solutions to [[https://adventofcode.com/2021][Advent of Code: 2021]] in the array programming language [[https://www.jsoftware.com/#/][J]]. 
+[[https://prasxanth.github.io/aoc-2021/][Solutions]] to [[https://adventofcode.com/2021][Advent of Code: 2021]] in the array programming language [[https://www.jsoftware.com/#/][J]]. 
 
 Language and IDE details,
 
@@ -76,6 +76,4 @@ General functions that would be useful beyond the scope of the solution are indi
 
 *** Site
 
-This site was generated using *Emacs 26.3* with *Org mode 9.1.9*. A custom CSS and [[https://orgmode.org/worg/code/org-info-js/][Org-Info.JS]] were used to style the exported HTML.
-
-This site is best viewed with [[https://fonts.google.com/specimen/Fira+Sans][Fira Sans]] and [[https://fonts.google.com/specimen/Fira+Code][Fira Code]] fonts.
+Solutions are also hosted on github pages [[https://prasxanth.github.io/aoc-2021/][here]].
