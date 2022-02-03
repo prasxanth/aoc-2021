@@ -121,7 +121,7 @@ part1=: 1&ninc
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day01.ijs
-assert 7 = part1 inx [ inx=: getin 'inputs/day-01-example.txt'
+assert 7 = part1 inx=. getin 'inputs/day-01-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -129,7 +129,7 @@ assert 7 = part1 inx [ inx=: getin 'inputs/day-01-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day01.ijs
-assert 1602 = part1 in [ in=: getin 'inputs/day-01.txt'
+assert 1602 = part1 in=. getin 'inputs/day-01.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -145,7 +145,7 @@ part2=: 3&ninc
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day01.ijs
-assert 7 = part1 inx [ inx=: getin 'inputs/day-01-example.txt'
+assert 7 = part1 inx=. getin 'inputs/day-01-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -153,7 +153,7 @@ assert 7 = part1 inx [ inx=: getin 'inputs/day-01-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day01.ijs
-assert 1633 = part2 in [ in=: getin 'inputs/day-01.txt'
+assert 1633 = part2 in=. getin 'inputs/day-01.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -240,7 +240,7 @@ part1=: 3 : '+/ h * +/ v [ v=. {:"1 d [ h=. {."1 d [ d=. disp y'
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day02.ijs
-assert 150 = part1 inx [ inx=. getin 'inputs/day-02-example.txt'
+assert 150 = part1 inx=. getin 'inputs/day-02-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -248,7 +248,7 @@ assert 150 = part1 inx [ inx=. getin 'inputs/day-02-example.txt'
 **** Solution
     
 #+BEGIN_SRC j :results output scalar value :tangle day02.ijs
-assert 1868935 = part1 in [ in=. getin 'inputs/day-02.txt'
+assert 1868935 = part1 in=. getin 'inputs/day-02.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -264,7 +264,7 @@ part2=: 3 : '+/ h * +/ h * +/\ v [ v=. {:"1 d [ h=. {."1 d [ d=. disp y'
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day02.ijs
-assert 900 = part2 inx [ inx=. getin 'inputs/day-02-example.txt'
+assert 900 = part2 inx=. getin 'inputs/day-02-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -272,7 +272,7 @@ assert 900 = part2 inx [ inx=. getin 'inputs/day-02-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output scalar value :tangle day02.ijs
-assert 1965970888 = part2 in [ in=. getin 'inputs/day-02.txt'
+assert 1965970888 = part2 in=. getin 'inputs/day-02.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -306,14 +306,14 @@ part1=: (*&:#. -.)@(-:@# < +/)  NB. (epsilon =: -. gamma)
 
 **** Test
 #+BEGIN_SRC j :results output value :tangle day03.ijs
-assert 198 = part1 inx [ inx=. getin 'inputs/day-03-example.txt'
+assert 198 = part1 inx=. getin 'inputs/day-03-example.txt'
 #+END_SRC
 
 #+RESULTS:
 
 **** Solution
 #+BEGIN_SRC j :results output scalar value :tangle day03.ijs
-assert 2595824 = part1 in [ in=. getin 'inputs/day-03.txt'
+assert 2595824 = part1 in=. getin 'inputs/day-03.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -398,14 +398,14 @@ part2=: */@:#.@(> rating ,: <: rating)
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day03.ijs
-assert 230 = part2 inx [ inx=. getin 'inputs/day-03-example.txt'
+assert 230 = part2 inx=. getin 'inputs/day-03-example.txt'
 #+END_SRC
 
 #+RESULTS:
 
 **** Solution
 #+BEGIN_SRC j :results output scalar value :tangle day03.ijs
-assert 2135254 = part2 in [ in=. getin 'inputs/day-03.txt'
+assert 2135254 = part2 in=. getin 'inputs/day-03.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -419,7 +419,7 @@ Approach is to iteratively remove all rows with the most (or least) common eleme
 rating=: 1 : 0
 ix=. {.@I.@(-. @ (-: 1&|.)"1 @ |:) NB. index of first column where elements differ
 cm=. { +/ u~ # - +/ 	     NB. common elements 'u' in x = column of y = data
-fr=. ix (] #~ cm = {"1) ]  NB. filter all rows with 'c' common elements in column (ix y)
+fr=. ix (] #~ cm = {"1) ]  NB. filter all rows with 'cm' common elements in column (ix y)
 fr`]@.(1 = #@])^:_ y	     NB. iterate until one row remains
 )
 #+END_SRC
@@ -430,13 +430,13 @@ part2=: [: */ [: #. > rating , <: rating
 
 **** Test
 #+BEGIN_SRC j :results output value :tangle day03.ijs
-assert 230 = part2 inx [ inx=. getin 'inputs/day-03-example.txt'
+assert 230 = part2 inx=. getin 'inputs/day-03-example.txt'
 #+END_SRC
 
 #+RESULTS:
 **** Solution
 #+BEGIN_SRC j :results output scalar value :tangle day03.ijs
-assert 2135254 = part2 in [ in=. getin 'inputs/day-03.txt'
+assert 2135254 = part2 in=. getin 'inputs/day-03.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -633,7 +633,7 @@ part1=: calls {. score boards
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day04.ijs
-assert 4512 = part1 inx [ inx=. getin 'inputs/day-04-example.txt'
+assert 4512 = part1 inx=. getin 'inputs/day-04-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -641,7 +641,7 @@ assert 4512 = part1 inx [ inx=. getin 'inputs/day-04-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day04.ijs
-assert 2496 = part1 in [ in=. getin 'inputs/day-04.txt'
+assert 2496 = part1 in=. getin 'inputs/day-04.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -657,7 +657,7 @@ part2=: calls {: score boards
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day04.ijs
-assert 1924 = part2 inx [ inx=. getin 'inputs/day-04-example.txt'
+assert 1924 = part2 inx=. getin 'inputs/day-04-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -665,7 +665,7 @@ assert 1924 = part2 inx [ inx=. getin 'inputs/day-04-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day04.ijs
-assert 25925 = part2 in [ in=. getin 'inputs/day-04.txt'
+assert 25925 = part2 in=. getin 'inputs/day-04.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -806,7 +806,7 @@ part1=: 2&intersect @ filtvh
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day05.ijs
-assert 5 = part1 inx [ inx=: getin 'inputs/day-05-example.txt'
+assert 5 = part1 inx=. getin 'inputs/day-05-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -814,7 +814,7 @@ assert 5 = part1 inx [ inx=: getin 'inputs/day-05-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day05.ijs
-assert 7473 = part1 in [ in=: getin 'inputs/day-05.txt'
+assert 7473 = part1 in=. getin 'inputs/day-05.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -830,7 +830,7 @@ part2=: 2&intersect
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day05.ijs
-assert 12 = part2 inx [ inx=: getin 'inputs/day-05-example.txt'
+assert 12 = part2 inx=. getin 'inputs/day-05-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -838,7 +838,7 @@ assert 12 = part2 inx [ inx=: getin 'inputs/day-05-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day05.ijs
-assert 24164 = part2 in [ in=: getin 'inputs/day-05.txt'
+assert 24164 = part2 in=. getin 'inputs/day-05.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -928,7 +928,7 @@ part1=: nfish
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day06.ijs
-inx=: getin 'inputs/day-06-example.txt'
+inx=. getin 'inputs/day-06-example.txt'
 assert 26 = inx part1 18 
 assert 5934 = inx part1 80
 #+END_SRC
@@ -938,7 +938,7 @@ assert 5934 = inx part1 80
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day06.ijs
-assert 360761 = in part1 80 [ in=: getin 'inputs/day-06.txt'
+assert 360761 = 80 part1~ in=. getin 'inputs/day-06.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -954,7 +954,7 @@ part2=: nfish
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day06.ijs
-assert 26984457539 = inx part1 256 [ inx=: getin 'inputs/day-06-example.txt'
+assert 26984457539 = 256 part1~ inx=. getin 'inputs/day-06-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -962,7 +962,7 @@ assert 26984457539 = inx part1 256 [ inx=: getin 'inputs/day-06-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day06.ijs
-assert 1632779838045 = in part2 256 [ in=: getin 'inputs/day-06.txt'
+assert 1632779838045 = 256 part2~ in=. getin 'inputs/day-06.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1001,7 +1001,7 @@ part1=: [: +/ |@(] - median)
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day07.ijs
-assert 37 = part1 inx [ inx=: getin 'inputs/day-07-example.txt'
+assert 37 = part1 inx=. getin 'inputs/day-07-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1009,7 +1009,7 @@ assert 37 = part1 inx [ inx=: getin 'inputs/day-07-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day07.ijs
-assert 329389 = part1 in [ in=: getin 'inputs/day-07.txt'
+assert 329389 = part1 in=. getin 'inputs/day-07.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1034,7 +1034,7 @@ Reading from right to left, this works as follows,
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day07.ijs
-assert 170 = part2 inx [ inx=: getin 'inputs/day-07-example.txt'
+assert 170 = part2 inx=. getin 'inputs/day-07-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1048,7 +1048,7 @@ assert 170 = part2 inx [ inx=: getin 'inputs/day-07-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day07.ijs
-assert 86397080 = part2 in [ in=: getin 'inputs/day-07.txt'
+assert 86397080 = part2 in=. getin 'inputs/day-07.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1103,7 +1103,7 @@ part1=: (2 3 4 7) ndiglen _4&{."1@]
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day08.ijs
-assert 26 = part1 inx [ inx=: getin 'inputs/day-08-example.txt'
+assert 26 = part1 inx=. getin 'inputs/day-08-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1111,7 +1111,7 @@ assert 26 = part1 inx [ inx=: getin 'inputs/day-08-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day08.ijs
-assert 284 = part1 in [ in=: getin 'inputs/day-08.txt'
+assert 284 = part1 in=. getin 'inputs/day-08.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1133,8 +1133,6 @@ tbluids=: _3 ]\ 6 2 3 2 2 2 5 1 2 5 2 3 4 2 4 5 1 3 6 1 3 3 2 2 7 2 4 6 2 4
 tbluids
 #+END_SRC
 
-The first column is length. Second and third columns are intersections with 1 and 4.
-
 #+RESULTS:
 #+begin_example
 6 2 3
@@ -1148,6 +1146,8 @@ The first column is length. Second and third columns are intersections with 1 an
 7 2 4
 6 2 4
 #+end_example
+
+The first column is length. Second and third columns are intersections with 1 and 4.
 
 **** Function definitions
 
@@ -1249,7 +1249,7 @@ part2=: [: +/ (tbluids decode ])"1
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day08.ijs
-assert 61229 = part2 inx [ inx=: getin 'inputs/day-08-example.txt'
+assert 61229 = part2 inx=. getin 'inputs/day-08-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1257,7 +1257,7 @@ assert 61229 = part2 inx [ inx=: getin 'inputs/day-08-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day08.ijs
-assert 973499 = part2 in [ in=: getin 'inputs/day-08.txt'
+assert 973499 = part2 in=. getin 'inputs/day-08.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1325,7 +1325,7 @@ part1=: [: +/ [: , >:@] * lowpoints
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day09.ijs
-assert 15 = part1 inx [ inx=: getin 'inputs/day-09-example.txt'
+assert 15 = part1 inx=. getin 'inputs/day-09-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1333,7 +1333,7 @@ assert 15 = part1 inx [ inx=: getin 'inputs/day-09-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day09.ijs
-assert 548 = part1 in [ in=: getin 'inputs/day-09.txt'
+assert 548 = part1 in=. getin 'inputs/day-09.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1432,7 +1432,7 @@ part2=: */ 3&{. bsizes
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day09.ijs
-assert 1134 = part2 inx [ inx=: getin 'inputs/day-09-example.txt'
+assert 1134 = part2 inx=. getin 'inputs/day-09-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1440,7 +1440,7 @@ assert 1134 = part2 inx [ inx=: getin 'inputs/day-09-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day09.ijs
-assert 786048 = part2 in [ in=: getin 'inputs/day-09.txt'
+assert 786048 = part2 in=. getin 'inputs/day-09.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1472,10 +1472,6 @@ pairs
 #+END_SRC
 
 #+RESULTS:
-: ()
-: []
-: {}
-: <>
 
 ***** ❖ Remove characters
 
@@ -1502,27 +1498,6 @@ smoutput g
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
-┌────────────────┬────────────────────────┐
-│y               │{([(<{}[<>[]}>{[]{[(<()>│
-├────────────────┼────────────────────────┤
-│r               │┌──┬─┬──┬─┐             │
-│                ││{}│[│()│>│             │
-│                │└──┴─┴──┴─┘             │
-├────────────────┼────────────────────────┤
-│b               │┌┐                      │
-│                │││                      │
-│                │└┘                      │
-├────────────────┼────────────────────────┤
-│, b ,.~ r       │┌──┬┬─┬┬──┬┬─┬┐         │
-│                ││{}││[││()││>││         │
-│                │└──┴┴─┴┴──┴┴─┴┘         │
-├────────────────┼────────────────────────┤
-│y rplc , b ,.~ r│{((<<]}{]{(<            │
-├────────────────┼────────────────────────┤
-│r rmchars y     │{((<<]}{]{(<            │
-└────────────────┴────────────────────────┘
-#+end_example
 
 ***** Filter corrupt or incomplete entries
 
@@ -1580,17 +1555,15 @@ part1=: [: +/ [: corrupt&> (1: filterr ])
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day10.ijs
-assert 26397 = part1 inx [ inx=: getin 'inputs/day-10-example.txt'
+assert 26397 = part1 inx=. getin 'inputs/day-10-example.txt'
 #+END_SRC
 
 #+RESULTS:
-: |value error: pairs
-: |   assert 26397=part1 inx[inx=:    getin'inputs/day-10-example.txt'
 
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day10.ijs
-assert 370407 = part1 in [ in=: getin 'inputs/day-10.txt'
+assert 370407 = part1 in=. getin 'inputs/day-10.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1622,7 +1595,7 @@ part2=: [: (<.@-:@# { /:~) [: incomplete&> (0: filterr ])
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day10.ijs
-assert 288957 = part2 inx [ inx=: getin 'inputs/day-10-example.txt'
+assert 288957 = part2 inx=. getin 'inputs/day-10-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1630,7 +1603,7 @@ assert 288957 = part2 inx [ inx=: getin 'inputs/day-10-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day10.ijs
-assert 3249889609 = part2 in [ in=: getin 'inputs/day-10.txt'
+assert 3249889609 = part2 in=. getin 'inputs/day-10.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1655,7 +1628,6 @@ load <'utils.ijs'
 getin=: "."0 readin
 #+END_SRC
 
-
 *** General function definition
 
 ***** Pad
@@ -1673,27 +1645,6 @@ pad=: [,.~ [,~ [,. ,
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
-┌─────────────┬─────────────────┐
-│i. 2 2       │0 1              │
-│             │2 3              │
-├─────────────┼─────────────────┤
-│0 pad i.2 2  │0 0 0 0          │
-│             │0 0 1 0          │
-│             │0 2 3 0          │
-│             │0 0 0 0          │
-├─────────────┼─────────────────┤
-│i. 3 4       │0 1  2  3        │
-│             │4 5  6  7        │
-│             │8 9 10 11        │
-├─────────────┼─────────────────┤
-│_4 pad i. 3 4│_4 _4 _4 _4 _4 _4│
-│             │_4  0  1  2  3 _4│
-│             │_4  4  5  6  7 _4│
-│             │_4  8  9 10 11 _4│
-│             │_4 _4 _4 _4 _4 _4│
-└─────────────┴─────────────────┘
-#+end_example
 
 ***** Flash
 
@@ -1745,7 +1696,7 @@ assert 1656 = 101 part1 inx
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day11.ijs
-assert 1594 = 101 part1 in [ in=: getin 'inputs/day-11.txt'
+assert 1594 = 101 part1 in=. getin 'inputs/day-11.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1771,7 +1722,7 @@ part2=: [: <:@# [: step^:(-.@alleq)^:(<_) ]
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day11.ijs
-assert 195 = part2 inx [ inx=: getin 'inputs/day-11-example.txt'
+assert 195 = part2 inx=. getin 'inputs/day-11-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1779,7 +1730,7 @@ assert 195 = part2 inx [ inx=: getin 'inputs/day-11-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day11.ijs
-assert 437 = part2 in [ in=: getin 'inputs/day-11.txt'
+assert 437 = part2 in=. getin 'inputs/day-11.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1823,7 +1774,7 @@ part1=: 1:
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day0x.ijs
-assert 1 = part1 inx [ inx=: getin 'inputs/day-0x-example.txt'
+assert 1 = part1 inx=. getin 'inputs/day-0x-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1831,7 +1782,7 @@ assert 1 = part1 inx [ inx=: getin 'inputs/day-0x-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day0x.ijs
-assert 1111 = part1 in [ in=: getin 'inputs/day-0x.txt'
+assert 1111 = part1 in=. getin 'inputs/day-0x.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1847,7 +1798,7 @@ part2=: 2:
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle day0x.ijs
-assert 2 = part1 inx [ inx=: getin 'inputs/day-0x-example.txt'
+assert 2 = part1 inx=. getin 'inputs/day-0x-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -1855,7 +1806,7 @@ assert 2 = part1 inx [ inx=: getin 'inputs/day-0x-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle day0x.ijs
-assert 2222 = part2 in [ in=: getin 'inputs/day-0x.txt'
+assert 2222 = part2 in=. getin 'inputs/day-0x.txt'
 #+END_SRC
 
 #+RESULTS:
