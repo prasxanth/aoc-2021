@@ -16,7 +16,7 @@ Language and IDE details,
 | Platform  | *Linux 64*                       |
 
 
-*** Solutions
+** Solutions
 
 - [[https://prasxanth.github.io/aoc-2021/][Github pages]]
 - [[https://github.com/prasxanth/aoc-2021/blob/main/solutions.org][Org document]]
