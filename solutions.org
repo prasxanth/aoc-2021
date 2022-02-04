@@ -180,6 +180,17 @@ getin=: ;: readin
 
 *** General function definition
 
+
+***** Directions
+
+#+BEGIN_SRC j :results output silent :tangle day02.ijs
+NB. Displacement vectors
+NB. y = input
+NB. Returns three column boolean mask matrix of size (|. $ y)
+NB. for each direction
+dirxns=: ('forward'; 'up'; 'down') E./"0 1 {."1
+#+END_SRC
+
 ***** Displacements
 
 #+BEGIN_SRC j :results output silent :tangle day02.ijs
@@ -188,45 +199,41 @@ NB. y = input
 NB. Returns two column matrix
 NB.   - Column 1 = horizonal displacement = forward
 NB.   - Column 2 = vertical displacement = down - up
-disp=: [: ({. ,. [: -/|.@}.) (".@>@{:"1@]) *"1 ('forward'; 'up'; 'down') E./"0 1 {."1@]
+disp=: [: ({. ,. [: -/|.@}.) (".@>@{:"1@]) *"1 dirxns
 #+END_SRC
-
-#+RESULTS:
 
 Reading from right to left, =disp= works as follows,
 
-+ =('forward'; 'up'; 'down') E./"0 1 {."1@]=: Binary 3 row matrix with 1s in each row corresponding to individual directions.
-+ =(".@>@{:"1@]) *"1=: Displacements corresponding to each direction.
-+ =({. ,. [: -/|.@}.)=: Forward (horizontal) stitched with vertical =down - up= displacement.
++ =(".@>@{:"1@]) *"1 dirxns=: Displacements corresponding to each direction.
++ =({. ,. [: -/|.@}.)=: Forward (horizontal) stitched with vertical, =down - up=, displacement.
 
 #+BEGIN_SRC j :results output value :exports results
 3 : 0''
 y=. getin 'inputs/day-02-example.txt'
-d=. ('forward'; 'up'; 'down')
-g=. (".&.> ,:~ ]) ('y'; 'd'; '(b=. d E./"0 1 {."1) y'; '((".@>@{:"1@]) *"1 b) y'; 'disp y')
+g=. (".&.> ,:~ ]) ('y'; '(d=. dirxns) y'; '((".@>@{:"1) *"1 d) y'; 'disp y')
 smoutput g
 )
 #+END_SRC
 
 #+RESULTS:
 #+begin_example
-┌───────────┬─────────────────┬──────────────────────┬───────────────────────┬──────┐
-│y          │d                │(b=. d E./"0 1 {."1) y│((".@>@{:"1@]) *"1 b) y│disp y│
-├───────────┼─────────────────┼──────────────────────┼───────────────────────┼──────┤
-│┌───────┬─┐│┌───────┬──┬────┐│1 0 1 0 0 1           │5 0 8 0 0 2            │5  0  │
-││forward│5│││forward│up│down││0 0 0 1 0 0           │0 0 0 3 0 0            │0  5  │
-│├───────┼─┤│└───────┴──┴────┘│0 1 0 0 1 0           │0 5 0 0 8 0            │8  0  │
-││down   │5││                 │                      │                       │0 _3  │
-│├───────┼─┤│                 │                      │                       │0  8  │
-││forward│8││                 │                      │                       │2  0  │
-│├───────┼─┤│                 │                      │                       │      │
-││up     │3││                 │                      │                       │      │
-│├───────┼─┤│                 │                      │                       │      │
-││down   │8││                 │                      │                       │      │
-│├───────┼─┤│                 │                      │                       │      │
-││forward│2││                 │                      │                       │      │
-│└───────┴─┘│                 │                      │                       │      │
-└───────────┴─────────────────┴──────────────────────┴───────────────────────┴──────┘
+┌───────────┬──────────────┬─────────────────────┬──────┐
+│y          │(d=. dirxns) y│((".@>@{:"1) *"1 d) y│disp y│
+├───────────┼──────────────┼─────────────────────┼──────┤
+│┌───────┬─┐│1 0 1 0 0 1   │5 0 8 0 0 2          │5  0  │
+││forward│5││0 0 0 1 0 0   │0 0 0 3 0 0          │0  5  │
+│├───────┼─┤│0 1 0 0 1 0   │0 5 0 0 8 0          │8  0  │
+││down   │5││              │                     │0 _3  │
+│├───────┼─┤│              │                     │0  8  │
+││forward│8││              │                     │2  0  │
+│├───────┼─┤│              │                     │      │
+││up     │3││              │                     │      │
+│├───────┼─┤│              │                     │      │
+││down   │8││              │                     │      │
+│├───────┼─┤│              │                     │      │
+││forward│2││              │                     │      │
+│└───────┴─┘│              │                     │      │
+└───────────┴──────────────┴─────────────────────┴──────┘
 #+end_example
 
 *** Part 1
@@ -320,74 +327,35 @@ assert 2595824 = part1 in=. getin 'inputs/day-03.txt'
 
 *** Part 2: Approach 1
 **** Function definitions
-The approach is to recursively filter rows by the most (or least) common element in the first column and then move the first column 
-to the end of the input matrix until only one row remains. However, this only works when the number of iterations required is equal to 
-the number of columns, since in this case the order of the columns is unchanged at the end of the iterations cycle. The general case, 
-where the number of iterations is less than the number of columns, is handled by adding column numbers as the first row to the input and 
-then using the resulting permutation of column numbers at the end of the iterations to restore the original column order.
+
+***** Filter rows
 
 #+BEGIN_SRC j :results output silent :tangle day03.ijs
-rating=: 1 : '[: ({: {~ /:@{.) [: (1&|.)"1@({. , u filtrows@}.)^:(2: < #)^:_ (i.@{:@$ , ])'
+NB. Filter rows in y with 'u' common elements in column x
+NB. y = input matrix
+NB. x = target column for 'u'
+NB. u = comparison operator (< , > , >: , <: , =)
+filtrows=: 1 : '[ ([ #~ (] = -:@# u +/) @ ]) ,@:({"1~)'
 #+END_SRC
 
-where,
+***** Reducer
+
 #+BEGIN_SRC j :results output silent :tangle day03.ijs
-filtrows=: 1 : '] #~ {."1 = -:@# u [: +/ {."1'
+NB. Reduce using verb 'u/\.' on a boxed list y
+foldr=: 1 : '[: <@(u&>)/\. ,&boxxopen'
 #+END_SRC
 
-Reading from right to left, the =rating= function works as follows,
+***** Rating
 
-+ =(i.@{:@$ , ])=: Prepend a row of column numbers (header) to the input.                                          
-+ =(1&│.)"1@({. , u filtrows@}.)^:(2: < #)^:_=: 
-    - Filter rows, /without header/, from input matrix corresponding to =u= (most or least) common elements in the first column. 
-    - Add back header, and move first column to end of filtered input.
-    - Stop when two rows remain (1 header row + 1 input row).
-+ =({: {~ /:@{.)=: Reorder second row (input) by first row (column numbers).  
-
-#+BEGIN_SRC j :results output value :exports results
-3 : 0''
-y=. #.inv 5 13 29 11
-g=. (".&.> ,.~ ]) ('y'; '(h=. i.@{:@$ , ]) y'; '(t=. ({. , <: filtrows@}.)) h y'; '(s=. (1&|.)"1)@t^:1 h y'; 's@t^:2 h y'; 'r=. s@t^:3 h y'; '({: {~ /:@{.) r'; '<: rating y') 
-smoutput g
-)
+#+BEGIN_SRC j :results output silent :tangle day03.ijs
+NB. Recursively filter rows using 'u' common elements from each column
+rating=: 1 : '[: >@(] #~ 1: = #&>) ] (u filtrows)~ foldr~ <"0@|.@i.@{:@$'
 #+END_SRC
 
-#+RESULTS:
-#+begin_example
-┌───────────────────────────────┬─────────┐
-│y                              │0 0 1 0 1│
-│                               │0 1 1 0 1│
-│                               │1 1 1 0 1│
-│                               │0 1 0 1 1│
-├───────────────────────────────┼─────────┤
-│(h=. i.@{:@$ , ]) y            │0 1 2 3 4│
-│                               │0 0 1 0 1│
-│                               │0 1 1 0 1│
-│                               │1 1 1 0 1│
-│                               │0 1 0 1 1│
-├───────────────────────────────┼─────────┤
-│(t=. ({. , <: filtrows@}.)) h y│0 1 2 3 4│
-│                               │0 0 1 0 1│
-│                               │0 1 1 0 1│
-│                               │0 1 0 1 1│
-├───────────────────────────────┼─────────┤
-│(s=. (1&|.)"1)@t^:1 h y        │1 2 3 4 0│
-│                               │0 1 0 1 0│
-│                               │1 1 0 1 0│
-│                               │1 0 1 1 0│
-├───────────────────────────────┼─────────┤
-│s@t^:2 h y                     │2 3 4 0 1│
-│                               │1 0 1 0 1│
-│                               │0 1 1 0 1│
-├───────────────────────────────┼─────────┤
-│r=. s@t^:3 h y                 │3 4 0 1 2│
-│                               │0 1 0 1 1│
-├───────────────────────────────┼─────────┤
-│({: {~ /:@{.) r                │0 1 1 0 1│
-├───────────────────────────────┼─────────┤
-│<: rating y                    │0 1 1 0 1│
-└───────────────────────────────┴─────────┘
-#+end_example
+Reading from right to left, =rating= works as follows,
+
++ =] (u filtrows)~ foldr~ <"0@|.@i.@{:@$'=: Recursively filter rows with 'u' common elements from each column
++ =>@(] #~ 1: = #&>)=: Unbox (first) element containing only one row.
 
 ***** Life support rating
 
