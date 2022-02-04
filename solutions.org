@@ -1728,6 +1728,166 @@ assert 437 = part2 in=. getin 'inputs/day-11.txt'
 
 #+RESULTS:
 
+** [[https://adventofcode.com/2021/day/12][Day 12: Passage Pathing]]
+
+#+TOC: headlines 2 local
+
+*** Setup
+
+#+BEGIN_SRC j :results output silent
+cocurrent <'day12'
+#+END_SRC
+
+#+BEGIN_SRC j :results output silent :tangle day12.ijs
+load <'utils.ijs'
+#+END_SRC
+
+*** Read data
+
+#+BEGIN_SRC j :results output silent :tangle day12.ijs
+getin=: [: (] , |."1) [: ({. , {:)"1 [: ;: readin ]
+#+END_SRC
+
+Reading from right to left, =getin= works as follows,
+
++ =;: readin ]=: Read file and partition strings into boxed words
++ =({. , {:)"1=: Extract the first and third columns (vertices)
++ =(] , |."1)=: Append the reversed list to itself ⇒ all connections in the undirected graph
+ 
+*** General function definitions
+
+***** Connections to vertex
+
+#+BEGIN_SRC j :results output silent :tangle day12.ijs 
+NB. Connections to a given vertex x in graph y
+connects=: ({:"1)@] #~ ] (E. {."1)~ [
+#+END_SRC
+
+#+BEGIN_SRC j :results output value :exports results
+y=. _2 [\ ('start'; 'A'; 'A'; 'b'; 'A'; 'end'; 'b'; 'end'; 'A'; 'start'; 'b'; 'start'; 'end'; 'A'; 'end'; 'b'; 'b'; 'A')
+(".&.> ,:~ ]) ('y'; '(<''A'') connects y'; '(<''b'') connects y')
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌─────────────┬─────────────────┬─────────────────┐
+│y            │(<'A') connects y│(<'b') connects y│
+├─────────────┼─────────────────┼─────────────────┤
+│┌─────┬─────┐│┌─┬───┬─────┐    │┌───┬─────┬─┐    │
+││start│A    │││b│end│start│    ││end│start│A│    │
+│├─────┼─────┤│└─┴───┴─────┘    │└───┴─────┴─┘    │
+││A    │b    ││                 │                 │
+│├─────┼─────┤│                 │                 │
+││A    │end  ││                 │                 │
+│├─────┼─────┤│                 │                 │
+││b    │end  ││                 │                 │
+│├─────┼─────┤│                 │                 │
+││A    │start││                 │                 │
+│├─────┼─────┤│                 │                 │
+││b    │start││                 │                 │
+│├─────┼─────┤│                 │                 │
+││end  │A    ││                 │                 │
+│├─────┼─────┤│                 │                 │
+││end  │b    ││                 │                 │
+│├─────┼─────┤│                 │                 │
+││b    │A    ││                 │                 │
+│└─────┴─────┘│                 │                 │
+└─────────────┴─────────────────┴─────────────────┘
+#+end_example
+
+***** Lower case characters
+
+#+BEGIN_SRC j :results output silent :tangle day12.ijs
+NB. Flag all lower case characters in y
+issmall=: (a. {~ 97 + i.26) e.~ ]
+#+END_SRC
+
+#+BEGIN_SRC j :results output value :exports results
+issmall &.> ('a';'A';'bc';'D';'o';'*'; 'start'; 'fg'; 'NX')
+#+END_SRC
+
+#+RESULTS:
+: ┌─┬─┬───┬─┬─┬─┬─────────┬───┬───┐
+: │1│0│1 1│0│1│0│1 1 1 1 1│1 1│0 0│
+: └─┴─┴───┴─┴─┴─┴─────────┴───┴───┘
+
+***** Filter small caves
+
+#+BEGIN_SRC j :results output silent :tangle day12.ijs
+NB. Filter small caves from graph y
+filtsm=: (] #~ ((+./)@:issmall)&>)@:~.@:(('start';'end') -.~ ])@:,
+#+END_SRC
+
+***** Count paths
+
+#+BEGIN_SRC j :results output silent :tangle day12.ijs
+NB. Count paths from x to y in a graph satisfying condition u
+dfs=: 1 : 0
+(a: u dfs y)
+:
+cave=. y
+seen=. x
+if. cave = (<'end') do. 1 return. end.
+if. (cave e. seen) do.
+  if. (cave = (<'start')) do. 0 return. end.
+  if. (cave u (seen (e. # [) smcaves)) do. 0 return. end.
+end.
++/ ((seen , cave) u dfs ])"1 0 (y connects graph)
+)
+#+END_SRC
+
+*** Part 1
+
+**** Function definition
+
+#+BEGIN_SRC j :results output silent :tangle day12.ijs
+part1=: 3 : 'e. dfs (<''start'') [ smcaves=: filtsm graph=: y'
+#+END_SRC
+
+**** Test
+
+#+BEGIN_SRC j :results output value :tangle day12.ijs
+assert 10  = part1 inx=. getin 'inputs/day-12-example-1.txt'
+assert 19  = part1 inx=. getin 'inputs/day-12-example-2.txt'
+assert 226 = part1 inx=. getin 'inputs/day-12-example-3.txt'
+#+END_SRC
+
+#+RESULTS:
+
+**** Solution
+
+#+BEGIN_SRC j :results output value :tangle day12.ijs
+assert 4304 = part1 in=. getin 'inputs/day-12.txt'
+#+END_SRC
+
+#+RESULTS:
+
+*** Part 2
+
+**** Function definition
+
+#+BEGIN_SRC j :results output silent :tangle day12.ijs
+part2=: 3 : '((<:@:# > +/)@:~:@:,) dfs (<''start'') [ smcaves=: filtsm graph=: y'
+#+END_SRC
+
+**** Test
+
+#+BEGIN_SRC j :results output value :tangle day12.ijs
+assert 36   = part2 inx=. getin 'inputs/day-12-example-1.txt'
+assert 103  = part2 inx=. getin 'inputs/day-12-example-2.txt'
+assert 3509 = part2 inx=. getin 'inputs/day-12-example-3.txt'
+#+END_SRC
+
+#+RESULTS:
+
+**** Solution
+
+#+BEGIN_SRC j :results output value :tangle day12.ijs
+assert 118242 = part2 in=. getin 'inputs/day-12.txt'
+#+END_SRC
+
+#+RESULTS:
+
 ** [[https://adventofcode.com/2021/day/x][Day 0X: Template]]
 
 #+TOC: headlines 2 local
