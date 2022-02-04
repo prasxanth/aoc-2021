@@ -354,7 +354,7 @@ rating=: 1 : '[: >@(] #~ 1: = #&>) ] (u filtrows)~ foldr~ <"0@|.@i.@{:@$'
 
 Reading from right to left, =rating= works as follows,
 
-+ =] (u filtrows)~ foldr~ <"0@|.@i.@{:@$'=: Recursively filter rows with 'u' common elements from each column
++ =] (u filtrows)~ foldr~ <"0@|.@i.@{:@$=: Recursively filter rows with 'u' common elements from each column
 + =>@(] #~ 1: = #&>)=: Unbox (first) element containing only one row.
 
 ***** Life support rating
