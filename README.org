@@ -76,4 +76,5 @@ General functions that would be useful beyond the scope of the solution are indi
 
 *** Site
 
-Solutions are also hosted on github pages [[https://prasxanth.github.io/aoc-2021/][here]].
+- [[https://prasxanth.github.io/aoc-2021/][Github pages]]
+- [[https://github.com/prasxanth/aoc-2021/blob/main/solutions.org][Org document]]
