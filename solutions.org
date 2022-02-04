@@ -338,14 +338,14 @@ NB. u = comparison operator (< , > , >: , <: , =)
 filtrows=: 1 : '[ ([ #~ (] = -:@# u +/) @ ]) ,@:({"1~)'
 #+END_SRC
 
-***** Reducer
+***** ❖ Reducer
 
 #+BEGIN_SRC j :results output silent :tangle day03.ijs
 NB. Reduce using verb 'u/\.' on a boxed list y
 foldr=: 1 : '[: <@(u&>)/\. ,&boxxopen'
 #+END_SRC
 
-***** ❖ Rating
+***** Rating
 
 #+BEGIN_SRC j :results output silent :tangle day03.ijs
 NB. Recursively filter rows using 'u' common elements from each column
