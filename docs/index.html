@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-04 Fri 12:20 -->
+<!-- 2022-02-04 Fri 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Advent of Code: 2021</title>
@@ -329,26 +329,26 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org21c184c">About</a></li>
-<li><a href="#org17c8106">Day 01: Sonar Sweep</a></li>
-<li><a href="#org7d55332">Day 02: Dive!</a></li>
-<li><a href="#org58fc01e">Day 03: Binary Diagnostic</a></li>
-<li><a href="#orgfa0cd2f">Day 04: Giant Squid</a></li>
-<li><a href="#orgc1ac8eb">Day 05: Hydrothermal Venture</a></li>
-<li><a href="#org6f82c57">Day 06: Lanternfish</a></li>
-<li><a href="#orgb4627d2">Day 07: The Treachery of Whales</a></li>
-<li><a href="#org920ad20">Day 08: Seven Segment Search</a></li>
-<li><a href="#org954af46">Day 09: Smoke Basin</a></li>
-<li><a href="#orgf7109aa">Day 10: Syntax Scoring</a></li>
-<li><a href="#org9a835cf">Day 11: Dumbo Octopus</a></li>
-<li><a href="#org812cd35">Day 0X: Template</a></li>
+<li><a href="#orgf92a947">About</a></li>
+<li><a href="#orgf442d6e">Day 01: Sonar Sweep</a></li>
+<li><a href="#org5291c4e">Day 02: Dive!</a></li>
+<li><a href="#org004f8df">Day 03: Binary Diagnostic</a></li>
+<li><a href="#org01632a2">Day 04: Giant Squid</a></li>
+<li><a href="#org309ab67">Day 05: Hydrothermal Venture</a></li>
+<li><a href="#org85dea17">Day 06: Lanternfish</a></li>
+<li><a href="#org1a02518">Day 07: The Treachery of Whales</a></li>
+<li><a href="#orgcc5268a">Day 08: Seven Segment Search</a></li>
+<li><a href="#orgcf99a48">Day 09: Smoke Basin</a></li>
+<li><a href="#org0f1022d">Day 10: Syntax Scoring</a></li>
+<li><a href="#orgbeebd7b">Day 11: Dumbo Octopus</a></li>
+<li><a href="#orgac2bcd4">Day 0X: Template</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org21c184c" class="outline-2">
-<h2 id="org21c184c">About</h2>
-<div class="outline-text-2" id="text-org21c184c">
+<div id="outline-container-orgf92a947" class="outline-2">
+<h2 id="orgf92a947">About</h2>
+<div class="outline-text-2" id="text-orgf92a947">
 <p>
 Solutions to <a href="https://adventofcode.com/2021">Advent of Code: 2021</a> in the array programming language <a href="https://www.jsoftware.com/#/">J</a>. 
 </p>
@@ -394,13 +394,13 @@ Language and IDE details,
 </table>
 </div>
 
-<div id="outline-container-org02741ce" class="outline-3">
-<h3 id="org02741ce">Conventions</h3>
-<div class="outline-text-3" id="text-org02741ce">
+<div id="outline-container-orgd502d5b" class="outline-3">
+<h3 id="orgd502d5b">Conventions</h3>
+<div class="outline-text-3" id="text-orgd502d5b">
 </div>
-<div id="outline-container-org6f0ee6e" class="outline-4">
-<h4 id="org6f0ee6e">General</h4>
-<div class="outline-text-4" id="text-org6f0ee6e">
+<div id="outline-container-orgd8bd19e" class="outline-4">
+<h4 id="orgd8bd19e">General</h4>
+<div class="outline-text-4" id="text-orgd8bd19e">
 <div class="note">
 <p>
 Before we start, I should point out a convention of J: if a dyadic verb is asymmetric, 
@@ -417,9 +417,9 @@ apply the same x to different ys rather than the other way around.
 </div>
 </div>
 
-<div id="outline-container-org1b2453a" class="outline-4">
-<h4 id="org1b2453a">Naming</h4>
-<div class="outline-text-4" id="text-org1b2453a">
+<div id="outline-container-org5db4d11" class="outline-4">
+<h4 id="org5db4d11">Naming</h4>
+<div class="outline-text-4" id="text-org5db4d11">
 <ul class="org-ul">
 <li>All variable and function names are lower case and do <i>not</i> include any underscores</li>
 <li>All variable and function names, in tacit and explicit definitions, are at least two characters long to avoid confusion with 
@@ -432,9 +432,9 @@ built-in single character J verbs. Exceptions to this are for variables defined 
 </div>
 </div>
 
-<div id="outline-container-orge919bec" class="outline-4">
-<h4 id="orge919bec">AOC specific</h4>
-<div class="outline-text-4" id="text-orge919bec">
+<div id="outline-container-org4bfc484" class="outline-4">
+<h4 id="org4bfc484">AOC specific</h4>
+<div class="outline-text-4" id="text-org4bfc484">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -496,9 +496,9 @@ General functions that would be useful beyond the scope of the solution are indi
 </div>
 </div>
 
-<div id="outline-container-orge4cb51c" class="outline-3">
-<h3 id="orge4cb51c">Site</h3>
-<div class="outline-text-3" id="text-orge4cb51c">
+<div id="outline-container-org06a56b8" class="outline-3">
+<h3 id="org06a56b8">Site</h3>
+<div class="outline-text-3" id="text-org06a56b8">
 <p>
 This site was generated using <b>Emacs 26.3</b> with <b>Org mode 9.1.9</b>. A custom CSS and <a href="https://orgmode.org/worg/code/org-info-js/">Org-Info.JS</a> were used to style the exported HTML.
 </p>
@@ -510,35 +510,35 @@ This site is best viewed with <a href="https://fonts.google.com/specimen/Fira+Sa
 </div>
 </div>
 
-<div id="outline-container-org17c8106" class="outline-2">
-<h2 id="org17c8106"><a href="https://adventofcode.com/2021/day/1">Day 01: Sonar Sweep</a></h2>
-<div class="outline-text-2" id="text-org17c8106">
+<div id="outline-container-orgf442d6e" class="outline-2">
+<h2 id="orgf442d6e"><a href="https://adventofcode.com/2021/day/1">Day 01: Sonar Sweep</a></h2>
+<div class="outline-text-2" id="text-orgf442d6e">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org443b30e">Setup</a></li>
-<li><a href="#org4fb402a">Read data</a></li>
-<li><a href="#org2248f61">General function definition</a></li>
-<li><a href="#orgc31b58e">Part 1</a>
+<li><a href="#org034d9ba">Setup</a></li>
+<li><a href="#org2c14a87">Read data</a></li>
+<li><a href="#orgdf60aa9">General function definition</a></li>
+<li><a href="#orge09de63">Part 1</a>
 <ul>
-<li><a href="#orgac914b0">Function definition</a></li>
-<li><a href="#orgf0cf347">Test</a></li>
-<li><a href="#org35abd0e">Solution</a></li>
+<li><a href="#orgfaa1873">Function definition</a></li>
+<li><a href="#orgb578d7f">Test</a></li>
+<li><a href="#org78fd025">Solution</a></li>
 </ul>
 </li>
-<li><a href="#orgf9d6044">Part 2</a>
+<li><a href="#org6586595">Part 2</a>
 <ul>
-<li><a href="#orgeaea7af">Function definition</a></li>
-<li><a href="#orge8176b0">Test</a></li>
-<li><a href="#orgfd2d658">Solution</a></li>
+<li><a href="#org26a9fc2">Function definition</a></li>
+<li><a href="#orge4836f8">Test</a></li>
+<li><a href="#orgc7bd7ce">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org443b30e" class="outline-3">
-<h3 id="org443b30e">Setup</h3>
-<div class="outline-text-3" id="text-org443b30e">
+<div id="outline-container-org034d9ba" class="outline-3">
+<h3 id="org034d9ba">Setup</h3>
+<div class="outline-text-3" id="text-org034d9ba">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day01'</span>
 </pre>
@@ -551,9 +551,9 @@ This site is best viewed with <a href="https://fonts.google.com/specimen/Fira+Sa
 </div>
 </div>
 
-<div id="outline-container-org4fb402a" class="outline-3">
-<h3 id="org4fb402a">Read data</h3>
-<div class="outline-text-3" id="text-org4fb402a">
+<div id="outline-container-org2c14a87" class="outline-3">
+<h3 id="org2c14a87">Read data</h3>
+<div class="outline-text-3" id="text-org2c14a87">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span> readin
 </pre>
@@ -561,9 +561,9 @@ This site is best viewed with <a href="https://fonts.google.com/specimen/Fira+Sa
 </div>
 </div>
 
-<div id="outline-container-org2248f61" class="outline-3">
-<h3 id="org2248f61">General function definition</h3>
-<div class="outline-text-3" id="text-org2248f61">
+<div id="outline-container-orgdf60aa9" class="outline-3">
+<h3 id="orgdf60aa9">General function definition</h3>
+<div class="outline-text-3" id="text-orgdf60aa9">
 <p>
 Generic function to calculate number of increases in data for a given moving window size,
 </p>
@@ -577,13 +577,13 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-orgc31b58e" class="outline-3">
-<h3 id="orgc31b58e">Part 1</h3>
-<div class="outline-text-3" id="text-orgc31b58e">
+<div id="outline-container-orge09de63" class="outline-3">
+<h3 id="orge09de63">Part 1</h3>
+<div class="outline-text-3" id="text-orge09de63">
 </div>
-<div id="outline-container-orgac914b0" class="outline-4">
-<h4 id="orgac914b0">Function definition</h4>
-<div class="outline-text-4" id="text-orgac914b0">
+<div id="outline-container-orgfaa1873" class="outline-4">
+<h4 id="orgfaa1873">Function definition</h4>
+<div class="outline-text-4" id="text-orgfaa1873">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> 1<span style="color: #0000ff;">&amp;</span>ninc
 </pre>
@@ -591,9 +591,9 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-orgf0cf347" class="outline-4">
-<h4 id="orgf0cf347">Test</h4>
-<div class="outline-text-4" id="text-orgf0cf347">
+<div id="outline-container-orgb578d7f" class="outline-4">
+<h4 id="orgb578d7f">Test</h4>
+<div class="outline-text-4" id="text-orgb578d7f">
 <div class="org-src-container">
 <pre class="src src-j">assert 7 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-01-example.txt'</span>
 </pre>
@@ -601,9 +601,9 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-org35abd0e" class="outline-4">
-<h4 id="org35abd0e">Solution</h4>
-<div class="outline-text-4" id="text-org35abd0e">
+<div id="outline-container-org78fd025" class="outline-4">
+<h4 id="org78fd025">Solution</h4>
+<div class="outline-text-4" id="text-org78fd025">
 <div class="org-src-container">
 <pre class="src src-j">assert 1602 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-01.txt'</span>
 </pre>
@@ -612,13 +612,13 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-orgf9d6044" class="outline-3">
-<h3 id="orgf9d6044">Part 2</h3>
-<div class="outline-text-3" id="text-orgf9d6044">
+<div id="outline-container-org6586595" class="outline-3">
+<h3 id="org6586595">Part 2</h3>
+<div class="outline-text-3" id="text-org6586595">
 </div>
-<div id="outline-container-orgeaea7af" class="outline-4">
-<h4 id="orgeaea7af">Function definition</h4>
-<div class="outline-text-4" id="text-orgeaea7af">
+<div id="outline-container-org26a9fc2" class="outline-4">
+<h4 id="org26a9fc2">Function definition</h4>
+<div class="outline-text-4" id="text-org26a9fc2">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> 3<span style="color: #0000ff;">&amp;</span>ninc
 </pre>
@@ -626,9 +626,9 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-orge8176b0" class="outline-4">
-<h4 id="orge8176b0">Test</h4>
-<div class="outline-text-4" id="text-orge8176b0">
+<div id="outline-container-orge4836f8" class="outline-4">
+<h4 id="orge4836f8">Test</h4>
+<div class="outline-text-4" id="text-orge4836f8">
 <div class="org-src-container">
 <pre class="src src-j">assert 7 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-01-example.txt'</span>
 </pre>
@@ -636,9 +636,9 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-orgfd2d658" class="outline-4">
-<h4 id="orgfd2d658">Solution</h4>
-<div class="outline-text-4" id="text-orgfd2d658">
+<div id="outline-container-orgc7bd7ce" class="outline-4">
+<h4 id="orgc7bd7ce">Solution</h4>
+<div class="outline-text-4" id="text-orgc7bd7ce">
 <div class="org-src-container">
 <pre class="src src-j">assert 1633 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-01.txt'</span>
 </pre>
@@ -648,35 +648,35 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-org7d55332" class="outline-2">
-<h2 id="org7d55332"><a href="https://adventofcode.com/2021/day/2">Day 02: Dive!</a></h2>
-<div class="outline-text-2" id="text-org7d55332">
+<div id="outline-container-org5291c4e" class="outline-2">
+<h2 id="org5291c4e"><a href="https://adventofcode.com/2021/day/2">Day 02: Dive!</a></h2>
+<div class="outline-text-2" id="text-org5291c4e">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org15b316f">Setup</a></li>
-<li><a href="#org9c5068f">Read data</a></li>
-<li><a href="#orga23b45e">General function definition</a></li>
-<li><a href="#org0bc1f0b">Part 1</a>
+<li><a href="#org3690ed6">Setup</a></li>
+<li><a href="#orgbbfb1e4">Read data</a></li>
+<li><a href="#org0dc5c71">General function definition</a></li>
+<li><a href="#org8277de7">Part 1</a>
 <ul>
-<li><a href="#orga3edf6b">Function definition</a></li>
-<li><a href="#orgac19e15">Test</a></li>
-<li><a href="#org856278e">Solution</a></li>
+<li><a href="#orga0f44bf">Function definition</a></li>
+<li><a href="#org27b778e">Test</a></li>
+<li><a href="#orgdaba286">Solution</a></li>
 </ul>
 </li>
-<li><a href="#org7b1f4b9">Part 2</a>
+<li><a href="#org48e5c94">Part 2</a>
 <ul>
-<li><a href="#orgb8210b3">Function definition</a></li>
-<li><a href="#org49f7aad">Test</a></li>
-<li><a href="#orgc5aa4bf">Solution</a></li>
+<li><a href="#org0735174">Function definition</a></li>
+<li><a href="#orgdc639cc">Test</a></li>
+<li><a href="#org0f6c9bc">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org15b316f" class="outline-3">
-<h3 id="org15b316f">Setup</h3>
-<div class="outline-text-3" id="text-org15b316f">
+<div id="outline-container-org3690ed6" class="outline-3">
+<h3 id="org3690ed6">Setup</h3>
+<div class="outline-text-3" id="text-org3690ed6">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day02'</span>
 </pre>
@@ -689,9 +689,9 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-org9c5068f" class="outline-3">
-<h3 id="org9c5068f">Read data</h3>
-<div class="outline-text-3" id="text-org9c5068f">
+<div id="outline-container-orgbbfb1e4" class="outline-3">
+<h3 id="orgbbfb1e4">Read data</h3>
+<div class="outline-text-3" id="text-orgbbfb1e4">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">;:</span> readin
 </pre>
@@ -699,13 +699,13 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-orga23b45e" class="outline-3">
-<h3 id="orga23b45e">General function definition</h3>
-<div class="outline-text-3" id="text-orga23b45e">
+<div id="outline-container-org0dc5c71" class="outline-3">
+<h3 id="org0dc5c71">General function definition</h3>
+<div class="outline-text-3" id="text-org0dc5c71">
 </div>
-<div id="outline-container-orga6c5c29" class="outline-5">
-<h5 id="orga6c5c29">Directions</h5>
-<div class="outline-text-5" id="text-orga6c5c29">
+<div id="outline-container-org474429f" class="outline-5">
+<h5 id="org474429f">Directions</h5>
+<div class="outline-text-5" id="text-org474429f">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Displacement vectors</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input</span>
@@ -717,9 +717,9 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-org76b022d" class="outline-5">
-<h5 id="org76b022d">Displacements</h5>
-<div class="outline-text-5" id="text-org76b022d">
+<div id="outline-container-orgff162eb" class="outline-5">
+<h5 id="orgff162eb">Displacements</h5>
+<div class="outline-text-5" id="text-orgff162eb">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Horizontal and vertical displacement vectors</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input</span>
@@ -762,13 +762,13 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org0bc1f0b" class="outline-3">
-<h3 id="org0bc1f0b">Part 1</h3>
-<div class="outline-text-3" id="text-org0bc1f0b">
+<div id="outline-container-org8277de7" class="outline-3">
+<h3 id="org8277de7">Part 1</h3>
+<div class="outline-text-3" id="text-org8277de7">
 </div>
-<div id="outline-container-orga3edf6b" class="outline-4">
-<h4 id="orga3edf6b">Function definition</h4>
-<div class="outline-text-4" id="text-orga3edf6b">
+<div id="outline-container-orga0f44bf" class="outline-4">
+<h4 id="orga0f44bf">Function definition</h4>
+<div class="outline-text-4" id="text-orga0f44bf">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> 3 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'+/ h * +/ v [ v=. {:"1 d [ h=. {."1 d [ d=. disp y'</span>
 </pre>
@@ -776,9 +776,9 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgac19e15" class="outline-4">
-<h4 id="orgac19e15">Test</h4>
-<div class="outline-text-4" id="text-orgac19e15">
+<div id="outline-container-org27b778e" class="outline-4">
+<h4 id="org27b778e">Test</h4>
+<div class="outline-text-4" id="text-org27b778e">
 <div class="org-src-container">
 <pre class="src src-j">assert 150 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-02-example.txt'</span>
 </pre>
@@ -786,9 +786,9 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org856278e" class="outline-4">
-<h4 id="org856278e">Solution</h4>
-<div class="outline-text-4" id="text-org856278e">
+<div id="outline-container-orgdaba286" class="outline-4">
+<h4 id="orgdaba286">Solution</h4>
+<div class="outline-text-4" id="text-orgdaba286">
 <div class="org-src-container">
 <pre class="src src-j">assert 1868935 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-02.txt'</span>
 </pre>
@@ -797,13 +797,13 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org7b1f4b9" class="outline-3">
-<h3 id="org7b1f4b9">Part 2</h3>
-<div class="outline-text-3" id="text-org7b1f4b9">
+<div id="outline-container-org48e5c94" class="outline-3">
+<h3 id="org48e5c94">Part 2</h3>
+<div class="outline-text-3" id="text-org48e5c94">
 </div>
-<div id="outline-container-orgb8210b3" class="outline-4">
-<h4 id="orgb8210b3">Function definition</h4>
-<div class="outline-text-4" id="text-orgb8210b3">
+<div id="outline-container-org0735174" class="outline-4">
+<h4 id="org0735174">Function definition</h4>
+<div class="outline-text-4" id="text-org0735174">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> 3 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'+/ h * +/ h * +/\ v [ v=. {:"1 d [ h=. {."1 d [ d=. disp y'</span>
 </pre>
@@ -811,9 +811,9 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org49f7aad" class="outline-4">
-<h4 id="org49f7aad">Test</h4>
-<div class="outline-text-4" id="text-org49f7aad">
+<div id="outline-container-orgdc639cc" class="outline-4">
+<h4 id="orgdc639cc">Test</h4>
+<div class="outline-text-4" id="text-orgdc639cc">
 <div class="org-src-container">
 <pre class="src src-j">assert 900 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-02-example.txt'</span>
 </pre>
@@ -821,9 +821,9 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgc5aa4bf" class="outline-4">
-<h4 id="orgc5aa4bf">Solution</h4>
-<div class="outline-text-4" id="text-orgc5aa4bf">
+<div id="outline-container-org0f6c9bc" class="outline-4">
+<h4 id="org0f6c9bc">Solution</h4>
+<div class="outline-text-4" id="text-org0f6c9bc">
 <div class="org-src-container">
 <pre class="src src-j">assert 1965970888 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-02.txt'</span>
 </pre>
@@ -833,41 +833,41 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org58fc01e" class="outline-2">
-<h2 id="org58fc01e"><a href="https://adventofcode.com/2021/day/3">Day 03: Binary Diagnostic</a></h2>
-<div class="outline-text-2" id="text-org58fc01e">
+<div id="outline-container-org004f8df" class="outline-2">
+<h2 id="org004f8df"><a href="https://adventofcode.com/2021/day/3">Day 03: Binary Diagnostic</a></h2>
+<div class="outline-text-2" id="text-org004f8df">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1275e57">Setup</a></li>
-<li><a href="#org31a2dd4">Read data</a></li>
-<li><a href="#orgbe694cd">Part 1</a>
+<li><a href="#org605e096">Setup</a></li>
+<li><a href="#org086b504">Read data</a></li>
+<li><a href="#org6c0d56e">Part 1</a>
 <ul>
-<li><a href="#org0b65547">Function definition</a></li>
-<li><a href="#org85c65d7">Test</a></li>
-<li><a href="#org6a5da3e">Solution</a></li>
+<li><a href="#orgf86bba1">Function definition</a></li>
+<li><a href="#org1757e6e">Test</a></li>
+<li><a href="#orgb443452">Solution</a></li>
 </ul>
 </li>
-<li><a href="#orgcb92ae4">Part 2: Approach 1</a>
+<li><a href="#org299a9da">Part 2: Approach 1</a>
 <ul>
-<li><a href="#org2058725">Function definitions</a></li>
-<li><a href="#orgc50cd86">Test</a></li>
-<li><a href="#orgd1c72e8">Solution</a></li>
+<li><a href="#org050ab5c">Function definitions</a></li>
+<li><a href="#org83ffcb4">Test</a></li>
+<li><a href="#org721aef5">Solution</a></li>
 </ul>
 </li>
-<li><a href="#orgdf4a9fd">Part 2: Approach 2</a>
+<li><a href="#org3d64709">Part 2: Approach 2</a>
 <ul>
-<li><a href="#orgaa689a1">Function definitions</a></li>
-<li><a href="#org6bfe36f">Test</a></li>
-<li><a href="#org66c87c9">Solution</a></li>
+<li><a href="#orgc368eb9">Function definitions</a></li>
+<li><a href="#orga9251b7">Test</a></li>
+<li><a href="#org304c215">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1275e57" class="outline-3">
-<h3 id="org1275e57">Setup</h3>
-<div class="outline-text-3" id="text-org1275e57">
+<div id="outline-container-org605e096" class="outline-3">
+<h3 id="org605e096">Setup</h3>
+<div class="outline-text-3" id="text-org605e096">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day03'</span>
 </pre>
@@ -880,9 +880,9 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org31a2dd4" class="outline-3">
-<h3 id="org31a2dd4">Read data</h3>
-<div class="outline-text-3" id="text-org31a2dd4">
+<div id="outline-container-org086b504" class="outline-3">
+<h3 id="org086b504">Read data</h3>
+<div class="outline-text-3" id="text-org086b504">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span><span style="color: #0000ff;">"</span>0 readin
 </pre>
@@ -890,13 +890,13 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgbe694cd" class="outline-3">
-<h3 id="orgbe694cd">Part 1</h3>
-<div class="outline-text-3" id="text-orgbe694cd">
+<div id="outline-container-org6c0d56e" class="outline-3">
+<h3 id="org6c0d56e">Part 1</h3>
+<div class="outline-text-3" id="text-org6c0d56e">
 </div>
-<div id="outline-container-org0b65547" class="outline-4">
-<h4 id="org0b65547">Function definition</h4>
-<div class="outline-text-4" id="text-org0b65547">
+<div id="outline-container-orgf86bba1" class="outline-4">
+<h4 id="orgf86bba1">Function definition</h4>
+<div class="outline-text-4" id="text-orgf86bba1">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> (<span style="color: #ff0000;">*</span><span style="color: #0000ff;">&amp;:</span><span style="color: #ff0000;">#.</span> <span style="color: #ff0000;">-.</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">-:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">#</span> <span style="color: #ff0000;">&lt;</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span>)  <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">(epsilon =: -. gamma)</span>
 </pre>
@@ -904,9 +904,9 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org85c65d7" class="outline-4">
-<h4 id="org85c65d7">Test</h4>
-<div class="outline-text-4" id="text-org85c65d7">
+<div id="outline-container-org1757e6e" class="outline-4">
+<h4 id="org1757e6e">Test</h4>
+<div class="outline-text-4" id="text-org1757e6e">
 <div class="org-src-container">
 <pre class="src src-j">assert 198 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03-example.txt'</span>
 </pre>
@@ -914,9 +914,9 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org6a5da3e" class="outline-4">
-<h4 id="org6a5da3e">Solution</h4>
-<div class="outline-text-4" id="text-org6a5da3e">
+<div id="outline-container-orgb443452" class="outline-4">
+<h4 id="orgb443452">Solution</h4>
+<div class="outline-text-4" id="text-orgb443452">
 <div class="org-src-container">
 <pre class="src src-j">assert 2595824 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03.txt'</span>
 </pre>
@@ -925,17 +925,17 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgcb92ae4" class="outline-3">
-<h3 id="orgcb92ae4">Part 2: Approach 1</h3>
-<div class="outline-text-3" id="text-orgcb92ae4">
+<div id="outline-container-org299a9da" class="outline-3">
+<h3 id="org299a9da">Part 2: Approach 1</h3>
+<div class="outline-text-3" id="text-org299a9da">
 </div>
-<div id="outline-container-org2058725" class="outline-4">
-<h4 id="org2058725">Function definitions</h4>
-<div class="outline-text-4" id="text-org2058725">
+<div id="outline-container-org050ab5c" class="outline-4">
+<h4 id="org050ab5c">Function definitions</h4>
+<div class="outline-text-4" id="text-org050ab5c">
 </div>
-<div id="outline-container-orgb0394be" class="outline-5">
-<h5 id="orgb0394be">Filter rows</h5>
-<div class="outline-text-5" id="text-orgb0394be">
+<div id="outline-container-orgd660747" class="outline-5">
+<h5 id="orgd660747">Filter rows</h5>
+<div class="outline-text-5" id="text-orgd660747">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Filter rows in y with 'u' common elements in column x</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input matrix</span>
@@ -947,9 +947,9 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgcb30513" class="outline-5">
-<h5 id="orgcb30513">Reducer</h5>
-<div class="outline-text-5" id="text-orgcb30513">
+<div id="outline-container-orgd2ef02f" class="outline-5">
+<h5 id="orgd2ef02f">Reducer</h5>
+<div class="outline-text-5" id="text-orgd2ef02f">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Reduce using verb 'u/\.' on a boxed list y</span>
 <span style="color: #BA36A5;">foldr</span><span style="color: #000000;">=:</span> 1 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'[: &lt;@(u&amp;&gt;)/\. ,&amp;boxxopen'</span>
@@ -958,9 +958,9 @@ Reading from right to left, <code>disp</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org3653b3e" class="outline-5">
-<h5 id="org3653b3e">Rating</h5>
-<div class="outline-text-5" id="text-org3653b3e">
+<div id="outline-container-org5e53cd1" class="outline-5">
+<h5 id="org5e53cd1">❖ Rating</h5>
+<div class="outline-text-5" id="text-org5e53cd1">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Recursively filter rows using 'u' common elements from each column</span>
 <span style="color: #BA36A5;">rating</span><span style="color: #000000;">=:</span> 1 <span style="color: #ff0000;">:</span> <span style="color: #008000;">'[: &gt;@(] #~ 1: = #&amp;&gt;) ] (u filtrows)~ foldr~ &lt;"0@|.@i.@{:@$'</span>
@@ -972,15 +972,15 @@ Reading from right to left, <code>rating</code> works as follows,
 </p>
 
 <ul class="org-ul">
-<li><code>] (u filtrows)~ foldr~ &lt;"0@|.@i.@{:@$'</code>: Recursively filter rows with &rsquo;u&rsquo; common elements from each column</li>
+<li><code>] (u filtrows)~ foldr~ &lt;"0@|.@i.@{:@$</code>: Recursively filter rows with &rsquo;u&rsquo; common elements from each column</li>
 <li><code>&gt;@(] #~ 1: = #&amp;&gt;)</code>: Unbox (first) element containing only one row.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1bbbd96" class="outline-5">
-<h5 id="org1bbbd96">Life support rating</h5>
-<div class="outline-text-5" id="text-org1bbbd96">
+<div id="outline-container-org5b47b37" class="outline-5">
+<h5 id="org5b47b37">Life support rating</h5>
+<div class="outline-text-5" id="text-org5b47b37">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">*</span><span style="color: #00ff00;">/</span><span style="color: #0000ff;">@:</span><span style="color: #ff0000;">#.</span><span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;</span> rating <span style="color: #ff0000;">,:</span> <span style="color: #ff0000;">&lt;:</span> rating)
 </pre>
@@ -989,9 +989,9 @@ Reading from right to left, <code>rating</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgc50cd86" class="outline-4">
-<h4 id="orgc50cd86">Test</h4>
-<div class="outline-text-4" id="text-orgc50cd86">
+<div id="outline-container-org83ffcb4" class="outline-4">
+<h4 id="org83ffcb4">Test</h4>
+<div class="outline-text-4" id="text-org83ffcb4">
 <div class="org-src-container">
 <pre class="src src-j">assert 230 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03-example.txt'</span>
 </pre>
@@ -999,9 +999,9 @@ Reading from right to left, <code>rating</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgd1c72e8" class="outline-4">
-<h4 id="orgd1c72e8">Solution</h4>
-<div class="outline-text-4" id="text-orgd1c72e8">
+<div id="outline-container-org721aef5" class="outline-4">
+<h4 id="org721aef5">Solution</h4>
+<div class="outline-text-4" id="text-org721aef5">
 <div class="org-src-container">
 <pre class="src src-j">assert 2135254 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03.txt'</span>
 </pre>
@@ -1010,13 +1010,13 @@ Reading from right to left, <code>rating</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgdf4a9fd" class="outline-3">
-<h3 id="orgdf4a9fd">Part 2: Approach 2</h3>
-<div class="outline-text-3" id="text-orgdf4a9fd">
+<div id="outline-container-org3d64709" class="outline-3">
+<h3 id="org3d64709">Part 2: Approach 2</h3>
+<div class="outline-text-3" id="text-org3d64709">
 </div>
-<div id="outline-container-orgaa689a1" class="outline-4">
-<h4 id="orgaa689a1">Function definitions</h4>
-<div class="outline-text-4" id="text-orgaa689a1">
+<div id="outline-container-orgc368eb9" class="outline-4">
+<h4 id="orgc368eb9">Function definitions</h4>
+<div class="outline-text-4" id="text-orgc368eb9">
 <p>
 Approach is to iteratively remove all rows with the most (or least) common elements across each column.
 </p>
@@ -1038,18 +1038,18 @@ fr<span style="color: #0000ff;">`</span><span style="color: #ff0000;">]</span><s
 </div>
 </div>
 
-<div id="outline-container-org6bfe36f" class="outline-4">
-<h4 id="org6bfe36f">Test</h4>
-<div class="outline-text-4" id="text-org6bfe36f">
+<div id="outline-container-orga9251b7" class="outline-4">
+<h4 id="orga9251b7">Test</h4>
+<div class="outline-text-4" id="text-orga9251b7">
 <div class="org-src-container">
 <pre class="src src-j">assert 230 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03-example.txt'</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org66c87c9" class="outline-4">
-<h4 id="org66c87c9">Solution</h4>
-<div class="outline-text-4" id="text-org66c87c9">
+<div id="outline-container-org304c215" class="outline-4">
+<h4 id="org304c215">Solution</h4>
+<div class="outline-text-4" id="text-org304c215">
 <div class="org-src-container">
 <pre class="src src-j">assert 2135254 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-03.txt'</span>
 </pre>
@@ -1059,40 +1059,40 @@ fr<span style="color: #0000ff;">`</span><span style="color: #ff0000;">]</span><s
 </div>
 </div>
 
-<div id="outline-container-orgfa0cd2f" class="outline-2">
-<h2 id="orgfa0cd2f"><a href="https://adventofcode.com/2021/day/4">Day 04: Giant Squid</a></h2>
-<div class="outline-text-2" id="text-orgfa0cd2f">
+<div id="outline-container-org01632a2" class="outline-2">
+<h2 id="org01632a2"><a href="https://adventofcode.com/2021/day/4">Day 04: Giant Squid</a></h2>
+<div class="outline-text-2" id="text-org01632a2">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org95bf8d8">Setup</a></li>
-<li><a href="#orge3cf1bb">Read data</a></li>
-<li><a href="#org935aa0d">General function definitions</a>
+<li><a href="#orgfcdb659">Setup</a></li>
+<li><a href="#orgc1b445b">Read data</a></li>
+<li><a href="#org824dd05">General function definitions</a>
 <ul>
-<li><a href="#org5c52378">Winning Sequence</a></li>
-<li><a href="#org54d9e0b">Score</a></li>
+<li><a href="#orgb98e575">Winning Sequence</a></li>
+<li><a href="#org673b7b9">Score</a></li>
 </ul>
 </li>
-<li><a href="#org0a74fb7">Part 1</a>
+<li><a href="#org4c7c329">Part 1</a>
 <ul>
-<li><a href="#org2e487c6">Function definition</a></li>
-<li><a href="#orga156c29">Test</a></li>
-<li><a href="#org5627f7a">Solution</a></li>
+<li><a href="#orgb9e6559">Function definition</a></li>
+<li><a href="#org0fcc786">Test</a></li>
+<li><a href="#org79d84f8">Solution</a></li>
 </ul>
 </li>
-<li><a href="#orgf35ee92">Part 2</a>
+<li><a href="#org15c0466">Part 2</a>
 <ul>
-<li><a href="#org89dd6df">Function definition</a></li>
-<li><a href="#orgeec7df5">Test</a></li>
-<li><a href="#orgdfcb057">Solution</a></li>
+<li><a href="#orgf5ca12b">Function definition</a></li>
+<li><a href="#orge1d6347">Test</a></li>
+<li><a href="#orgdc3f45e">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org95bf8d8" class="outline-3">
-<h3 id="org95bf8d8">Setup</h3>
-<div class="outline-text-3" id="text-org95bf8d8">
+<div id="outline-container-orgfcdb659" class="outline-3">
+<h3 id="orgfcdb659">Setup</h3>
+<div class="outline-text-3" id="text-orgfcdb659">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day04'</span>
 </pre>
@@ -1105,9 +1105,9 @@ fr<span style="color: #0000ff;">`</span><span style="color: #ff0000;">]</span><s
 </div>
 </div>
 
-<div id="outline-container-orge3cf1bb" class="outline-3">
-<h3 id="orge3cf1bb">Read data</h3>
-<div class="outline-text-3" id="text-orge3cf1bb">
+<div id="outline-container-orgc1b445b" class="outline-3">
+<h3 id="orgc1b445b">Read data</h3>
+<div class="outline-text-3" id="text-orgc1b445b">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> a<span style="color: #ff0000;">:</span> <span style="color: #ff0000;">-.</span><span style="color: #00ff00;">~</span> <span style="color: #ff0000;">&lt;</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">".</span> readin<span style="color: #0000ff;">@</span><span style="color: #ff0000;">]</span>
 </pre>
@@ -1125,13 +1125,13 @@ Split list of calls and boards in input data,
 </div>
 </div>
 
-<div id="outline-container-org935aa0d" class="outline-3">
-<h3 id="org935aa0d">General function definitions</h3>
-<div class="outline-text-3" id="text-org935aa0d">
+<div id="outline-container-org824dd05" class="outline-3">
+<h3 id="org824dd05">General function definitions</h3>
+<div class="outline-text-3" id="text-org824dd05">
 </div>
-<div id="outline-container-org5c52378" class="outline-4">
-<h4 id="org5c52378">Winning Sequence</h4>
-<div class="outline-text-4" id="text-org5c52378">
+<div id="outline-container-orgb98e575" class="outline-4">
+<h4 id="orgb98e575">Winning Sequence</h4>
+<div class="outline-text-4" id="text-orgb98e575">
 <p>
 One approach to obtaining the winning sequence of boards and corresponding calls is described below.
 </p>
@@ -1333,9 +1333,9 @@ The winning sequence function is thus defined,
 </div>
 </div>
 
-<div id="outline-container-org54d9e0b" class="outline-4">
-<h4 id="org54d9e0b">Score</h4>
-<div class="outline-text-4" id="text-org54d9e0b">
+<div id="outline-container-org673b7b9" class="outline-4">
+<h4 id="org673b7b9">Score</h4>
+<div class="outline-text-4" id="text-org673b7b9">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Calculate score</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = boards</span>
@@ -1348,13 +1348,13 @@ The winning sequence function is thus defined,
 </div>
 </div>
 
-<div id="outline-container-org0a74fb7" class="outline-3">
-<h3 id="org0a74fb7">Part 1</h3>
-<div class="outline-text-3" id="text-org0a74fb7">
+<div id="outline-container-org4c7c329" class="outline-3">
+<h3 id="org4c7c329">Part 1</h3>
+<div class="outline-text-3" id="text-org4c7c329">
 </div>
-<div id="outline-container-org2e487c6" class="outline-4">
-<h4 id="org2e487c6">Function definition</h4>
-<div class="outline-text-4" id="text-org2e487c6">
+<div id="outline-container-orgb9e6559" class="outline-4">
+<h4 id="orgb9e6559">Function definition</h4>
+<div class="outline-text-4" id="text-orgb9e6559">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> calls <span style="color: #ff0000;">{.</span> score boards
 </pre>
@@ -1362,9 +1362,9 @@ The winning sequence function is thus defined,
 </div>
 </div>
 
-<div id="outline-container-orga156c29" class="outline-4">
-<h4 id="orga156c29">Test</h4>
-<div class="outline-text-4" id="text-orga156c29">
+<div id="outline-container-org0fcc786" class="outline-4">
+<h4 id="org0fcc786">Test</h4>
+<div class="outline-text-4" id="text-org0fcc786">
 <div class="org-src-container">
 <pre class="src src-j">assert 4512 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-04-example.txt'</span>
 </pre>
@@ -1372,9 +1372,9 @@ The winning sequence function is thus defined,
 </div>
 </div>
 
-<div id="outline-container-org5627f7a" class="outline-4">
-<h4 id="org5627f7a">Solution</h4>
-<div class="outline-text-4" id="text-org5627f7a">
+<div id="outline-container-org79d84f8" class="outline-4">
+<h4 id="org79d84f8">Solution</h4>
+<div class="outline-text-4" id="text-org79d84f8">
 <div class="org-src-container">
 <pre class="src src-j">assert 2496 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-04.txt'</span>
 </pre>
@@ -1383,13 +1383,13 @@ The winning sequence function is thus defined,
 </div>
 </div>
 
-<div id="outline-container-orgf35ee92" class="outline-3">
-<h3 id="orgf35ee92">Part 2</h3>
-<div class="outline-text-3" id="text-orgf35ee92">
+<div id="outline-container-org15c0466" class="outline-3">
+<h3 id="org15c0466">Part 2</h3>
+<div class="outline-text-3" id="text-org15c0466">
 </div>
-<div id="outline-container-org89dd6df" class="outline-4">
-<h4 id="org89dd6df">Function definition</h4>
-<div class="outline-text-4" id="text-org89dd6df">
+<div id="outline-container-orgf5ca12b" class="outline-4">
+<h4 id="orgf5ca12b">Function definition</h4>
+<div class="outline-text-4" id="text-orgf5ca12b">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> calls <span style="color: #ff0000;">{:</span> score boards
 </pre>
@@ -1397,9 +1397,9 @@ The winning sequence function is thus defined,
 </div>
 </div>
 
-<div id="outline-container-orgeec7df5" class="outline-4">
-<h4 id="orgeec7df5">Test</h4>
-<div class="outline-text-4" id="text-orgeec7df5">
+<div id="outline-container-orge1d6347" class="outline-4">
+<h4 id="orge1d6347">Test</h4>
+<div class="outline-text-4" id="text-orge1d6347">
 <div class="org-src-container">
 <pre class="src src-j">assert 1924 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-04-example.txt'</span>
 </pre>
@@ -1407,9 +1407,9 @@ The winning sequence function is thus defined,
 </div>
 </div>
 
-<div id="outline-container-orgdfcb057" class="outline-4">
-<h4 id="orgdfcb057">Solution</h4>
-<div class="outline-text-4" id="text-orgdfcb057">
+<div id="outline-container-orgdc3f45e" class="outline-4">
+<h4 id="orgdc3f45e">Solution</h4>
+<div class="outline-text-4" id="text-orgdc3f45e">
 <div class="org-src-container">
 <pre class="src src-j">assert 25925 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-04.txt'</span>
 </pre>
@@ -1418,42 +1418,42 @@ The winning sequence function is thus defined,
 </div>
 </div>
 </div>
-<div id="outline-container-orgc1ac8eb" class="outline-2">
-<h2 id="orgc1ac8eb"><a href="https://adventofcode.com/2021/day/5">Day 05: Hydrothermal Venture</a></h2>
-<div class="outline-text-2" id="text-orgc1ac8eb">
+<div id="outline-container-org309ab67" class="outline-2">
+<h2 id="org309ab67"><a href="https://adventofcode.com/2021/day/5">Day 05: Hydrothermal Venture</a></h2>
+<div class="outline-text-2" id="text-org309ab67">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6749804">Setup</a></li>
-<li><a href="#org5a4536e">Read data</a></li>
-<li><a href="#org373ecb5">General function definitions</a>
+<li><a href="#orgbb9d4e3">Setup</a></li>
+<li><a href="#org5002d0e">Read data</a></li>
+<li><a href="#orga23c27b">General function definitions</a>
 <ul>
-<li><a href="#org282e3af">❖ Sequence generator</a></li>
-<li><a href="#orge645c0c">❖ Points</a></li>
-<li><a href="#org331dec0">Intersections</a></li>
-<li><a href="#org0f92f71">Filter vertical and horizontal lines</a></li>
+<li><a href="#org9302cae">❖ Sequence generator</a></li>
+<li><a href="#org4aa0eb3">❖ Points</a></li>
+<li><a href="#orga3d5524">Intersections</a></li>
+<li><a href="#orgc09c895">Filter vertical and horizontal lines</a></li>
 </ul>
 </li>
-<li><a href="#org849c65a">Part 1</a>
+<li><a href="#org62a2e4d">Part 1</a>
 <ul>
-<li><a href="#org7ae532e">Function definition</a></li>
-<li><a href="#org5e3a994">Test</a></li>
-<li><a href="#org74adb27">Solution</a></li>
+<li><a href="#orgbe07479">Function definition</a></li>
+<li><a href="#org53d8f59">Test</a></li>
+<li><a href="#orgc3c98d9">Solution</a></li>
 </ul>
 </li>
-<li><a href="#org8f98198">Part 2</a>
+<li><a href="#orgfd23ed7">Part 2</a>
 <ul>
-<li><a href="#orgedcaf9b">Function definition</a></li>
-<li><a href="#orgb93915b">Test</a></li>
-<li><a href="#orge527c0f">Solution</a></li>
+<li><a href="#orgcda7a4c">Function definition</a></li>
+<li><a href="#orgfe268da">Test</a></li>
+<li><a href="#org9466815">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6749804" class="outline-3">
-<h3 id="org6749804">Setup</h3>
-<div class="outline-text-3" id="text-org6749804">
+<div id="outline-container-orgbb9d4e3" class="outline-3">
+<h3 id="orgbb9d4e3">Setup</h3>
+<div class="outline-text-3" id="text-orgbb9d4e3">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day05'</span>
 </pre>
@@ -1466,9 +1466,9 @@ The winning sequence function is thus defined,
 </div>
 </div>
 
-<div id="outline-container-org5a4536e" class="outline-3">
-<h3 id="org5a4536e">Read data</h3>
-<div class="outline-text-3" id="text-org5a4536e">
+<div id="outline-container-org5002d0e" class="outline-3">
+<h3 id="org5002d0e">Read data</h3>
+<div class="outline-text-3" id="text-org5002d0e">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span><span style="color: #0000ff;">@</span>(rplc<span style="color: #0000ff;">&amp;</span>(<span style="color: #008000;">'-&gt;'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">',:'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">','</span><span style="color: #ff0000;">;</span><span style="color: #008000;">' '</span>)) readin
 </pre>
@@ -1481,13 +1481,13 @@ an \(N \times 2 \times 2\) matrix for \(N\) points (rows) in the file.
 </div>
 </div>
 
-<div id="outline-container-org373ecb5" class="outline-3">
-<h3 id="org373ecb5">General function definitions</h3>
-<div class="outline-text-3" id="text-org373ecb5">
+<div id="outline-container-orga23c27b" class="outline-3">
+<h3 id="orga23c27b">General function definitions</h3>
+<div class="outline-text-3" id="text-orga23c27b">
 </div>
-<div id="outline-container-org282e3af" class="outline-4">
-<h4 id="org282e3af">❖ Sequence generator</h4>
-<div class="outline-text-4" id="text-org282e3af">
+<div id="outline-container-org9302cae" class="outline-4">
+<h4 id="org9302cae">❖ Sequence generator</h4>
+<div class="outline-text-4" id="text-org9302cae">
 <p>
 Generate sequence in closed interval <code>(x, y)</code>,
 </p>
@@ -1527,9 +1527,9 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-orge645c0c" class="outline-4">
-<h4 id="orge645c0c">❖ Points</h4>
-<div class="outline-text-4" id="text-orge645c0c">
+<div id="outline-container-org4aa0eb3" class="outline-4">
+<h4 id="org4aa0eb3">❖ Points</h4>
+<div class="outline-text-4" id="text-org4aa0eb3">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Interpolate points across coordinate endpoints</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = N x 2 x 2 matrix of N points</span>
@@ -1566,9 +1566,9 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-org331dec0" class="outline-4">
-<h4 id="org331dec0">Intersections</h4>
-<div class="outline-text-4" id="text-org331dec0">
+<div id="outline-container-orga3d5524" class="outline-4">
+<h4 id="orga3d5524">Intersections</h4>
+<div class="outline-text-4" id="text-orga3d5524">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Count number of intersections between N lines</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = N x 2 x 2 matrix of N points</span>
@@ -1580,9 +1580,9 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-org0f92f71" class="outline-4">
-<h4 id="org0f92f71">Filter vertical and horizontal lines</h4>
-<div class="outline-text-4" id="text-org0f92f71">
+<div id="outline-container-orgc09c895" class="outline-4">
+<h4 id="orgc09c895">Filter vertical and horizontal lines</h4>
+<div class="outline-text-4" id="text-orgc09c895">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Filter coordinates of vertical and horizontal lines</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = N x 2 x 2 matrix of N points</span>
@@ -1594,13 +1594,13 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-org849c65a" class="outline-3">
-<h3 id="org849c65a">Part 1</h3>
-<div class="outline-text-3" id="text-org849c65a">
+<div id="outline-container-org62a2e4d" class="outline-3">
+<h3 id="org62a2e4d">Part 1</h3>
+<div class="outline-text-3" id="text-org62a2e4d">
 </div>
-<div id="outline-container-org7ae532e" class="outline-4">
-<h4 id="org7ae532e">Function definition</h4>
-<div class="outline-text-4" id="text-org7ae532e">
+<div id="outline-container-orgbe07479" class="outline-4">
+<h4 id="orgbe07479">Function definition</h4>
+<div class="outline-text-4" id="text-orgbe07479">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> 2<span style="color: #0000ff;">&amp;</span>intersect <span style="color: #0000ff;">@</span> filtvh
 </pre>
@@ -1608,9 +1608,9 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-org5e3a994" class="outline-4">
-<h4 id="org5e3a994">Test</h4>
-<div class="outline-text-4" id="text-org5e3a994">
+<div id="outline-container-org53d8f59" class="outline-4">
+<h4 id="org53d8f59">Test</h4>
+<div class="outline-text-4" id="text-org53d8f59">
 <div class="org-src-container">
 <pre class="src src-j">assert 5 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-05-example.txt'</span>
 </pre>
@@ -1618,9 +1618,9 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-org74adb27" class="outline-4">
-<h4 id="org74adb27">Solution</h4>
-<div class="outline-text-4" id="text-org74adb27">
+<div id="outline-container-orgc3c98d9" class="outline-4">
+<h4 id="orgc3c98d9">Solution</h4>
+<div class="outline-text-4" id="text-orgc3c98d9">
 <div class="org-src-container">
 <pre class="src src-j">assert 7473 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-05.txt'</span>
 </pre>
@@ -1629,13 +1629,13 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-org8f98198" class="outline-3">
-<h3 id="org8f98198">Part 2</h3>
-<div class="outline-text-3" id="text-org8f98198">
+<div id="outline-container-orgfd23ed7" class="outline-3">
+<h3 id="orgfd23ed7">Part 2</h3>
+<div class="outline-text-3" id="text-orgfd23ed7">
 </div>
-<div id="outline-container-orgedcaf9b" class="outline-4">
-<h4 id="orgedcaf9b">Function definition</h4>
-<div class="outline-text-4" id="text-orgedcaf9b">
+<div id="outline-container-orgcda7a4c" class="outline-4">
+<h4 id="orgcda7a4c">Function definition</h4>
+<div class="outline-text-4" id="text-orgcda7a4c">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> 2<span style="color: #0000ff;">&amp;</span>intersect
 </pre>
@@ -1643,9 +1643,9 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-orgb93915b" class="outline-4">
-<h4 id="orgb93915b">Test</h4>
-<div class="outline-text-4" id="text-orgb93915b">
+<div id="outline-container-orgfe268da" class="outline-4">
+<h4 id="orgfe268da">Test</h4>
+<div class="outline-text-4" id="text-orgfe268da">
 <div class="org-src-container">
 <pre class="src src-j">assert 12 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-05-example.txt'</span>
 </pre>
@@ -1653,9 +1653,9 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-orge527c0f" class="outline-4">
-<h4 id="orge527c0f">Solution</h4>
-<div class="outline-text-4" id="text-orge527c0f">
+<div id="outline-container-org9466815" class="outline-4">
+<h4 id="org9466815">Solution</h4>
+<div class="outline-text-4" id="text-org9466815">
 <div class="org-src-container">
 <pre class="src src-j">assert 24164 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-05.txt'</span>
 </pre>
@@ -1665,41 +1665,41 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-org6f82c57" class="outline-2">
-<h2 id="org6f82c57"><a href="https://adventofcode.com/2021/day/6">Day 06: Lanternfish</a></h2>
-<div class="outline-text-2" id="text-org6f82c57">
+<div id="outline-container-org85dea17" class="outline-2">
+<h2 id="org85dea17"><a href="https://adventofcode.com/2021/day/6">Day 06: Lanternfish</a></h2>
+<div class="outline-text-2" id="text-org85dea17">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge1da35a">Setup</a></li>
-<li><a href="#org4a20d7c">Read data</a></li>
-<li><a href="#org32a478c">General function definitions</a>
+<li><a href="#org51210d7">Setup</a></li>
+<li><a href="#orga0a1bbb">Read data</a></li>
+<li><a href="#org736017e">General function definitions</a>
 <ul>
-<li><a href="#org17b8037">Stochastic matrix</a></li>
-<li><a href="#org42cbe56">Matrix operations</a></li>
-<li><a href="#org0a550b2">Number of fish</a></li>
+<li><a href="#org1daca3c">Stochastic matrix</a></li>
+<li><a href="#org726df61">Matrix operations</a></li>
+<li><a href="#org80fae00">Number of fish</a></li>
 </ul>
 </li>
-<li><a href="#org3a82e6f">Part 1</a>
+<li><a href="#org15861de">Part 1</a>
 <ul>
-<li><a href="#orgeba142e">Function definition</a></li>
-<li><a href="#orga4f0849">Test</a></li>
-<li><a href="#orga8ef732">Solution</a></li>
+<li><a href="#org77a13ee">Function definition</a></li>
+<li><a href="#orgca6581f">Test</a></li>
+<li><a href="#orgc73d5d3">Solution</a></li>
 </ul>
 </li>
-<li><a href="#org1a5e391">Part 2</a>
+<li><a href="#org65d6453">Part 2</a>
 <ul>
-<li><a href="#org01a28de">Function definition</a></li>
-<li><a href="#orga8b71f1">Test</a></li>
-<li><a href="#orgc7aab72">Solution</a></li>
+<li><a href="#orgd1a783e">Function definition</a></li>
+<li><a href="#orgf4b23ba">Test</a></li>
+<li><a href="#orga3e7c2b">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge1da35a" class="outline-3">
-<h3 id="orge1da35a">Setup</h3>
-<div class="outline-text-3" id="text-orge1da35a">
+<div id="outline-container-org51210d7" class="outline-3">
+<h3 id="org51210d7">Setup</h3>
+<div class="outline-text-3" id="text-org51210d7">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day06'</span>
 </pre>
@@ -1712,9 +1712,9 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-org4a20d7c" class="outline-3">
-<h3 id="org4a20d7c">Read data</h3>
-<div class="outline-text-3" id="text-org4a20d7c">
+<div id="outline-container-orga0a1bbb" class="outline-3">
+<h3 id="orga0a1bbb">Read data</h3>
+<div class="outline-text-3" id="text-orga0a1bbb">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">".</span> readin
 </pre>
@@ -1722,13 +1722,13 @@ Of course this only works for horizontal, vertical and 45<sup>o</sup> diagonal l
 </div>
 </div>
 
-<div id="outline-container-org32a478c" class="outline-3">
-<h3 id="org32a478c">General function definitions</h3>
-<div class="outline-text-3" id="text-org32a478c">
+<div id="outline-container-org736017e" class="outline-3">
+<h3 id="org736017e">General function definitions</h3>
+<div class="outline-text-3" id="text-org736017e">
 </div>
-<div id="outline-container-org17b8037" class="outline-4">
-<h4 id="org17b8037">Stochastic matrix</h4>
-<div class="outline-text-4" id="text-org17b8037">
+<div id="outline-container-org1daca3c" class="outline-4">
+<h4 id="org1daca3c">Stochastic matrix</h4>
+<div class="outline-text-4" id="text-org1daca3c">
 <p>
 This class of problems is most easily solved using a <a href="https://en.wikipedia.org/wiki/Stochastic_matrix">stochastic matrix</a>. The function below defines a stochastic matrix per conditions of the problem,
 </p>
@@ -1759,9 +1759,9 @@ This class of problems is most easily solved using a <a href="https://en.wikiped
 </div>
 </div>
 
-<div id="outline-container-org42cbe56" class="outline-4">
-<h4 id="org42cbe56">Matrix operations</h4>
-<div class="outline-text-4" id="text-org42cbe56">
+<div id="outline-container-org726df61" class="outline-4">
+<h4 id="org726df61">Matrix operations</h4>
+<div class="outline-text-4" id="text-org726df61">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Matrix product</span>
 <span style="color: #BA36A5;">mp</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #00ff00;">.</span> <span style="color: #ff0000;">*</span>
@@ -1777,9 +1777,9 @@ This class of problems is most easily solved using a <a href="https://en.wikiped
 </div>
 </div>
 
-<div id="outline-container-org0a550b2" class="outline-4">
-<h4 id="org0a550b2">Number of fish</h4>
-<div class="outline-text-4" id="text-org0a550b2">
+<div id="outline-container-org80fae00" class="outline-4">
+<h4 id="org80fae00">Number of fish</h4>
+<div class="outline-text-4" id="text-org80fae00">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Count number of fish after N generations</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = input/start state</span>
@@ -1801,13 +1801,13 @@ Reading from right to left, <code>nfish</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org3a82e6f" class="outline-3">
-<h3 id="org3a82e6f">Part 1</h3>
-<div class="outline-text-3" id="text-org3a82e6f">
+<div id="outline-container-org15861de" class="outline-3">
+<h3 id="org15861de">Part 1</h3>
+<div class="outline-text-3" id="text-org15861de">
 </div>
-<div id="outline-container-orgeba142e" class="outline-4">
-<h4 id="orgeba142e">Function definition</h4>
-<div class="outline-text-4" id="text-orgeba142e">
+<div id="outline-container-org77a13ee" class="outline-4">
+<h4 id="org77a13ee">Function definition</h4>
+<div class="outline-text-4" id="text-org77a13ee">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> nfish
 </pre>
@@ -1815,9 +1815,9 @@ Reading from right to left, <code>nfish</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orga4f0849" class="outline-4">
-<h4 id="orga4f0849">Test</h4>
-<div class="outline-text-4" id="text-orga4f0849">
+<div id="outline-container-orgca6581f" class="outline-4">
+<h4 id="orgca6581f">Test</h4>
+<div class="outline-text-4" id="text-orgca6581f">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-06-example.txt'</span>
 assert 26 <span style="color: #ff0000;">=</span> inx part1 18 
@@ -1827,9 +1827,9 @@ assert 5934 <span style="color: #ff0000;">=</span> inx part1 80
 </div>
 </div>
 
-<div id="outline-container-orga8ef732" class="outline-4">
-<h4 id="orga8ef732">Solution</h4>
-<div class="outline-text-4" id="text-orga8ef732">
+<div id="outline-container-orgc73d5d3" class="outline-4">
+<h4 id="orgc73d5d3">Solution</h4>
+<div class="outline-text-4" id="text-orgc73d5d3">
 <div class="org-src-container">
 <pre class="src src-j">assert 360761 <span style="color: #ff0000;">=</span> 80 part1<span style="color: #00ff00;">~</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-06.txt'</span>
 </pre>
@@ -1838,13 +1838,13 @@ assert 5934 <span style="color: #ff0000;">=</span> inx part1 80
 </div>
 </div>
 
-<div id="outline-container-org1a5e391" class="outline-3">
-<h3 id="org1a5e391">Part 2</h3>
-<div class="outline-text-3" id="text-org1a5e391">
+<div id="outline-container-org65d6453" class="outline-3">
+<h3 id="org65d6453">Part 2</h3>
+<div class="outline-text-3" id="text-org65d6453">
 </div>
-<div id="outline-container-org01a28de" class="outline-4">
-<h4 id="org01a28de">Function definition</h4>
-<div class="outline-text-4" id="text-org01a28de">
+<div id="outline-container-orgd1a783e" class="outline-4">
+<h4 id="orgd1a783e">Function definition</h4>
+<div class="outline-text-4" id="text-orgd1a783e">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> nfish
 </pre>
@@ -1852,9 +1852,9 @@ assert 5934 <span style="color: #ff0000;">=</span> inx part1 80
 </div>
 </div>
 
-<div id="outline-container-orga8b71f1" class="outline-4">
-<h4 id="orga8b71f1">Test</h4>
-<div class="outline-text-4" id="text-orga8b71f1">
+<div id="outline-container-orgf4b23ba" class="outline-4">
+<h4 id="orgf4b23ba">Test</h4>
+<div class="outline-text-4" id="text-orgf4b23ba">
 <div class="org-src-container">
 <pre class="src src-j">assert 26984457539 <span style="color: #ff0000;">=</span> 256 part1<span style="color: #00ff00;">~</span> <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-06-example.txt'</span>
 </pre>
@@ -1862,9 +1862,9 @@ assert 5934 <span style="color: #ff0000;">=</span> inx part1 80
 </div>
 </div>
 
-<div id="outline-container-orgc7aab72" class="outline-4">
-<h4 id="orgc7aab72">Solution</h4>
-<div class="outline-text-4" id="text-orgc7aab72">
+<div id="outline-container-orga3e7c2b" class="outline-4">
+<h4 id="orga3e7c2b">Solution</h4>
+<div class="outline-text-4" id="text-orga3e7c2b">
 <div class="org-src-container">
 <pre class="src src-j">assert 1632779838045 <span style="color: #ff0000;">=</span> 256 part2<span style="color: #00ff00;">~</span> <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-06.txt'</span>
 </pre>
@@ -1874,34 +1874,34 @@ assert 5934 <span style="color: #ff0000;">=</span> inx part1 80
 </div>
 </div>
 
-<div id="outline-container-orgb4627d2" class="outline-2">
-<h2 id="orgb4627d2"><a href="https://adventofcode.com/2021/day/7">Day 07: The Treachery of Whales</a></h2>
-<div class="outline-text-2" id="text-orgb4627d2">
+<div id="outline-container-org1a02518" class="outline-2">
+<h2 id="org1a02518"><a href="https://adventofcode.com/2021/day/7">Day 07: The Treachery of Whales</a></h2>
+<div class="outline-text-2" id="text-org1a02518">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org33b634a">Setup</a></li>
-<li><a href="#orga8759da">Read data</a></li>
-<li><a href="#org38b533c">Part 1</a>
+<li><a href="#org04184b6">Setup</a></li>
+<li><a href="#org177ece9">Read data</a></li>
+<li><a href="#org85e8e8c">Part 1</a>
 <ul>
-<li><a href="#orge2a9607">Function definition</a></li>
-<li><a href="#org19e2e4b">Test</a></li>
-<li><a href="#org26460cb">Solution</a></li>
+<li><a href="#org305bb0f">Function definition</a></li>
+<li><a href="#orgb6f20a1">Test</a></li>
+<li><a href="#org327e422">Solution</a></li>
 </ul>
 </li>
-<li><a href="#orge2d40de">Part 2</a>
+<li><a href="#org7d1fac7">Part 2</a>
 <ul>
-<li><a href="#orga368703">Function definition</a></li>
-<li><a href="#orgb9678fb">Test</a></li>
-<li><a href="#org6767067">Solution</a></li>
+<li><a href="#orgd70fbac">Function definition</a></li>
+<li><a href="#org50c53da">Test</a></li>
+<li><a href="#orgc606b43">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org33b634a" class="outline-3">
-<h3 id="org33b634a">Setup</h3>
-<div class="outline-text-3" id="text-org33b634a">
+<div id="outline-container-org04184b6" class="outline-3">
+<h3 id="org04184b6">Setup</h3>
+<div class="outline-text-3" id="text-org04184b6">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day07'</span>
 </pre>
@@ -1915,9 +1915,9 @@ load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'uti
 </div>
 </div>
 
-<div id="outline-container-orga8759da" class="outline-3">
-<h3 id="orga8759da">Read data</h3>
-<div class="outline-text-3" id="text-orga8759da">
+<div id="outline-container-org177ece9" class="outline-3">
+<h3 id="org177ece9">Read data</h3>
+<div class="outline-text-3" id="text-org177ece9">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">".</span> readin
 </pre>
@@ -1925,13 +1925,13 @@ load <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'uti
 </div>
 </div>
 
-<div id="outline-container-org38b533c" class="outline-3">
-<h3 id="org38b533c">Part 1</h3>
-<div class="outline-text-3" id="text-org38b533c">
+<div id="outline-container-org85e8e8c" class="outline-3">
+<h3 id="org85e8e8c">Part 1</h3>
+<div class="outline-text-3" id="text-org85e8e8c">
 </div>
-<div id="outline-container-orge2a9607" class="outline-4">
-<h4 id="orge2a9607">Function definition</h4>
-<div class="outline-text-4" id="text-orge2a9607">
+<div id="outline-container-org305bb0f" class="outline-4">
+<h4 id="org305bb0f">Function definition</h4>
+<div class="outline-text-4" id="text-org305bb0f">
 <p>
 See this <a href="https://math.stackexchange.com/questions/318381/on-a-1-d-line-the-point-that-minimizes-the-sum-of-the-distances-is-the-median">stackexchange</a> question for the explanation of why median minimizes the distance on a 1-D line. 
 </p>
@@ -1943,9 +1943,9 @@ See this <a href="https://math.stackexchange.com/questions/318381/on-a-1-d-line-
 </div>
 </div>
 
-<div id="outline-container-org19e2e4b" class="outline-4">
-<h4 id="org19e2e4b">Test</h4>
-<div class="outline-text-4" id="text-org19e2e4b">
+<div id="outline-container-orgb6f20a1" class="outline-4">
+<h4 id="orgb6f20a1">Test</h4>
+<div class="outline-text-4" id="text-orgb6f20a1">
 <div class="org-src-container">
 <pre class="src src-j">assert 37 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-07-example.txt'</span>
 </pre>
@@ -1953,9 +1953,9 @@ See this <a href="https://math.stackexchange.com/questions/318381/on-a-1-d-line-
 </div>
 </div>
 
-<div id="outline-container-org26460cb" class="outline-4">
-<h4 id="org26460cb">Solution</h4>
-<div class="outline-text-4" id="text-org26460cb">
+<div id="outline-container-org327e422" class="outline-4">
+<h4 id="org327e422">Solution</h4>
+<div class="outline-text-4" id="text-org327e422">
 <div class="org-src-container">
 <pre class="src src-j">assert 329389 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-07.txt'</span>
 </pre>
@@ -1964,13 +1964,13 @@ See this <a href="https://math.stackexchange.com/questions/318381/on-a-1-d-line-
 </div>
 </div>
 
-<div id="outline-container-orge2d40de" class="outline-3">
-<h3 id="orge2d40de">Part 2</h3>
-<div class="outline-text-3" id="text-orge2d40de">
+<div id="outline-container-org7d1fac7" class="outline-3">
+<h3 id="org7d1fac7">Part 2</h3>
+<div class="outline-text-3" id="text-org7d1fac7">
 </div>
-<div id="outline-container-orga368703" class="outline-4">
-<h4 id="orga368703">Function definition</h4>
-<div class="outline-text-4" id="text-orga368703">
+<div id="outline-container-orgd70fbac" class="outline-4">
+<h4 id="orgd70fbac">Function definition</h4>
+<div class="outline-text-4" id="text-orgd70fbac">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">x:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #ff0000;">-:</span><span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">&gt;:</span> <span style="color: #ff0000;">*</span> <span style="color: #ff0000;">]</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">]</span> <span style="color: #ff0000;">|</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">-</span> <span style="color: #ff0000;">&lt;.</span><span style="color: #0000ff;">@</span>mean)
 </pre>
@@ -1995,9 +1995,9 @@ Reading from right to left, this works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgb9678fb" class="outline-4">
-<h4 id="orgb9678fb">Test</h4>
-<div class="outline-text-4" id="text-orgb9678fb">
+<div id="outline-container-org50c53da" class="outline-4">
+<h4 id="org50c53da">Test</h4>
+<div class="outline-text-4" id="text-org50c53da">
 <div class="org-src-container">
 <pre class="src src-j">assert 170 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-07-example.txt'</span>
 </pre>
@@ -2005,9 +2005,9 @@ Reading from right to left, this works as follows,
 </div>
 </div>
 
-<div id="outline-container-org6767067" class="outline-4">
-<h4 id="org6767067">Solution</h4>
-<div class="outline-text-4" id="text-org6767067">
+<div id="outline-container-orgc606b43" class="outline-4">
+<h4 id="orgc606b43">Solution</h4>
+<div class="outline-text-4" id="text-orgc606b43">
 <div class="org-src-container">
 <pre class="src src-j">assert 86397080 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-07.txt'</span>
 </pre>
@@ -2017,35 +2017,35 @@ Reading from right to left, this works as follows,
 </div>
 </div>
 
-<div id="outline-container-org920ad20" class="outline-2">
-<h2 id="org920ad20"><a href="https://adventofcode.com/2021/day/8">Day 08: Seven Segment Search</a></h2>
-<div class="outline-text-2" id="text-org920ad20">
+<div id="outline-container-orgcc5268a" class="outline-2">
+<h2 id="orgcc5268a"><a href="https://adventofcode.com/2021/day/8">Day 08: Seven Segment Search</a></h2>
+<div class="outline-text-2" id="text-orgcc5268a">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5ac0c0b">Setup</a></li>
-<li><a href="#orgd1d48d8">Read data</a></li>
-<li><a href="#org61b67b2">Part 1</a>
+<li><a href="#orgdadb945">Setup</a></li>
+<li><a href="#orgc2c0523">Read data</a></li>
+<li><a href="#org6f67d7e">Part 1</a>
 <ul>
-<li><a href="#orgfbcaeaf">Function definitions</a></li>
-<li><a href="#org7276314">Test</a></li>
-<li><a href="#org7276862">Solution</a></li>
+<li><a href="#org022f09c">Function definitions</a></li>
+<li><a href="#org550ad92">Test</a></li>
+<li><a href="#org1b89a75">Solution</a></li>
 </ul>
 </li>
-<li><a href="#orgd84da90">Part 2</a>
+<li><a href="#org666a1ed">Part 2</a>
 <ul>
-<li><a href="#org772366f">Unique identifiers</a></li>
-<li><a href="#orgf0396b5">Function definitions</a></li>
-<li><a href="#orgc33a454">Test</a></li>
-<li><a href="#org9d32523">Solution</a></li>
+<li><a href="#orgfcbde97">Unique identifiers</a></li>
+<li><a href="#org72c4190">Function definitions</a></li>
+<li><a href="#orgb84b662">Test</a></li>
+<li><a href="#org90291d5">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5ac0c0b" class="outline-3">
-<h3 id="org5ac0c0b">Setup</h3>
-<div class="outline-text-3" id="text-org5ac0c0b">
+<div id="outline-container-orgdadb945" class="outline-3">
+<h3 id="orgdadb945">Setup</h3>
+<div class="outline-text-3" id="text-orgdadb945">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day08'</span>
 </pre>
@@ -2058,9 +2058,9 @@ Reading from right to left, this works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgd1d48d8" class="outline-3">
-<h3 id="orgd1d48d8">Read data</h3>
-<div class="outline-text-3" id="text-orgd1d48d8">
+<div id="outline-container-orgc2c0523" class="outline-3">
+<h3 id="orgc2c0523">Read data</h3>
+<div class="outline-text-3" id="text-orgc2c0523">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">/:</span><span style="color: #00ff00;">~</span><span style="color: #0000ff;">&amp;.</span><span style="color: #ff0000;">&gt;</span> <span style="color: #ff0000;">;:</span> readin
 </pre>
@@ -2072,13 +2072,13 @@ To simplify the solution, the random-ordered entries are sorted alphabetically.
 </div>
 </div>
 
-<div id="outline-container-org61b67b2" class="outline-3">
-<h3 id="org61b67b2">Part 1</h3>
-<div class="outline-text-3" id="text-org61b67b2">
+<div id="outline-container-org6f67d7e" class="outline-3">
+<h3 id="org6f67d7e">Part 1</h3>
+<div class="outline-text-3" id="text-org6f67d7e">
 </div>
-<div id="outline-container-orgfbcaeaf" class="outline-4">
-<h4 id="orgfbcaeaf">Function definitions</h4>
-<div class="outline-text-4" id="text-orgfbcaeaf">
+<div id="outline-container-org022f09c" class="outline-4">
+<h4 id="org022f09c">Function definitions</h4>
+<div class="outline-text-4" id="text-org022f09c">
 <p>
 This solution is from <a href="https://github.com/jitwit/aoc/blob/a/J/21/08.ijs">jitwit</a>.
 </p>
@@ -2110,9 +2110,9 @@ Reading from right to left, <code>ndiglen</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org7276314" class="outline-4">
-<h4 id="org7276314">Test</h4>
-<div class="outline-text-4" id="text-org7276314">
+<div id="outline-container-org550ad92" class="outline-4">
+<h4 id="org550ad92">Test</h4>
+<div class="outline-text-4" id="text-org550ad92">
 <div class="org-src-container">
 <pre class="src src-j">assert 26 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-08-example.txt'</span>
 </pre>
@@ -2120,9 +2120,9 @@ Reading from right to left, <code>ndiglen</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org7276862" class="outline-4">
-<h4 id="org7276862">Solution</h4>
-<div class="outline-text-4" id="text-org7276862">
+<div id="outline-container-org1b89a75" class="outline-4">
+<h4 id="org1b89a75">Solution</h4>
+<div class="outline-text-4" id="text-org1b89a75">
 <div class="org-src-container">
 <pre class="src src-j">assert 284 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-08.txt'</span>
 </pre>
@@ -2131,13 +2131,13 @@ Reading from right to left, <code>ndiglen</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgd84da90" class="outline-3">
-<h3 id="orgd84da90">Part 2</h3>
-<div class="outline-text-3" id="text-orgd84da90">
+<div id="outline-container-org666a1ed" class="outline-3">
+<h3 id="org666a1ed">Part 2</h3>
+<div class="outline-text-3" id="text-org666a1ed">
 </div>
-<div id="outline-container-org772366f" class="outline-4">
-<h4 id="org772366f">Unique identifiers</h4>
-<div class="outline-text-4" id="text-org772366f">
+<div id="outline-container-orgfcbde97" class="outline-4">
+<h4 id="orgfcbde97">Unique identifiers</h4>
+<div class="outline-text-4" id="text-orgfcbde97">
 <p>
 Based on logic from: <a href="https://github.com/jitwit/aoc/blob/a/J/21/08.ijs">https://github.com/jitwit/aoc/blob/a/J/21/08.ijs</a>.
 </p>
@@ -2169,13 +2169,13 @@ The first column is length. Second and third columns are intersections with 1 an
 </div>
 </div>
 
-<div id="outline-container-orgf0396b5" class="outline-4">
-<h4 id="orgf0396b5">Function definitions</h4>
-<div class="outline-text-4" id="text-orgf0396b5">
+<div id="outline-container-org72c4190" class="outline-4">
+<h4 id="org72c4190">Function definitions</h4>
+<div class="outline-text-4" id="text-org72c4190">
 </div>
-<div id="outline-container-orgeb558d8" class="outline-5">
-<h5 id="orgeb558d8">Get identifiers</h5>
-<div class="outline-text-5" id="text-orgeb558d8">
+<div id="outline-container-orgb3b29ca" class="outline-5">
+<h5 id="orgb3b29ca">Get identifiers</h5>
+<div class="outline-text-5" id="text-orgb3b29ca">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Get identifiers of output x based on encodings in y</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = boxed list of outputs</span>
@@ -2243,9 +2243,9 @@ Reading from right to left, <code>getids</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org6173b74" class="outline-5">
-<h5 id="org6173b74">Decode</h5>
-<div class="outline-text-5" id="text-org6173b74">
+<div id="outline-container-org54025ac" class="outline-5">
+<h5 id="org54025ac">Decode</h5>
+<div class="outline-text-5" id="text-org54025ac">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Return decimal number of output in y</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = encodings (first 10 columns) and outputs to decode (last four columns)</span>
@@ -2268,9 +2268,9 @@ Reading from right to left, <code>decode</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org45e3c88" class="outline-5">
-<h5 id="org45e3c88">Total</h5>
-<div class="outline-text-5" id="text-org45e3c88">
+<div id="outline-container-org7c854bc" class="outline-5">
+<h5 id="org7c854bc">Total</h5>
+<div class="outline-text-5" id="text-org7c854bc">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> (tbluids decode <span style="color: #ff0000;">]</span>)<span style="color: #0000ff;">"</span>1
 </pre>
@@ -2279,9 +2279,9 @@ Reading from right to left, <code>decode</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgc33a454" class="outline-4">
-<h4 id="orgc33a454">Test</h4>
-<div class="outline-text-4" id="text-orgc33a454">
+<div id="outline-container-orgb84b662" class="outline-4">
+<h4 id="orgb84b662">Test</h4>
+<div class="outline-text-4" id="text-orgb84b662">
 <div class="org-src-container">
 <pre class="src src-j">assert 61229 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-08-example.txt'</span>
 </pre>
@@ -2289,9 +2289,9 @@ Reading from right to left, <code>decode</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org9d32523" class="outline-4">
-<h4 id="org9d32523">Solution</h4>
-<div class="outline-text-4" id="text-org9d32523">
+<div id="outline-container-org90291d5" class="outline-4">
+<h4 id="org90291d5">Solution</h4>
+<div class="outline-text-4" id="text-org90291d5">
 <div class="org-src-container">
 <pre class="src src-j">assert 973499 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-08.txt'</span>
 </pre>
@@ -2301,34 +2301,34 @@ Reading from right to left, <code>decode</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org954af46" class="outline-2">
-<h2 id="org954af46"><a href="https://adventofcode.com/2021/day/9">Day 09: Smoke Basin</a></h2>
-<div class="outline-text-2" id="text-org954af46">
+<div id="outline-container-orgcf99a48" class="outline-2">
+<h2 id="orgcf99a48"><a href="https://adventofcode.com/2021/day/9">Day 09: Smoke Basin</a></h2>
+<div class="outline-text-2" id="text-orgcf99a48">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3ea2b80">Setup</a></li>
-<li><a href="#org0f6ffd1">Read data</a></li>
-<li><a href="#org37b755f">Part 1</a>
+<li><a href="#org8a44a38">Setup</a></li>
+<li><a href="#orgbba74df">Read data</a></li>
+<li><a href="#org3d81ca8">Part 1</a>
 <ul>
-<li><a href="#org34b6d2e">Function definitions</a></li>
-<li><a href="#org12d1d02">Test</a></li>
-<li><a href="#org7b93333">Solution</a></li>
+<li><a href="#org662f0a3">Function definitions</a></li>
+<li><a href="#org20e5865">Test</a></li>
+<li><a href="#org3dea933">Solution</a></li>
 </ul>
 </li>
-<li><a href="#orgbb2c280">Part 2</a>
+<li><a href="#orgd1a6da2">Part 2</a>
 <ul>
-<li><a href="#org368f220">Function definitions</a></li>
-<li><a href="#orga4bb00b">Test</a></li>
-<li><a href="#orge60830e">Solution</a></li>
+<li><a href="#orgb7ef91e">Function definitions</a></li>
+<li><a href="#org393a2d0">Test</a></li>
+<li><a href="#orgf0d49e1">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3ea2b80" class="outline-3">
-<h3 id="org3ea2b80">Setup</h3>
-<div class="outline-text-3" id="text-org3ea2b80">
+<div id="outline-container-org8a44a38" class="outline-3">
+<h3 id="org8a44a38">Setup</h3>
+<div class="outline-text-3" id="text-org8a44a38">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day09'</span>
 </pre>
@@ -2341,9 +2341,9 @@ Reading from right to left, <code>decode</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org0f6ffd1" class="outline-3">
-<h3 id="org0f6ffd1">Read data</h3>
-<div class="outline-text-3" id="text-org0f6ffd1">
+<div id="outline-container-orgbba74df" class="outline-3">
+<h3 id="orgbba74df">Read data</h3>
+<div class="outline-text-3" id="text-orgbba74df">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span><span style="color: #0000ff;">"</span>0 readin
 </pre>
@@ -2351,21 +2351,21 @@ Reading from right to left, <code>decode</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org37b755f" class="outline-3">
-<h3 id="org37b755f">Part 1</h3>
-<div class="outline-text-3" id="text-org37b755f">
+<div id="outline-container-org3d81ca8" class="outline-3">
+<h3 id="org3d81ca8">Part 1</h3>
+<div class="outline-text-3" id="text-org3d81ca8">
 </div>
-<div id="outline-container-org34b6d2e" class="outline-4">
-<h4 id="org34b6d2e">Function definitions</h4>
-<div class="outline-text-4" id="text-org34b6d2e">
+<div id="outline-container-org662f0a3" class="outline-4">
+<h4 id="org662f0a3">Function definitions</h4>
+<div class="outline-text-4" id="text-org662f0a3">
 <p>
 This solution follows the approach in <a href="https://www.jsoftware.com/help/learning/31.htm">Golden Rule Example 2: Conway&rsquo;s &ldquo;Life&rdquo;</a>,
 </p>
 </div>
 
-<div id="outline-container-org198497f" class="outline-5">
-<h5 id="org198497f">Low points</h5>
-<div class="outline-text-5" id="text-org198497f">
+<div id="outline-container-orgbf894fb" class="outline-5">
+<h5 id="orgbf894fb">Low points</h5>
+<div class="outline-text-5" id="text-orgbf894fb">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Find low points in matrix y</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Low points = locations that are lower than any of </span>
@@ -2389,9 +2389,9 @@ This solution follows the approach in <a href="https://www.jsoftware.com/help/le
 </div>
 </div>
 
-<div id="outline-container-org17049cb" class="outline-5">
-<h5 id="org17049cb">Risk level</h5>
-<div class="outline-text-5" id="text-org17049cb">
+<div id="outline-container-orgbc83e17" class="outline-5">
+<h5 id="orgbc83e17">Risk level</h5>
+<div class="outline-text-5" id="text-orgbc83e17">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">,</span> <span style="color: #ff0000;">&gt;:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">]</span> <span style="color: #ff0000;">*</span> lowpoints
 </pre>
@@ -2400,9 +2400,9 @@ This solution follows the approach in <a href="https://www.jsoftware.com/help/le
 </div>
 </div>
 
-<div id="outline-container-org12d1d02" class="outline-4">
-<h4 id="org12d1d02">Test</h4>
-<div class="outline-text-4" id="text-org12d1d02">
+<div id="outline-container-org20e5865" class="outline-4">
+<h4 id="org20e5865">Test</h4>
+<div class="outline-text-4" id="text-org20e5865">
 <div class="org-src-container">
 <pre class="src src-j">assert 15 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-09-example.txt'</span>
 </pre>
@@ -2410,9 +2410,9 @@ This solution follows the approach in <a href="https://www.jsoftware.com/help/le
 </div>
 </div>
 
-<div id="outline-container-org7b93333" class="outline-4">
-<h4 id="org7b93333">Solution</h4>
-<div class="outline-text-4" id="text-org7b93333">
+<div id="outline-container-org3dea933" class="outline-4">
+<h4 id="org3dea933">Solution</h4>
+<div class="outline-text-4" id="text-org3dea933">
 <div class="org-src-container">
 <pre class="src src-j">assert 548 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-09.txt'</span>
 </pre>
@@ -2421,17 +2421,17 @@ This solution follows the approach in <a href="https://www.jsoftware.com/help/le
 </div>
 </div>
 
-<div id="outline-container-orgbb2c280" class="outline-3">
-<h3 id="orgbb2c280">Part 2</h3>
-<div class="outline-text-3" id="text-orgbb2c280">
+<div id="outline-container-orgd1a6da2" class="outline-3">
+<h3 id="orgd1a6da2">Part 2</h3>
+<div class="outline-text-3" id="text-orgd1a6da2">
 </div>
-<div id="outline-container-org368f220" class="outline-4">
-<h4 id="org368f220">Function definitions</h4>
-<div class="outline-text-4" id="text-org368f220">
+<div id="outline-container-orgb7ef91e" class="outline-4">
+<h4 id="orgb7ef91e">Function definitions</h4>
+<div class="outline-text-4" id="text-orgb7ef91e">
 </div>
-<div id="outline-container-orge016955" class="outline-5">
-<h5 id="orge016955">Find adjacent regions</h5>
-<div class="outline-text-5" id="text-orge016955">
+<div id="outline-container-org3bd0535" class="outline-5">
+<h5 id="org3bd0535">Find adjacent regions</h5>
+<div class="outline-text-5" id="text-org3bd0535">
 <p>
 The problem is greatly simplified by using <code>findadj</code> from the <a href="http://www.jsoftware.com/pipermail/general/2005-August/023886.html">Jforum</a>.
 </p>
@@ -2456,9 +2456,9 @@ The problem is greatly simplified by using <code>findadj</code> from the <a href
 </div>
 </div>
 
-<div id="outline-container-orgb000fe8" class="outline-5">
-<h5 id="orgb000fe8">Basin sizes</h5>
-<div class="outline-text-5" id="text-orgb000fe8">
+<div id="outline-container-orgbd92082" class="outline-5">
+<h5 id="orgbd92082">Basin sizes</h5>
+<div class="outline-text-5" id="text-orgbd92082">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Basin sizes in descending order</span>
 <span style="color: #BA36A5;">bsizes</span><span style="color: #000000;">=:</span> (<span style="color: #ff0000;">\:</span><span style="color: #00ff00;">~</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">#</span><span style="color: #00ff00;">/.~</span>)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">]</span> <span style="color: #ff0000;">#</span><span style="color: #00ff00;">~</span> 0 <span style="color: #ff0000;">~:</span> <span style="color: #ff0000;">]</span>) <span style="color: #ff0000;">,</span><span style="color: #0000ff;">@</span>findadj<span style="color: #0000ff;">@</span>(9<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">~:</span>)
@@ -2513,9 +2513,9 @@ Reading from right to left, <code>bsizes</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgce092c0" class="outline-5">
-<h5 id="orgce092c0">Three largest basins</h5>
-<div class="outline-text-5" id="text-orgce092c0">
+<div id="outline-container-org0f9901e" class="outline-5">
+<h5 id="org0f9901e">Three largest basins</h5>
+<div class="outline-text-5" id="text-org0f9901e">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">*</span><span style="color: #00ff00;">/</span> 3<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">{.</span> bsizes
 </pre>
@@ -2524,9 +2524,9 @@ Reading from right to left, <code>bsizes</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orga4bb00b" class="outline-4">
-<h4 id="orga4bb00b">Test</h4>
-<div class="outline-text-4" id="text-orga4bb00b">
+<div id="outline-container-org393a2d0" class="outline-4">
+<h4 id="org393a2d0">Test</h4>
+<div class="outline-text-4" id="text-org393a2d0">
 <div class="org-src-container">
 <pre class="src src-j">assert 1134 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-09-example.txt'</span>
 </pre>
@@ -2534,9 +2534,9 @@ Reading from right to left, <code>bsizes</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orge60830e" class="outline-4">
-<h4 id="orge60830e">Solution</h4>
-<div class="outline-text-4" id="text-orge60830e">
+<div id="outline-container-orgf0d49e1" class="outline-4">
+<h4 id="orgf0d49e1">Solution</h4>
+<div class="outline-text-4" id="text-orgf0d49e1">
 <div class="org-src-container">
 <pre class="src src-j">assert 786048 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-09.txt'</span>
 </pre>
@@ -2546,38 +2546,38 @@ Reading from right to left, <code>bsizes</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgf7109aa" class="outline-2">
-<h2 id="orgf7109aa"><a href="https://adventofcode.com/2021/day/10">Day 10: Syntax Scoring</a></h2>
-<div class="outline-text-2" id="text-orgf7109aa">
+<div id="outline-container-org0f1022d" class="outline-2">
+<h2 id="org0f1022d"><a href="https://adventofcode.com/2021/day/10">Day 10: Syntax Scoring</a></h2>
+<div class="outline-text-2" id="text-org0f1022d">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org50bd47d">Setup</a></li>
-<li><a href="#orgde12c01">General function definitions</a>
+<li><a href="#org183cf48">Setup</a></li>
+<li><a href="#org924f076">General function definitions</a>
 <ul>
-<li><a href="#org8462530">Read data</a></li>
+<li><a href="#orgf82839d">Read data</a></li>
 </ul>
 </li>
-<li><a href="#orgbd5306c">Part 1</a>
+<li><a href="#org2324736">Part 1</a>
 <ul>
-<li><a href="#orgbd653de">Function definitions</a></li>
-<li><a href="#org92aa2dc">Test</a></li>
-<li><a href="#org1234173">Solution</a></li>
+<li><a href="#orgbd05722">Function definitions</a></li>
+<li><a href="#org00c9b9d">Test</a></li>
+<li><a href="#org3e2f622">Solution</a></li>
 </ul>
 </li>
-<li><a href="#orgc8ea6ab">Part 2</a>
+<li><a href="#org44359b2">Part 2</a>
 <ul>
-<li><a href="#org64efd47">Function definition</a></li>
-<li><a href="#orga800331">Test</a></li>
-<li><a href="#org93389fd">Solution</a></li>
+<li><a href="#orgfdcc831">Function definition</a></li>
+<li><a href="#org80ec8fc">Test</a></li>
+<li><a href="#org9d8cb8f">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org50bd47d" class="outline-3">
-<h3 id="org50bd47d">Setup</h3>
-<div class="outline-text-3" id="text-org50bd47d">
+<div id="outline-container-org183cf48" class="outline-3">
+<h3 id="org183cf48">Setup</h3>
+<div class="outline-text-3" id="text-org183cf48">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day10'</span>
 </pre>
@@ -2590,13 +2590,13 @@ Reading from right to left, <code>bsizes</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgde12c01" class="outline-3">
-<h3 id="orgde12c01">General function definitions</h3>
-<div class="outline-text-3" id="text-orgde12c01">
+<div id="outline-container-org924f076" class="outline-3">
+<h3 id="org924f076">General function definitions</h3>
+<div class="outline-text-3" id="text-org924f076">
 </div>
-<div id="outline-container-org56ec945" class="outline-5">
-<h5 id="org56ec945">Pairs</h5>
-<div class="outline-text-5" id="text-org56ec945">
+<div id="outline-container-orgcbea82e" class="outline-5">
+<h5 id="orgcbea82e">Pairs</h5>
+<div class="outline-text-5" id="text-orgcbea82e">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">pairs</span><span style="color: #000000;">=:</span> _2 <span style="color: #ff0000;">[</span><span style="color: #00ff00;">\</span> <span style="color: #008000;">'()[]{}&lt;&gt;'</span>
 </pre>
@@ -2604,9 +2604,9 @@ Reading from right to left, <code>bsizes</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgcac0e84" class="outline-5">
-<h5 id="orgcac0e84">❖ Remove characters</h5>
-<div class="outline-text-5" id="text-orgcac0e84">
+<div id="outline-container-org788890e" class="outline-5">
+<h5 id="org788890e">❖ Remove characters</h5>
+<div class="outline-text-5" id="text-org788890e">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Replace characters with empty string</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input string</span>
@@ -2628,9 +2628,9 @@ Reading from right to left, <code>rmchars</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org728e49a" class="outline-5">
-<h5 id="org728e49a">Filter corrupt or incomplete entries</h5>
-<div class="outline-text-5" id="text-org728e49a">
+<div id="outline-container-orgeb3cd7b" class="outline-5">
+<h5 id="orgeb3cd7b">Filter corrupt or incomplete entries</h5>
+<div class="outline-text-5" id="text-orgeb3cd7b">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Filter corrupt or incomplete entries</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input with all pairs removed from each entry</span>
@@ -2650,9 +2650,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org8462530" class="outline-4">
-<h4 id="org8462530">Read data</h4>
-<div class="outline-text-4" id="text-org8462530">
+<div id="outline-container-orgf82839d" class="outline-4">
+<h4 id="orgf82839d">Read data</h4>
+<div class="outline-text-4" id="text-orgf82839d">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> ((<span style="color: #ff0000;">&lt;</span><span style="color: #0000ff;">"</span>1 pairs) rmchars <span style="color: #ff0000;">]</span>)<span style="color: #0000ff;">&amp;.</span><span style="color: #ff0000;">&gt;</span> <span style="color: #ff0000;">&lt;</span> readin
 </pre>
@@ -2661,17 +2661,17 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgbd5306c" class="outline-3">
-<h3 id="orgbd5306c">Part 1</h3>
-<div class="outline-text-3" id="text-orgbd5306c">
+<div id="outline-container-org2324736" class="outline-3">
+<h3 id="org2324736">Part 1</h3>
+<div class="outline-text-3" id="text-org2324736">
 </div>
-<div id="outline-container-orgbd653de" class="outline-4">
-<h4 id="orgbd653de">Function definitions</h4>
-<div class="outline-text-4" id="text-orgbd653de">
+<div id="outline-container-orgbd05722" class="outline-4">
+<h4 id="orgbd05722">Function definitions</h4>
+<div class="outline-text-4" id="text-orgbd05722">
 </div>
-<div id="outline-container-org204d015" class="outline-5">
-<h5 id="org204d015">Scores</h5>
-<div class="outline-text-5" id="text-org204d015">
+<div id="outline-container-org78c9372" class="outline-5">
+<h5 id="org78c9372">Scores</h5>
+<div class="outline-text-5" id="text-org78c9372">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Corrupt entry scores</span>
 <span style="color: #BA36A5;">corrscrs</span><span style="color: #000000;">=:</span>(<span style="color: #008000;">')'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'3'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">']'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'57'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'}'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'1197'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'&gt;'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'25137'</span>)
@@ -2680,9 +2680,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org3be4ab3" class="outline-5">
-<h5 id="org3be4ab3">First illegal character</h5>
-<div class="outline-text-5" id="text-org3be4ab3">
+<div id="outline-container-org5ff9ef5" class="outline-5">
+<h5 id="org5ff9ef5">First illegal character</h5>
+<div class="outline-text-5" id="text-org5ff9ef5">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Get first illegal (closing) character in entry</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = boxed character list (superset or subset of pairs)</span>
@@ -2692,9 +2692,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org463337d" class="outline-5">
-<h5 id="org463337d">Corrupt scores</h5>
-<div class="outline-text-5" id="text-org463337d">
+<div id="outline-container-org17946c1" class="outline-5">
+<h5 id="org17946c1">Corrupt scores</h5>
+<div class="outline-text-5" id="text-org17946c1">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Array with error scores for corrupt entries</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = boxed character list (superset or subset of pairs)</span>
@@ -2704,9 +2704,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgc02cfe8" class="outline-5">
-<h5 id="orgc02cfe8">Total syntax error score</h5>
-<div class="outline-text-5" id="text-orgc02cfe8">
+<div id="outline-container-orgee181b7" class="outline-5">
+<h5 id="orgee181b7">Total syntax error score</h5>
+<div class="outline-text-5" id="text-orgee181b7">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">+</span><span style="color: #00ff00;">/</span> <span style="color: #ff0000;">[:</span> corrupt<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&gt;</span> (1<span style="color: #ff0000;">:</span> filterr <span style="color: #ff0000;">]</span>)
 </pre>
@@ -2715,9 +2715,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org92aa2dc" class="outline-4">
-<h4 id="org92aa2dc">Test</h4>
-<div class="outline-text-4" id="text-org92aa2dc">
+<div id="outline-container-org00c9b9d" class="outline-4">
+<h4 id="org00c9b9d">Test</h4>
+<div class="outline-text-4" id="text-org00c9b9d">
 <div class="org-src-container">
 <pre class="src src-j">assert 26397 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-10-example.txt'</span>
 </pre>
@@ -2725,9 +2725,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org1234173" class="outline-4">
-<h4 id="org1234173">Solution</h4>
-<div class="outline-text-4" id="text-org1234173">
+<div id="outline-container-org3e2f622" class="outline-4">
+<h4 id="org3e2f622">Solution</h4>
+<div class="outline-text-4" id="text-org3e2f622">
 <div class="org-src-container">
 <pre class="src src-j">assert 370407 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-10.txt'</span>
 </pre>
@@ -2736,17 +2736,17 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgc8ea6ab" class="outline-3">
-<h3 id="orgc8ea6ab">Part 2</h3>
-<div class="outline-text-3" id="text-orgc8ea6ab">
+<div id="outline-container-org44359b2" class="outline-3">
+<h3 id="org44359b2">Part 2</h3>
+<div class="outline-text-3" id="text-org44359b2">
 </div>
-<div id="outline-container-org64efd47" class="outline-4">
-<h4 id="org64efd47">Function definition</h4>
-<div class="outline-text-4" id="text-org64efd47">
+<div id="outline-container-orgfdcc831" class="outline-4">
+<h4 id="orgfdcc831">Function definition</h4>
+<div class="outline-text-4" id="text-orgfdcc831">
 </div>
-<div id="outline-container-org412ad13" class="outline-5">
-<h5 id="org412ad13">Scores</h5>
-<div class="outline-text-5" id="text-org412ad13">
+<div id="outline-container-org255a1b5" class="outline-5">
+<h5 id="org255a1b5">Scores</h5>
+<div class="outline-text-5" id="text-org255a1b5">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Incomplete entry scores</span>
 <span style="color: #BA36A5;">incmpscrs</span><span style="color: #000000;">=:</span>(<span style="color: #008000;">'('</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'1'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'['</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'2'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'{'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'3'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'&lt;'</span><span style="color: #ff0000;">;</span><span style="color: #008000;">'4'</span>)
@@ -2755,9 +2755,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org5e065ea" class="outline-5">
-<h5 id="org5e065ea">Incomplete scores</h5>
-<div class="outline-text-5" id="text-org5e065ea">
+<div id="outline-container-orgcb9ee6e" class="outline-5">
+<h5 id="orgcb9ee6e">Incomplete scores</h5>
+<div class="outline-text-5" id="text-orgcb9ee6e">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Array with scores for incomplete entries</span>
 <span style="color: #BA36A5;">incomplete</span><span style="color: #000000;">=:</span> (<span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">{.</span> (<span style="color: #ff0000;">+</span> 5<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">*</span>)<span style="color: #00ff00;">/\.</span>)<span style="color: #0000ff;">@:</span>(<span style="color: #ff0000;">".</span><span style="color: #0000ff;">"</span>0)<span style="color: #0000ff;">@</span>(<span style="color: #ff0000;">]</span> rplc<span style="color: #0000ff;">&amp;</span>incmpscrs)
@@ -2766,9 +2766,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgff56055" class="outline-5">
-<h5 id="orgff56055">Middle score</h5>
-<div class="outline-text-5" id="text-orgff56055">
+<div id="outline-container-org09c3f14" class="outline-5">
+<h5 id="org09c3f14">Middle score</h5>
+<div class="outline-text-5" id="text-org09c3f14">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> (<span style="color: #ff0000;">&lt;.</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">-:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">#</span> <span style="color: #ff0000;">{</span> <span style="color: #ff0000;">/:</span><span style="color: #00ff00;">~</span>) <span style="color: #ff0000;">[:</span> incomplete<span style="color: #0000ff;">&amp;</span><span style="color: #ff0000;">&gt;</span> (0<span style="color: #ff0000;">:</span> filterr <span style="color: #ff0000;">]</span>)
 </pre>
@@ -2777,9 +2777,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orga800331" class="outline-4">
-<h4 id="orga800331">Test</h4>
-<div class="outline-text-4" id="text-orga800331">
+<div id="outline-container-org80ec8fc" class="outline-4">
+<h4 id="org80ec8fc">Test</h4>
+<div class="outline-text-4" id="text-org80ec8fc">
 <div class="org-src-container">
 <pre class="src src-j">assert 288957 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-10-example.txt'</span>
 </pre>
@@ -2787,9 +2787,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org93389fd" class="outline-4">
-<h4 id="org93389fd">Solution</h4>
-<div class="outline-text-4" id="text-org93389fd">
+<div id="outline-container-org9d8cb8f" class="outline-4">
+<h4 id="org9d8cb8f">Solution</h4>
+<div class="outline-text-4" id="text-org9d8cb8f">
 <div class="org-src-container">
 <pre class="src src-j">assert 3249889609 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-10.txt'</span>
 </pre>
@@ -2799,35 +2799,35 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org9a835cf" class="outline-2">
-<h2 id="org9a835cf"><a href="https://adventofcode.com/2021/day/11">Day 11: Dumbo Octopus</a></h2>
-<div class="outline-text-2" id="text-org9a835cf">
+<div id="outline-container-orgbeebd7b" class="outline-2">
+<h2 id="orgbeebd7b"><a href="https://adventofcode.com/2021/day/11">Day 11: Dumbo Octopus</a></h2>
+<div class="outline-text-2" id="text-orgbeebd7b">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org923a4f4">Setup</a></li>
-<li><a href="#org36b32cd">Read data</a></li>
-<li><a href="#org6db9e0d">General function definition</a></li>
-<li><a href="#orgc26fcb2">Part 1</a>
+<li><a href="#orgf30e8a5">Setup</a></li>
+<li><a href="#org2ef7722">Read data</a></li>
+<li><a href="#orgc77f8cf">General function definition</a></li>
+<li><a href="#orgff0de89">Part 1</a>
 <ul>
-<li><a href="#orge7511d5">Function definition</a></li>
-<li><a href="#orgb18cf99">Test</a></li>
-<li><a href="#org9b83414">Solution</a></li>
+<li><a href="#orgeca7225">Function definition</a></li>
+<li><a href="#org4fcdec7">Test</a></li>
+<li><a href="#org9346b52">Solution</a></li>
 </ul>
 </li>
-<li><a href="#org913faf2">Part 2</a>
+<li><a href="#org58ece57">Part 2</a>
 <ul>
-<li><a href="#orgb41eec0">Function definitions</a></li>
-<li><a href="#org87e290d">Test</a></li>
-<li><a href="#org0977e86">Solution</a></li>
+<li><a href="#org84f6469">Function definitions</a></li>
+<li><a href="#orge949e96">Test</a></li>
+<li><a href="#org8b630c7">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org923a4f4" class="outline-3">
-<h3 id="org923a4f4">Setup</h3>
-<div class="outline-text-3" id="text-org923a4f4">
+<div id="outline-container-orgf30e8a5" class="outline-3">
+<h3 id="orgf30e8a5">Setup</h3>
+<div class="outline-text-3" id="text-orgf30e8a5">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day11'</span>
 </pre>
@@ -2840,9 +2840,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org36b32cd" class="outline-3">
-<h3 id="org36b32cd">Read data</h3>
-<div class="outline-text-3" id="text-org36b32cd">
+<div id="outline-container-org2ef7722" class="outline-3">
+<h3 id="org2ef7722">Read data</h3>
+<div class="outline-text-3" id="text-org2ef7722">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span><span style="color: #0000ff;">"</span>0 readin
 </pre>
@@ -2850,13 +2850,13 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org6db9e0d" class="outline-3">
-<h3 id="org6db9e0d">General function definition</h3>
-<div class="outline-text-3" id="text-org6db9e0d">
+<div id="outline-container-orgc77f8cf" class="outline-3">
+<h3 id="orgc77f8cf">General function definition</h3>
+<div class="outline-text-3" id="text-orgc77f8cf">
 </div>
-<div id="outline-container-orgebf1d18" class="outline-5">
-<h5 id="orgebf1d18">Pad</h5>
-<div class="outline-text-5" id="text-orgebf1d18">
+<div id="outline-container-orgf70e822" class="outline-5">
+<h5 id="orgf70e822">Pad</h5>
+<div class="outline-text-5" id="text-orgf70e822">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Surround matrix y with constant x</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input matrix</span>
@@ -2867,9 +2867,9 @@ Reading from right to left, <code>filterr</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-org324fd7d" class="outline-5">
-<h5 id="org324fd7d">Flash</h5>
-<div class="outline-text-5" id="text-org324fd7d">
+<div id="outline-container-orgc9dc616" class="outline-5">
+<h5 id="orgc9dc616">Flash</h5>
+<div class="outline-text-5" id="text-orgc9dc616">
 <p>
 Per conditions of the problem,
 </p>
@@ -2900,9 +2900,9 @@ Reading from right to left, <code>flash</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgbbce479" class="outline-5">
-<h5 id="orgbbce479">Step</h5>
-<div class="outline-text-5" id="text-orgbbce479">
+<div id="outline-container-orga75334a" class="outline-5">
+<h5 id="orga75334a">Step</h5>
+<div class="outline-text-5" id="text-orga75334a">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Increase the energy level and flash until no energy levels are greater than 9</span>
 <span style="color: #BA36A5;">step</span><span style="color: #000000;">=:</span> flash<span style="color: #0000ff;">^:</span>_ <span style="color: #0000ff;">@:</span> <span style="color: #ff0000;">&gt;:</span>
@@ -2912,13 +2912,13 @@ Reading from right to left, <code>flash</code> works as follows,
 </div>
 </div>
 
-<div id="outline-container-orgc26fcb2" class="outline-3">
-<h3 id="orgc26fcb2">Part 1</h3>
-<div class="outline-text-3" id="text-orgc26fcb2">
+<div id="outline-container-orgff0de89" class="outline-3">
+<h3 id="orgff0de89">Part 1</h3>
+<div class="outline-text-3" id="text-orgff0de89">
 </div>
-<div id="outline-container-orge7511d5" class="outline-4">
-<h4 id="orge7511d5">Function definition</h4>
-<div class="outline-text-4" id="text-orge7511d5">
+<div id="outline-container-orgeca7225" class="outline-4">
+<h4 id="orgeca7225">Function definition</h4>
+<div class="outline-text-4" id="text-orgeca7225">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">x = number of steps</span>
@@ -2929,9 +2929,9 @@ Reading from right to left, <code>flash</code> works as follows,
 </div>
 
 
-<div id="outline-container-orgb18cf99" class="outline-4">
-<h4 id="orgb18cf99">Test</h4>
-<div class="outline-text-4" id="text-orgb18cf99">
+<div id="outline-container-org4fcdec7" class="outline-4">
+<h4 id="org4fcdec7">Test</h4>
+<div class="outline-text-4" id="text-org4fcdec7">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">inx</span><span style="color: #000000;">=:</span> getin <span style="color: #008000;">'inputs/day-11-example.txt'</span>
 assert 204 <span style="color: #ff0000;">=</span> 11 part1 inx
@@ -2941,9 +2941,9 @@ assert 1656 <span style="color: #ff0000;">=</span> 101 part1 inx
 </div>
 </div>
 
-<div id="outline-container-org9b83414" class="outline-4">
-<h4 id="org9b83414">Solution</h4>
-<div class="outline-text-4" id="text-org9b83414">
+<div id="outline-container-org9346b52" class="outline-4">
+<h4 id="org9346b52">Solution</h4>
+<div class="outline-text-4" id="text-org9346b52">
 <div class="org-src-container">
 <pre class="src src-j">assert 1594 <span style="color: #ff0000;">=</span> 101 part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-11.txt'</span>
 </pre>
@@ -2952,17 +2952,17 @@ assert 1656 <span style="color: #ff0000;">=</span> 101 part1 inx
 </div>
 </div>
 
-<div id="outline-container-org913faf2" class="outline-3">
-<h3 id="org913faf2">Part 2</h3>
-<div class="outline-text-3" id="text-org913faf2">
+<div id="outline-container-org58ece57" class="outline-3">
+<h3 id="org58ece57">Part 2</h3>
+<div class="outline-text-3" id="text-org58ece57">
 </div>
-<div id="outline-container-orgb41eec0" class="outline-4">
-<h4 id="orgb41eec0">Function definitions</h4>
-<div class="outline-text-4" id="text-orgb41eec0">
+<div id="outline-container-org84f6469" class="outline-4">
+<h4 id="org84f6469">Function definitions</h4>
+<div class="outline-text-4" id="text-org84f6469">
 </div>
-<div id="outline-container-org5cb97b9" class="outline-5">
-<h5 id="org5cb97b9">❖ All equal</h5>
-<div class="outline-text-5" id="text-org5cb97b9">
+<div id="outline-container-org8200b78" class="outline-5">
+<h5 id="org8200b78">❖ All equal</h5>
+<div class="outline-text-5" id="text-org8200b78">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">Returns 1 if all elements are equal</span>
 <span style="color: #8D8D84;">NB. </span><span style="color: #8D8D84; font-style: italic;">y = input (infinite rank)</span>
@@ -2972,9 +2972,9 @@ assert 1656 <span style="color: #ff0000;">=</span> 101 part1 inx
 </div>
 </div>
 
-<div id="outline-container-orge7c3a7f" class="outline-5">
-<h5 id="orge7c3a7f">Synchronization step</h5>
-<div class="outline-text-5" id="text-orge7c3a7f">
+<div id="outline-container-org2a6f7ad" class="outline-5">
+<h5 id="org2a6f7ad">Synchronization step</h5>
+<div class="outline-text-5" id="text-org2a6f7ad">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">[:</span> <span style="color: #ff0000;">&lt;:</span><span style="color: #0000ff;">@</span><span style="color: #ff0000;">#</span> <span style="color: #ff0000;">[:</span> step<span style="color: #0000ff;">^:</span>(<span style="color: #ff0000;">-.</span><span style="color: #0000ff;">@</span>alleq)<span style="color: #0000ff;">^:</span>(<span style="color: #ff0000;">&lt;</span>_) <span style="color: #ff0000;">]</span>
 </pre>
@@ -2983,9 +2983,9 @@ assert 1656 <span style="color: #ff0000;">=</span> 101 part1 inx
 </div>
 </div>
 
-<div id="outline-container-org87e290d" class="outline-4">
-<h4 id="org87e290d">Test</h4>
-<div class="outline-text-4" id="text-org87e290d">
+<div id="outline-container-orge949e96" class="outline-4">
+<h4 id="orge949e96">Test</h4>
+<div class="outline-text-4" id="text-orge949e96">
 <div class="org-src-container">
 <pre class="src src-j">assert 195 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-11-example.txt'</span>
 </pre>
@@ -2993,9 +2993,9 @@ assert 1656 <span style="color: #ff0000;">=</span> 101 part1 inx
 </div>
 </div>
 
-<div id="outline-container-org0977e86" class="outline-4">
-<h4 id="org0977e86">Solution</h4>
-<div class="outline-text-4" id="text-org0977e86">
+<div id="outline-container-org8b630c7" class="outline-4">
+<h4 id="org8b630c7">Solution</h4>
+<div class="outline-text-4" id="text-org8b630c7">
 <div class="org-src-container">
 <pre class="src src-j">assert 437 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-11.txt'</span>
 </pre>
@@ -3005,35 +3005,35 @@ assert 1656 <span style="color: #ff0000;">=</span> 101 part1 inx
 </div>
 </div>
 
-<div id="outline-container-org812cd35" class="outline-2">
-<h2 id="org812cd35"><a href="https://adventofcode.com/2021/day/x">Day 0X: Template</a></h2>
-<div class="outline-text-2" id="text-org812cd35">
+<div id="outline-container-orgac2bcd4" class="outline-2">
+<h2 id="orgac2bcd4"><a href="https://adventofcode.com/2021/day/x">Day 0X: Template</a></h2>
+<div class="outline-text-2" id="text-orgac2bcd4">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfbaaafc">Setup</a></li>
-<li><a href="#org4852852">Read data</a></li>
-<li><a href="#orgd6cf299">General function definition</a></li>
-<li><a href="#orge5dbfd2">Part 1</a>
+<li><a href="#org9f5e607">Setup</a></li>
+<li><a href="#orgeedfacb">Read data</a></li>
+<li><a href="#org349ce73">General function definition</a></li>
+<li><a href="#orgae55553">Part 1</a>
 <ul>
-<li><a href="#orgd00821c">Function definition</a></li>
-<li><a href="#org22be262">Test</a></li>
-<li><a href="#org037d7d3">Solution</a></li>
+<li><a href="#orgd971739">Function definition</a></li>
+<li><a href="#org5ab5d57">Test</a></li>
+<li><a href="#org60d4b98">Solution</a></li>
 </ul>
 </li>
-<li><a href="#orgd210d1f">Part 2</a>
+<li><a href="#org8131872">Part 2</a>
 <ul>
-<li><a href="#orgf158bd2">Function definition</a></li>
-<li><a href="#orgdbf97ba">Test</a></li>
-<li><a href="#org00b9f20">Solution</a></li>
+<li><a href="#orgf49f770">Function definition</a></li>
+<li><a href="#orgffced53">Test</a></li>
+<li><a href="#org1c89f9a">Solution</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgfbaaafc" class="outline-3">
-<h3 id="orgfbaaafc">Setup</h3>
-<div class="outline-text-3" id="text-orgfbaaafc">
+<div id="outline-container-org9f5e607" class="outline-3">
+<h3 id="org9f5e607">Setup</h3>
+<div class="outline-text-3" id="text-org9f5e607">
 <div class="org-src-container">
 <pre class="src src-j">cocurrent <span style="color: #ff0000;">&lt;</span><span style="color: #008000;">'day0x'</span>
 </pre>
@@ -3046,9 +3046,9 @@ assert 1656 <span style="color: #ff0000;">=</span> 101 part1 inx
 </div>
 </div>
 
-<div id="outline-container-org4852852" class="outline-3">
-<h3 id="org4852852">Read data</h3>
-<div class="outline-text-3" id="text-org4852852">
+<div id="outline-container-orgeedfacb" class="outline-3">
+<h3 id="orgeedfacb">Read data</h3>
+<div class="outline-text-3" id="text-orgeedfacb">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">getin</span><span style="color: #000000;">=:</span> <span style="color: #ff0000;">".</span> readin
 </pre>
@@ -3057,9 +3057,9 @@ assert 1656 <span style="color: #ff0000;">=</span> 101 part1 inx
 </div>
 
 
-<div id="outline-container-orgd6cf299" class="outline-3">
-<h3 id="orgd6cf299">General function definition</h3>
-<div class="outline-text-3" id="text-orgd6cf299">
+<div id="outline-container-org349ce73" class="outline-3">
+<h3 id="org349ce73">General function definition</h3>
+<div class="outline-text-3" id="text-org349ce73">
 <p>
 Generic function to calculate number of increases in data for a given moving window size,
 </p>
@@ -3070,13 +3070,13 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-orge5dbfd2" class="outline-3">
-<h3 id="orge5dbfd2">Part 1</h3>
-<div class="outline-text-3" id="text-orge5dbfd2">
+<div id="outline-container-orgae55553" class="outline-3">
+<h3 id="orgae55553">Part 1</h3>
+<div class="outline-text-3" id="text-orgae55553">
 </div>
-<div id="outline-container-orgd00821c" class="outline-4">
-<h4 id="orgd00821c">Function definition</h4>
-<div class="outline-text-4" id="text-orgd00821c">
+<div id="outline-container-orgd971739" class="outline-4">
+<h4 id="orgd971739">Function definition</h4>
+<div class="outline-text-4" id="text-orgd971739">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part1</span><span style="color: #000000;">=:</span> 1<span style="color: #ff0000;">:</span>
 </pre>
@@ -3084,9 +3084,9 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-org22be262" class="outline-4">
-<h4 id="org22be262">Test</h4>
-<div class="outline-text-4" id="text-org22be262">
+<div id="outline-container-org5ab5d57" class="outline-4">
+<h4 id="org5ab5d57">Test</h4>
+<div class="outline-text-4" id="text-org5ab5d57">
 <div class="org-src-container">
 <pre class="src src-j">assert 1 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-0x-example.txt'</span>
 </pre>
@@ -3094,9 +3094,9 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-org037d7d3" class="outline-4">
-<h4 id="org037d7d3">Solution</h4>
-<div class="outline-text-4" id="text-org037d7d3">
+<div id="outline-container-org60d4b98" class="outline-4">
+<h4 id="org60d4b98">Solution</h4>
+<div class="outline-text-4" id="text-org60d4b98">
 <div class="org-src-container">
 <pre class="src src-j">assert 1111 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-0x.txt'</span>
 </pre>
@@ -3105,13 +3105,13 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-orgd210d1f" class="outline-3">
-<h3 id="orgd210d1f">Part 2</h3>
-<div class="outline-text-3" id="text-orgd210d1f">
+<div id="outline-container-org8131872" class="outline-3">
+<h3 id="org8131872">Part 2</h3>
+<div class="outline-text-3" id="text-org8131872">
 </div>
-<div id="outline-container-orgf158bd2" class="outline-4">
-<h4 id="orgf158bd2">Function definition</h4>
-<div class="outline-text-4" id="text-orgf158bd2">
+<div id="outline-container-orgf49f770" class="outline-4">
+<h4 id="orgf49f770">Function definition</h4>
+<div class="outline-text-4" id="text-orgf49f770">
 <div class="org-src-container">
 <pre class="src src-j"><span style="color: #BA36A5;">part2</span><span style="color: #000000;">=:</span> 2<span style="color: #ff0000;">:</span>
 </pre>
@@ -3119,9 +3119,9 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-orgdbf97ba" class="outline-4">
-<h4 id="orgdbf97ba">Test</h4>
-<div class="outline-text-4" id="text-orgdbf97ba">
+<div id="outline-container-orgffced53" class="outline-4">
+<h4 id="orgffced53">Test</h4>
+<div class="outline-text-4" id="text-orgffced53">
 <div class="org-src-container">
 <pre class="src src-j">assert 2 <span style="color: #ff0000;">=</span> part1 <span style="color: #BA36A5;">inx</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-0x-example.txt'</span>
 </pre>
@@ -3129,9 +3129,9 @@ Generic function to calculate number of increases in data for a given moving win
 </div>
 </div>
 
-<div id="outline-container-org00b9f20" class="outline-4">
-<h4 id="org00b9f20">Solution</h4>
-<div class="outline-text-4" id="text-org00b9f20">
+<div id="outline-container-org1c89f9a" class="outline-4">
+<h4 id="org1c89f9a">Solution</h4>
+<div class="outline-text-4" id="text-org1c89f9a">
 <div class="org-src-container">
 <pre class="src src-j">assert 2222 <span style="color: #ff0000;">=</span> part2 <span style="color: #BA36A5;">in</span><span style="color: #000000;">=.</span> getin <span style="color: #008000;">'inputs/day-0x.txt'</span>
 </pre>
@@ -3144,7 +3144,7 @@ Generic function to calculate number of increases in data for a given moving win
 <div id="postamble" class="status">
 <p class="date">Date: 2021-12-01</p>
 <p class="author">Author: Prashanth Kumar</p>
-<p class="date">Created: 2022-02-04 Fri 12:20</p>
+<p class="date">Created: 2022-02-04 Fri 12:24</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.1.9)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
