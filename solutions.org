@@ -345,7 +345,7 @@ NB. Reduce using verb 'u/\.' on a boxed list y
 foldr=: 1 : '[: <@(u&>)/\. ,&boxxopen'
 #+END_SRC
 
-***** Rating
+***** ❖ Rating
 
 #+BEGIN_SRC j :results output silent :tangle day03.ijs
 NB. Recursively filter rows using 'u' common elements from each column
