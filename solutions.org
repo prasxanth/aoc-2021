@@ -2090,7 +2090,6 @@ part2 in=. getin 'inputs/day-13.txt' NB. EAHKRECP
  : 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ _
  : 0 0 0 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 0 0 0 _ _ 0 0 _ _ 0 _ _ _
  
-
 *** Approach 2
 
 This approach follows that laid out in the problem.
@@ -2322,7 +2321,7 @@ part2=: 3 : '_ * -. > @ {. origami y'
 ***** Solution
 
 #+BEGIN_SRC j :results output value :tangle src/day13.ijs
-part2 in=. getin 'inputs/day-13.txt'
+part2 in=. getin 'inputs/day-13.txt'  NB. EAHKRECP
 #+END_SRC
 
  #+RESULTS:
