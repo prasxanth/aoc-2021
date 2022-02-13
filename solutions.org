@@ -2320,7 +2320,7 @@ part2=: 3 : '_ * -. > @ {. origami y'
 
 ***** Solution
 
-#+BEGIN_SRC j :results output value :tangle src/day13.ijs
+#+BEGIN_SRC j :results output value :exports both :tangle src/day13.ijs
 part2 in=. getin 'inputs/day-13.txt'  NB. EAHKRECP
 #+END_SRC
 
