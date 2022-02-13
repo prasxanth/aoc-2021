@@ -90,20 +90,20 @@ This site is best viewed with [[https://fonts.google.com/specimen/Fira+Sans][Fir
 cocurrent <'day01'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day01.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day01.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day01.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day01.ijs
 getin=: ". readin
 #+END_SRC
 
 *** General function definition
 
 Generic function to calculate number of increases in data for a given moving window size,
-#+BEGIN_SRC j :results output silent :tangle day01.ijs 
+#+BEGIN_SRC j :results output silent :tangle src/day01.ijs 
 NB. Calculate number of increases
 NB. y = data
 NB. x = moving window size
@@ -114,13 +114,13 @@ ninc=: +/ @ (2 </\ +/\)
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day01.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day01.ijs
 part1=: 1&ninc
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day01.ijs
+#+BEGIN_SRC j :results output value :tangle src/day01.ijs
 assert 7 = part1 inx=. getin 'inputs/day-01-example.txt'
 #+END_SRC
 
@@ -128,7 +128,7 @@ assert 7 = part1 inx=. getin 'inputs/day-01-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day01.ijs
+#+BEGIN_SRC j :results output value :tangle src/day01.ijs
 assert 1602 = part1 in=. getin 'inputs/day-01.txt'
 #+END_SRC
 
@@ -138,13 +138,13 @@ assert 1602 = part1 in=. getin 'inputs/day-01.txt'
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day01.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day01.ijs
 part2=: 3&ninc
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day01.ijs
+#+BEGIN_SRC j :results output value :tangle src/day01.ijs
 assert 7 = part1 inx=. getin 'inputs/day-01-example.txt'
 #+END_SRC
 
@@ -152,7 +152,7 @@ assert 7 = part1 inx=. getin 'inputs/day-01-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day01.ijs
+#+BEGIN_SRC j :results output value :tangle src/day01.ijs
 assert 1633 = part2 in=. getin 'inputs/day-01.txt'
 #+END_SRC
 
@@ -168,13 +168,13 @@ assert 1633 = part2 in=. getin 'inputs/day-01.txt'
 cocurrent <'day02'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day02.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day02.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day02.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day02.ijs
 getin=: ;: readin
 #+END_SRC
 
@@ -183,7 +183,7 @@ getin=: ;: readin
 
 ***** Directions
 
-#+BEGIN_SRC j :results output silent :tangle day02.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day02.ijs
 NB. Displacement vectors
 NB. y = input
 NB. Returns three column boolean mask matrix of size (|. $ y)
@@ -193,7 +193,7 @@ dirxns=: ('forward'; 'up'; 'down') E./"0 1 {."1
 
 ***** Displacements
 
-#+BEGIN_SRC j :results output silent :tangle day02.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day02.ijs
 NB. Horizontal and vertical displacement vectors
 NB. y = input
 NB. Returns two column matrix
@@ -240,13 +240,13 @@ smoutput g
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day02.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day02.ijs
 part1=: 3 : '+/ h * +/ v [ v=. {:"1 d [ h=. {."1 d [ d=. disp y'
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day02.ijs
+#+BEGIN_SRC j :results output value :tangle src/day02.ijs
 assert 150 = part1 inx=. getin 'inputs/day-02-example.txt'
 #+END_SRC
 
@@ -254,7 +254,7 @@ assert 150 = part1 inx=. getin 'inputs/day-02-example.txt'
 
 **** Solution
     
-#+BEGIN_SRC j :results output scalar value :tangle day02.ijs
+#+BEGIN_SRC j :results output scalar value :tangle src/day02.ijs
 assert 1868935 = part1 in=. getin 'inputs/day-02.txt'
 #+END_SRC
 
@@ -264,13 +264,13 @@ assert 1868935 = part1 in=. getin 'inputs/day-02.txt'
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day02.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day02.ijs
 part2=: 3 : '+/ h * +/ h * +/\ v [ v=. {:"1 d [ h=. {."1 d [ d=. disp y'
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day02.ijs
+#+BEGIN_SRC j :results output value :tangle src/day02.ijs
 assert 900 = part2 inx=. getin 'inputs/day-02-example.txt'
 #+END_SRC
 
@@ -278,7 +278,7 @@ assert 900 = part2 inx=. getin 'inputs/day-02-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output scalar value :tangle day02.ijs
+#+BEGIN_SRC j :results output scalar value :tangle src/day02.ijs
 assert 1965970888 = part2 in=. getin 'inputs/day-02.txt'
 #+END_SRC
 
@@ -294,32 +294,32 @@ assert 1965970888 = part2 in=. getin 'inputs/day-02.txt'
 cocurrent <'day03'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day03.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day03.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :noweb yes :tangle day03.ijs
+#+BEGIN_SRC j :results output silent :noweb yes :tangle src/day03.ijs
 getin=: "."0 readin
 #+END_SRC
 
 *** Part 1
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day03.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day03.ijs
 part1=: (*&:#. -.)@(-:@# < +/)  NB. (epsilon =: -. gamma)
 #+END_SRC
 
 **** Test
-#+BEGIN_SRC j :results output value :tangle day03.ijs
+#+BEGIN_SRC j :results output value :tangle src/day03.ijs
 assert 198 = part1 inx=. getin 'inputs/day-03-example.txt'
 #+END_SRC
 
 #+RESULTS:
 
 **** Solution
-#+BEGIN_SRC j :results output scalar value :tangle day03.ijs
+#+BEGIN_SRC j :results output scalar value :tangle src/day03.ijs
 assert 2595824 = part1 in=. getin 'inputs/day-03.txt'
 #+END_SRC
 
@@ -330,49 +330,73 @@ assert 2595824 = part1 in=. getin 'inputs/day-03.txt'
 
 ***** Filter rows
 
-#+BEGIN_SRC j :results output silent :tangle day03.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day03.ijs
 NB. Filter rows in y with 'u' common elements in column x
 NB. y = input matrix
 NB. x = target column for 'u'
 NB. u = comparison operator (< , > , >: , <: , =)
-filtrows=: 1 : '[ ([ #~ (] = -:@# u +/) @ ]) ,@:({"1~)'
+filtrows=: 1 : '[ #~ {"1~ = -:@#@[ u +/@:({"1~)'
 #+END_SRC
+
+#+BEGIN_SRC j :results output value :exports results
+y=. #.inv (?.10#247)
+(".&.> ,:~ ]) ('y'; 'y <: filtrows 0'; 'y > filtrows 0'; 'y <: filtrows 5')
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌───────────────┬───────────────┬───────────────┬───────────────┐
+│y              │y <: filtrows 0│y > filtrows 0 │y <: filtrows 5│
+├───────────────┼───────────────┼───────────────┼───────────────┤
+│1 1 0 1 1 1 0 0│1 1 0 1 1 1 0 0│0 1 0 0 1 0 1 0│1 1 0 1 1 1 0 0│
+│0 1 0 0 1 0 1 0│1 0 1 0 0 1 0 1│0 0 0 0 0 0 1 1│1 0 1 0 0 1 0 1│
+│0 0 0 0 0 0 1 1│1 1 1 0 0 1 1 1│0 1 0 1 1 1 1 1│1 1 1 0 0 1 1 1│
+│1 0 1 0 0 1 0 1│1 0 0 1 1 1 0 1│0 1 0 1 1 1 1 0│0 1 0 1 1 1 1 1│
+│1 1 1 0 0 1 1 1│1 1 1 0 0 1 0 0│0 0 1 0 0 1 1 1│1 0 0 1 1 1 0 1│
+│0 1 0 1 1 1 1 1│               │               │1 1 1 0 0 1 0 0│
+│1 0 0 1 1 1 0 1│               │               │0 1 0 1 1 1 1 0│
+│1 1 1 0 0 1 0 0│               │               │0 0 1 0 0 1 1 1│
+│0 1 0 1 1 1 1 0│               │               │               │
+│0 0 1 0 0 1 1 1│               │               │               │
+└───────────────┴───────────────┴───────────────┴───────────────┘
+#+end_example
 
 ***** ❖ Reducer
 
-#+BEGIN_SRC j :results output silent :tangle day03.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day03.ijs
 NB. Reduce using verb 'u/\.' on a boxed list y
 foldr=: 1 : '[: <@(u&>)/\. ,&boxxopen'
 #+END_SRC
 
 ***** Rating
 
-#+BEGIN_SRC j :results output silent :tangle day03.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day03.ijs
 NB. Recursively filter rows using 'u' common elements from each column
-rating=: 1 : '[: >@(] #~ 1: = #&>) ] (u filtrows)~ foldr~ <"0@|.@i.@{:@$'
+rating=: 1 : '[: >@(] #~ 1: = #&>) (] (u filtrows)~ foldr~ ;/@i.@-@{:@$)'
 #+END_SRC
 
 Reading from right to left, =rating= works as follows,
 
-+ =] (u filtrows)~ foldr~ <"0@|.@i.@{:@$=: Recursively filter rows with =u= common elements from each column
++ =] (u filtrows)~ foldr~ ;/@i.@-@{:@$=: Recursively filter rows with =u= common elements from each column
+  - =;/@i.@-@{:@$=: Boxed sequence of integers in decreasing order from column length to 0
 + =>@(] #~ 1: = #&>)=: Unbox (first) element containing only one row.
 
 ***** Life support rating
 
-#+BEGIN_SRC j :results output silent :tangle day03.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day03.ijs
 part2=: */@:#.@(> rating ,: <: rating)
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day03.ijs
+#+BEGIN_SRC j :results output value :tangle src/day03.ijs
 assert 230 = part2 inx=. getin 'inputs/day-03-example.txt'
 #+END_SRC
 
 #+RESULTS:
 
 **** Solution
-#+BEGIN_SRC j :results output scalar value :tangle day03.ijs
+#+BEGIN_SRC j :results output scalar value :tangle src/day03.ijs
 assert 2135254 = part2 in=. getin 'inputs/day-03.txt'
 #+END_SRC
 
@@ -383,7 +407,7 @@ assert 2135254 = part2 in=. getin 'inputs/day-03.txt'
 
 Approach is to iteratively remove all rows with the most (or least) common elements across each column.
 
-#+BEGIN_SRC j :results output silent :tangle day03.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day03.ijs
 rating=: 1 : 0
 ix=. {.@I.@(-. @ (-: 1&|.)"1 @ |:) NB. index of first column where elements differ
 cm=. { +/ u~ # - +/ 	     NB. common elements 'u' in x = column of y = data
@@ -392,18 +416,18 @@ fr`]@.(1 = #@])^:_ y	     NB. iterate until one row remains
 )
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day03.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day03.ijs
 part2=: [: */ [: #. > rating , <: rating
 #+END_SRC
 
 **** Test
-#+BEGIN_SRC j :results output value :tangle day03.ijs
+#+BEGIN_SRC j :results output value :tangle src/day03.ijs
 assert 230 = part2 inx=. getin 'inputs/day-03-example.txt'
 #+END_SRC
 
 #+RESULTS:
 **** Solution
-#+BEGIN_SRC j :results output scalar value :tangle day03.ijs
+#+BEGIN_SRC j :results output scalar value :tangle src/day03.ijs
 assert 2135254 = part2 in=. getin 'inputs/day-03.txt'
 #+END_SRC
 
@@ -419,19 +443,19 @@ assert 2135254 = part2 in=. getin 'inputs/day-03.txt'
 cocurrent <'day04'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day04.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day04.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day04.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day04.ijs
 getin=: a: -.~ <@". readin@]
 #+END_SRC
 
 Split list of calls and boards in input data,
 
-#+BEGIN_SRC j :results output silent :tangle day04.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day04.ijs
 calls=: 0&{::
 boards=: _5 [\ >@}. 
 #+END_SRC
@@ -576,13 +600,13 @@ So a two column list of boards and corresponding win call indices, ordered by th
 
 The winning sequence function is thus defined,
 
-#+BEGIN_SRC j :results output silent :tangle day04.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day04.ijs
 winseq=: (/: ,. /:~)@(>:@(<./)@(>./"1 , >./)"_1@i.)
 #+END_SRC
 
 **** Score
 
-#+BEGIN_SRC j :results output silent :tangle day04.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day04.ijs
 NB. Calculate score
 NB. y = boards
 NB. x = calls
@@ -594,13 +618,13 @@ score=: 1 : '(c {:@{. x) * +/ (, b { y) -. (c {. x) [ ''b c''=. x u @ winseq y'
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day04.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day04.ijs
 part1=: calls {. score boards
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day04.ijs
+#+BEGIN_SRC j :results output value :tangle src/day04.ijs
 assert 4512 = part1 inx=. getin 'inputs/day-04-example.txt'
 #+END_SRC
 
@@ -608,7 +632,7 @@ assert 4512 = part1 inx=. getin 'inputs/day-04-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day04.ijs
+#+BEGIN_SRC j :results output value :tangle src/day04.ijs
 assert 2496 = part1 in=. getin 'inputs/day-04.txt'
 #+END_SRC
 
@@ -618,13 +642,13 @@ assert 2496 = part1 in=. getin 'inputs/day-04.txt'
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day04.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day04.ijs
 part2=: calls {: score boards
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day04.ijs
+#+BEGIN_SRC j :results output value :tangle src/day04.ijs
 assert 1924 = part2 inx=. getin 'inputs/day-04-example.txt'
 #+END_SRC
 
@@ -632,7 +656,7 @@ assert 1924 = part2 inx=. getin 'inputs/day-04-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day04.ijs
+#+BEGIN_SRC j :results output value :tangle src/day04.ijs
 assert 25925 = part2 in=. getin 'inputs/day-04.txt'
 #+END_SRC
 
@@ -647,13 +671,13 @@ assert 25925 = part2 in=. getin 'inputs/day-04.txt'
 cocurrent <'day05'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day05.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day05.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day05.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day05.ijs
 getin=: ".@(rplc&('->';',:';',';' ')) readin
 #+END_SRC
 
@@ -666,7 +690,7 @@ an $N \times 2 \times 2$ matrix for $N$ points (rows) in the file.
 
 Generate sequence in closed interval =(x, y)=,
 
-#+BEGIN_SRC j :results output silent :tangle day05.ijs 
+#+BEGIN_SRC j :results output silent :tangle src/day05.ijs 
 NB. Generate sequence in closed interval (x, y)
 NB. x < y: Ascending  ]  5 seq 8  => 5 6 7 8
 NB. x > y: Descending ] _2 seq _5 => _2 _3 _4 _5
@@ -702,7 +726,7 @@ Of course this only works for horizontal, vertical and 45^o diagonal lines!
 
 **** ❖ Points
 
-#+BEGIN_SRC j :results output silent :tangle day05.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day05.ijs
 NB. Interpolate points across coordinate endpoints
 NB. y = N x 2 x 2 matrix of N points
 NB.         2 x 2 submatrices are (x1 y1 ,: x2 y2) coordinates for each point
@@ -746,7 +770,7 @@ smoutput g
 
 **** Intersections
 
-#+BEGIN_SRC j :results output silent :tangle day05.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day05.ijs
 NB. Count number of intersections between N lines
 NB. y = N x 2 x 2 matrix of N points
 NB.         2 x 2 submatrices are (x1 y1 ,: x2 y2) coordinates for each point
@@ -756,7 +780,7 @@ intersect=: [: +/ [ <: [: #/.~ pts
 
 **** Filter vertical and horizontal lines
 
-#+BEGIN_SRC j :results output silent :tangle day05.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day05.ijs
 NB. Filter coordinates of vertical and horizontal lines
 NB. y = N x 2 x 2 matrix of N points
 NB.         2 x 2 submatrices are (x1 y1 ,: x2 y2) coordinates for each point
@@ -767,13 +791,13 @@ filtvh=: ] #~ (+./"1 @: =/)"_1
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day05.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day05.ijs
 part1=: 2&intersect @ filtvh
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day05.ijs
+#+BEGIN_SRC j :results output value :tangle src/day05.ijs
 assert 5 = part1 inx=. getin 'inputs/day-05-example.txt'
 #+END_SRC
 
@@ -781,7 +805,7 @@ assert 5 = part1 inx=. getin 'inputs/day-05-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day05.ijs
+#+BEGIN_SRC j :results output value :tangle src/day05.ijs
 assert 7473 = part1 in=. getin 'inputs/day-05.txt'
 #+END_SRC
 
@@ -791,13 +815,13 @@ assert 7473 = part1 in=. getin 'inputs/day-05.txt'
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day05.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day05.ijs
 part2=: 2&intersect
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day05.ijs
+#+BEGIN_SRC j :results output value :tangle src/day05.ijs
 assert 12 = part2 inx=. getin 'inputs/day-05-example.txt'
 #+END_SRC
 
@@ -805,7 +829,7 @@ assert 12 = part2 inx=. getin 'inputs/day-05-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day05.ijs
+#+BEGIN_SRC j :results output value :tangle src/day05.ijs
 assert 24164 = part2 in=. getin 'inputs/day-05.txt'
 #+END_SRC
 
@@ -821,13 +845,13 @@ assert 24164 = part2 in=. getin 'inputs/day-05.txt'
 cocurrent <'day06'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day06.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day06.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day06.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day06.ijs
 getin=: [: , ". readin
 #+END_SRC
 
@@ -837,7 +861,7 @@ getin=: [: , ". readin
 
 This class of problems is most easily solved using a [[https://en.wikipedia.org/wiki/Stochastic_matrix][stochastic matrix]]. The function below defines a stochastic matrix per conditions of the problem,
 
-#+BEGIN_SRC j :results output silent :tangle day06.ijs 
+#+BEGIN_SRC j :results output silent :tangle src/day06.ijs 
 NB. stochastic matrix
 stoctrix=: (1 0) ,~ (0 0 0 0 0 0 1 0) ,. (e.@i. 8)
 #+END_SRC
@@ -859,12 +883,12 @@ stoctrix
 
 **** Matrix operations
 
-#+BEGIN_SRC j :results output silent :tangle day06.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day06.ijs
 NB. Matrix product
 mp=: +/ . *
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day06.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day06.ijs
 NB. Raise matrix to nth power
 NB. Source: https://code.jsoftware.com/wiki/Essays/Repeated_Squaring
 mpow=: 4 : 'mp/ mp~^:(I.|.#:y) x'
@@ -872,7 +896,7 @@ mpow=: 4 : 'mp/ mp~^:(I.|.#:y) x'
 
 **** Number of fish
 
-#+BEGIN_SRC j :results output silent :tangle day06.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day06.ijs
 NB. Count number of fish after N generations
 NB. x = input/start state
 NB. y = generations (integer)
@@ -889,13 +913,13 @@ Reading from right to left, =nfish= works as follows,
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day06.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day06.ijs
 part1=: nfish
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day06.ijs
+#+BEGIN_SRC j :results output value :tangle src/day06.ijs
 inx=. getin 'inputs/day-06-example.txt'
 assert 26 = inx part1 18 
 assert 5934 = inx part1 80
@@ -905,7 +929,7 @@ assert 5934 = inx part1 80
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day06.ijs
+#+BEGIN_SRC j :results output value :tangle src/day06.ijs
 assert 360761 = 80 part1~ in=. getin 'inputs/day-06.txt'
 #+END_SRC
 
@@ -915,13 +939,13 @@ assert 360761 = 80 part1~ in=. getin 'inputs/day-06.txt'
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day06.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day06.ijs
 part2=: nfish
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day06.ijs
+#+BEGIN_SRC j :results output value :tangle src/day06.ijs
 assert 26984457539 = 256 part1~ inx=. getin 'inputs/day-06-example.txt'
 #+END_SRC
 
@@ -929,7 +953,7 @@ assert 26984457539 = 256 part1~ inx=. getin 'inputs/day-06-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day06.ijs
+#+BEGIN_SRC j :results output value :tangle src/day06.ijs
 assert 1632779838045 = 256 part2~ in=. getin 'inputs/day-06.txt'
 #+END_SRC
 
@@ -945,14 +969,14 @@ assert 1632779838045 = 256 part2~ in=. getin 'inputs/day-06.txt'
 cocurrent <'day07'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day07.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day07.ijs
 load 'stats/base'
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day07.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day07.ijs
 getin=: [: , ". readin
 #+END_SRC
 
@@ -962,13 +986,13 @@ getin=: [: , ". readin
 
 See this [[https://math.stackexchange.com/questions/318381/on-a-1-d-line-the-point-that-minimizes-the-sum-of-the-distances-is-the-median][stackexchange]] question for the explanation of why median minimizes the distance on a 1-D line. 
 
-#+BEGIN_SRC j :results output silent :tangle day07.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day07.ijs
 part1=: [: +/ |@(] - median)
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day07.ijs
+#+BEGIN_SRC j :results output value :tangle src/day07.ijs
 assert 37 = part1 inx=. getin 'inputs/day-07-example.txt'
 #+END_SRC
 
@@ -976,7 +1000,7 @@ assert 37 = part1 inx=. getin 'inputs/day-07-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day07.ijs
+#+BEGIN_SRC j :results output value :tangle src/day07.ijs
 assert 329389 = part1 in=. getin 'inputs/day-07.txt'
 #+END_SRC
 
@@ -986,7 +1010,7 @@ assert 329389 = part1 in=. getin 'inputs/day-07.txt'
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day07.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day07.ijs
 part2=: [: x:@+/ -:@(>: * ])@(] |@- <.@mean)
 #+END_SRC
 
@@ -1001,7 +1025,7 @@ Reading from right to left, this works as follows,
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day07.ijs
+#+BEGIN_SRC j :results output value :tangle src/day07.ijs
 assert 170 = part2 inx=. getin 'inputs/day-07-example.txt'
 #+END_SRC
 
@@ -1015,7 +1039,7 @@ assert 170 = part2 inx=. getin 'inputs/day-07-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day07.ijs
+#+BEGIN_SRC j :results output value :tangle src/day07.ijs
 assert 86397080 = part2 in=. getin 'inputs/day-07.txt'
 #+END_SRC
 
@@ -1031,13 +1055,13 @@ assert 86397080 = part2 in=. getin 'inputs/day-07.txt'
 cocurrent <'day08'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day08.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day08.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day08.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day08.ijs
 getin=: [: /:~&.> ;: readin
 #+END_SRC
 
@@ -1049,7 +1073,7 @@ To simplify the solution, the random-ordered entries are sorted alphabetically.
 
 This solution is from [[https://github.com/jitwit/aoc/blob/a/J/21/08.ijs][jitwit]].
 
-#+BEGIN_SRC j :results output silent :tangle day08.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day08.ijs
 NB. Count number of digits of given length
 NB. y = boxed list of coded digits
 NB. x = list of digit lengths
@@ -1064,13 +1088,13 @@ Reading from right to left, =ndiglen= works as follows,
 + =[: +/ [: ,=: Flatten matrix and sum all elements
 
 
-#+BEGIN_SRC j :results output silent :tangle day08.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day08.ijs
 part1=: (2 3 4 7) ndiglen _4&{."1@]
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day08.ijs
+#+BEGIN_SRC j :results output value :tangle src/day08.ijs
 assert 26 = part1 inx=. getin 'inputs/day-08-example.txt'
 #+END_SRC
 
@@ -1078,7 +1102,7 @@ assert 26 = part1 inx=. getin 'inputs/day-08-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day08.ijs
+#+BEGIN_SRC j :results output value :tangle src/day08.ijs
 assert 284 = part1 in=. getin 'inputs/day-08.txt'
 #+END_SRC
 
@@ -1090,14 +1114,14 @@ assert 284 = part1 in=. getin 'inputs/day-08.txt'
 
 Based on logic from: https://github.com/jitwit/aoc/blob/a/J/21/08.ijs.
 
-  #+BEGIN_SRC j :results output silent :tangle day08.ijs
+  #+BEGIN_SRC j :results output silent :tangle src/day08.ijs
 NB. Table of unique identifiers
 NB. A digit can be uniquely identified by length, 
 NB. intersection with 1 and intersection with 4
 tbluids=: _3 ]\ 6 2 3 2 2 2 5 1 2 5 2 3 4 2 4 5 1 3 6 1 3 3 2 2 7 2 4 6 2 4
   #+END_SRC
 
-#+BEGIN_SRC j :results output value :exports results :tangle day08.ijs
+#+BEGIN_SRC j :results output value :exports results :tangle src/day08.ijs
 tbluids
 #+END_SRC
 
@@ -1121,7 +1145,7 @@ The first column is length. Second and third columns are intersections with 1 an
 
 ***** Get identifiers
 
-#+BEGIN_SRC j :results output silent :tangle day08.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day08.ijs
 NB. Get identifiers of output x based on encodings in y
 NB. y = boxed list of outputs
 NB. x = boxed list of encoded entries (#y = 10)
@@ -1195,7 +1219,7 @@ smoutput g
 
 ***** Decode
 
-#+BEGIN_SRC j :results output silent :tangle day08.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day08.ijs
 NB. Return decimal number of output in y
 NB. y = encodings (first 10 columns) and outputs to decode (last four columns)
 NB. x = lookup table with unique identifiers for digits
@@ -1210,13 +1234,13 @@ Reading from right to left, =decode= works as follows,
 
 ***** Total
 
-#+BEGIN_SRC j :results output silent :tangle day08.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day08.ijs
 part2=: [: +/ (tbluids decode ])"1
  #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day08.ijs
+#+BEGIN_SRC j :results output value :tangle src/day08.ijs
 assert 61229 = part2 inx=. getin 'inputs/day-08-example.txt'
 #+END_SRC
 
@@ -1224,7 +1248,7 @@ assert 61229 = part2 inx=. getin 'inputs/day-08-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day08.ijs
+#+BEGIN_SRC j :results output value :tangle src/day08.ijs
 assert 973499 = part2 in=. getin 'inputs/day-08.txt'
 #+END_SRC
 
@@ -1240,13 +1264,13 @@ assert 973499 = part2 in=. getin 'inputs/day-08.txt'
 cocurrent <'day09'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day09.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day09.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day09.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day09.ijs
 getin=: "."0 readin
 #+END_SRC
 
@@ -1258,7 +1282,7 @@ This solution follows the approach in [[https://www.jsoftware.com/help/learning/
 
 ***** Low points
 
-#+BEGIN_SRC j :results output silent :tangle day09.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day09.ijs
 NB. Find low points in matrix y
 NB. Low points = locations that are lower than any of 
 NB. its adjacent (up, down, left, and right) locations
@@ -1286,13 +1310,13 @@ smoutput g
 
 ***** Risk level
 
-#+BEGIN_SRC j :results output silent :tangle day09.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day09.ijs
 part1=: [: +/ [: , >:@] * lowpoints
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day09.ijs
+#+BEGIN_SRC j :results output value :tangle src/day09.ijs
 assert 15 = part1 inx=. getin 'inputs/day-09-example.txt'
 #+END_SRC
 
@@ -1300,7 +1324,7 @@ assert 15 = part1 inx=. getin 'inputs/day-09-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day09.ijs
+#+BEGIN_SRC j :results output value :tangle src/day09.ijs
 assert 548 = part1 in=. getin 'inputs/day-09.txt'
 #+END_SRC
 
@@ -1314,7 +1338,7 @@ assert 548 = part1 in=. getin 'inputs/day-09.txt'
 
     The problem is greatly simplified by using =findadj= from the [[http://www.jsoftware.com/pipermail/general/2005-August/023886.html][Jforum]].
 
-#+BEGIN_SRC j :results output silent :tangle day09.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day09.ijs
 findadj=: (|."1@|:@:>. * * 1&(|.!.0))^:4^:_ @ (*>:@i.@$)
 #+END_SRC
 
@@ -1339,7 +1363,7 @@ smoutput g
 
 ***** Basin sizes
 
-#+BEGIN_SRC j :results output silent :tangle day09.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day09.ijs
 NB. Basin sizes in descending order
 bsizes=: (\:~)@(#/.~)@(] #~ 0 ~: ]) ,@findadj@(9&~:)
 #+END_SRC
@@ -1393,13 +1417,13 @@ smoutput g
 
 ***** Three largest basins
 
-#+BEGIN_SRC j :results output silent :tangle day09.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day09.ijs
 part2=: */ 3&{. bsizes
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day09.ijs
+#+BEGIN_SRC j :results output value :tangle src/day09.ijs
 assert 1134 = part2 inx=. getin 'inputs/day-09-example.txt'
 #+END_SRC
 
@@ -1407,7 +1431,7 @@ assert 1134 = part2 inx=. getin 'inputs/day-09-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day09.ijs
+#+BEGIN_SRC j :results output value :tangle src/day09.ijs
 assert 786048 = part2 in=. getin 'inputs/day-09.txt'
 #+END_SRC
 
@@ -1423,7 +1447,7 @@ assert 786048 = part2 in=. getin 'inputs/day-09.txt'
 cocurrent <'day10'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs
 load <'utils.ijs'
 #+END_SRC
 
@@ -1431,7 +1455,7 @@ load <'utils.ijs'
 
 ***** Pairs
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs
 pairs=: _2 [\ '()[]{}<>'
 #+END_SRC
 
@@ -1447,7 +1471,7 @@ pairs
 
 ***** ❖ Remove characters
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs
 NB. Replace characters with empty string
 NB. y = input string
 NB. x = boxed list of characters to remove
@@ -1473,7 +1497,7 @@ smoutput g
 
 ***** Filter corrupt or incomplete entries
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs
 NB. Filter corrupt or incomplete entries
 NB. y = input with all pairs removed from each entry
 NB. x = 0 (incomplete) and 1 (corrupt)
@@ -1487,7 +1511,7 @@ Reading from right to left, =filterr= works as follows,
 
 **** Read data
 
- #+BEGIN_SRC j :results output silent :tangle day10.ijs
+ #+BEGIN_SRC j :results output silent :tangle src/day10.ijs
  getin=: [: ((<"1 pairs) rmchars ])&.> < readin
  #+END_SRC
 
@@ -1497,14 +1521,14 @@ Reading from right to left, =filterr= works as follows,
 
 ***** Scores
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs 
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs 
 NB. Corrupt entry scores
 corrscrs=:(')';'3';']';'57';'}';'1197';'>';'25137')
 #+END_SRC
 
 ***** First illegal character
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs
 NB. Get first illegal (closing) character in entry
 NB. y = boxed character list (superset or subset of pairs)
 illchar=: [: {. (<"0 {."1 pairs) rmchars ]
@@ -1512,7 +1536,7 @@ illchar=: [: {. (<"0 {."1 pairs) rmchars ]
 
 ***** Corrupt scores
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs
 NB. Array with error scores for corrupt entries
 NB. y = boxed character list (superset or subset of pairs)
 corrupt=: ".@(] rplc&corrscrs)@illchar
@@ -1520,13 +1544,13 @@ corrupt=: ".@(] rplc&corrscrs)@illchar
 
 ***** Total syntax error score
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs
 part1=: [: +/ [: corrupt&> (1: filterr ])
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day10.ijs
+#+BEGIN_SRC j :results output value :tangle src/day10.ijs
 assert 26397 = part1 inx=. getin 'inputs/day-10-example.txt'
 #+END_SRC
 
@@ -1534,7 +1558,7 @@ assert 26397 = part1 inx=. getin 'inputs/day-10-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day10.ijs
+#+BEGIN_SRC j :results output value :tangle src/day10.ijs
 assert 370407 = part1 in=. getin 'inputs/day-10.txt'
 #+END_SRC
 
@@ -1546,27 +1570,27 @@ assert 370407 = part1 in=. getin 'inputs/day-10.txt'
 
 ***** Scores
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs 
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs 
 NB. Incomplete entry scores
 incmpscrs=:('(';'1';'[';'2';'{';'3';'<';'4')
 #+END_SRC
 
 ***** Incomplete scores
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs
 NB. Array with scores for incomplete entries
 incomplete=: ([: {. (+ 5&*)/\.)@:("."0)@(] rplc&incmpscrs)
 #+END_SRC
 
 ***** Middle score
 
-#+BEGIN_SRC j :results output silent :tangle day10.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day10.ijs
 part2=: [: (<.@-:@# { /:~) [: incomplete&> (0: filterr ])
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day10.ijs
+#+BEGIN_SRC j :results output value :tangle src/day10.ijs
 assert 288957 = part2 inx=. getin 'inputs/day-10-example.txt'
 #+END_SRC
 
@@ -1574,7 +1598,7 @@ assert 288957 = part2 inx=. getin 'inputs/day-10-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day10.ijs
+#+BEGIN_SRC j :results output value :tangle src/day10.ijs
 assert 3249889609 = part2 in=. getin 'inputs/day-10.txt'
 #+END_SRC
 
@@ -1590,13 +1614,13 @@ assert 3249889609 = part2 in=. getin 'inputs/day-10.txt'
 cocurrent <'day11'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day11.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day11.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day11.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day11.ijs
 getin=: "."0 readin
 #+END_SRC
 
@@ -1604,7 +1628,7 @@ getin=: "."0 readin
 
 ***** Pad
 
-#+BEGIN_SRC j :results output silent :tangle day11.ijs 
+#+BEGIN_SRC j :results output silent :tangle src/day11.ijs 
 NB. Surround matrix y with constant x
 NB. y = input matrix
 NB. x = padding constant
@@ -1646,7 +1670,7 @@ Per conditions of the problem,
 - Any octopus with an energy level greater than 9 flashes. This increases the energy level of all adjacent octopuses by 1, including octopuses that are diagonally adjacent. If this causes an octopus to have an energy level greater than 9, it also flashes. This process continues as long as new octopuses keep having their energy level increased beyond 9. (An octopus can only flash at most once per step.)
 - Finally, any octopus that flashed during this step has its energy level set to 0, as it used all of its energy to flash.
 
-#+BEGIN_SRC j :results output silent :tangle day11.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day11.ijs
 flash=:  ((9&>:) *. (0&<)) * ((1 1 ,: 3 3) (+/@,);._3 (0&pad)@(9&<)) + ]
 #+END_SRC
 
@@ -1660,7 +1684,7 @@ Reading from right to left, =flash= works as follows,
      
 ***** Step
 
-#+BEGIN_SRC j :results otuput silent :tangle day11.ijs
+#+BEGIN_SRC j :results otuput silent :tangle src/day11.ijs
 NB. Increase the energy level and flash until no energy levels are greater than 9
 step=: flash^:_ @: >:
 #+END_SRC
@@ -1669,7 +1693,7 @@ step=: flash^:_ @: >:
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day11.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day11.ijs
 NB. y = input
 NB. x = number of steps
 part1=: 4 : '(+/)@(0&=)@, step^:(i.x) y'
@@ -1678,7 +1702,7 @@ part1=: 4 : '(+/)@(0&=)@, step^:(i.x) y'
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day11.ijs
+#+BEGIN_SRC j :results output value :tangle src/day11.ijs
 inx=: getin 'inputs/day-11-example.txt'
 assert 204 = 11 part1 inx
 assert 1656 = 101 part1 inx
@@ -1688,7 +1712,7 @@ assert 1656 = 101 part1 inx
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day11.ijs
+#+BEGIN_SRC j :results output value :tangle src/day11.ijs
 assert 1594 = 101 part1 in=. getin 'inputs/day-11.txt'
 #+END_SRC
 
@@ -1700,7 +1724,7 @@ assert 1594 = 101 part1 in=. getin 'inputs/day-11.txt'
 
 ***** ❖ All equal
 
-#+BEGIN_SRC j :results output silent :tangle day11.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day11.ijs
 NB. Returns 1 if all elements are equal
 NB. y = input (infinite rank)
 alleq=: 1&=@#@~.@,
@@ -1708,13 +1732,13 @@ alleq=: 1&=@#@~.@,
 
 ***** Synchronization step
 
-#+BEGIN_SRC j :results output silent :tangle day11.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day11.ijs
 part2=: [: <:@# [: step^:(-.@alleq)^:(<_) ]
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day11.ijs
+#+BEGIN_SRC j :results output value :tangle src/day11.ijs
 assert 195 = part2 inx=. getin 'inputs/day-11-example.txt'
 #+END_SRC
 
@@ -1722,7 +1746,7 @@ assert 195 = part2 inx=. getin 'inputs/day-11-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day11.ijs
+#+BEGIN_SRC j :results output value :tangle src/day11.ijs
 assert 437 = part2 in=. getin 'inputs/day-11.txt'
 #+END_SRC
 
@@ -1738,13 +1762,13 @@ assert 437 = part2 in=. getin 'inputs/day-11.txt'
 cocurrent <'day12'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day12.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day12.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day12.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day12.ijs
 getin=: [: (] , |."1) [: ({. , {:)"1 [: ;: readin ]
 #+END_SRC
 
@@ -1758,7 +1782,7 @@ Reading from right to left, =getin= works as follows,
 
 ***** Connections to vertex
 
-#+BEGIN_SRC j :results output silent :tangle day12.ijs 
+#+BEGIN_SRC j :results output silent :tangle src/day12.ijs 
 NB. Connections to a given vertex x in graph y
 connects=: ({:"1)@] #~ ] (E. {."1)~ [
 #+END_SRC
@@ -1797,7 +1821,7 @@ y=. _2 [\ ('start'; 'A'; 'A'; 'b'; 'A'; 'end'; 'b'; 'end'; 'A'; 'start'; 'b'; 's
 
 ***** Lower case characters
 
-#+BEGIN_SRC j :results output silent :tangle day12.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day12.ijs
 NB. Flag all lower case characters in y
 issmall=: (a. {~ 97 + i.26) e.~ ]
 #+END_SRC
@@ -1813,14 +1837,14 @@ issmall &.> ('a';'A';'bc';'D';'o';'*'; 'start'; 'fg'; 'NX')
 
 ***** Filter small caves
 
-#+BEGIN_SRC j :results output silent :tangle day12.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day12.ijs
 NB. Filter small caves from graph y
 filtsm=: (] #~ ((+./)@:issmall)&>)@:~.@:(('start';'end') -.~ ])@:,
 #+END_SRC
 
 ***** Count paths
 
-#+BEGIN_SRC j :results output silent :tangle day12.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day12.ijs
 NB. Count paths from x to y in a graph satisfying condition u
 dfs=: 1 : 0
 (a: u dfs y)
@@ -1840,13 +1864,13 @@ end.
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day12.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day12.ijs
 part1=: 3 : 'e. dfs (<''start'') [ smcaves=: filtsm graph=: y'
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day12.ijs
+#+BEGIN_SRC j :results output value :tangle src/day12.ijs
 assert 10  = part1 inx=. getin 'inputs/day-12-example-1.txt'
 assert 19  = part1 inx=. getin 'inputs/day-12-example-2.txt'
 assert 226 = part1 inx=. getin 'inputs/day-12-example-3.txt'
@@ -1856,7 +1880,7 @@ assert 226 = part1 inx=. getin 'inputs/day-12-example-3.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day12.ijs
+#+BEGIN_SRC j :results output value :tangle src/day12.ijs
 assert 4304 = part1 in=. getin 'inputs/day-12.txt'
 #+END_SRC
 
@@ -1866,13 +1890,13 @@ assert 4304 = part1 in=. getin 'inputs/day-12.txt'
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day12.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day12.ijs
 part2=: 3 : '((<:@:# > +/)@:~:@:,) dfs (<''start'') [ smcaves=: filtsm graph=: y'
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day12.ijs
+#+BEGIN_SRC j :results output value :tangle src/day12.ijs
 assert 36   = part2 inx=. getin 'inputs/day-12-example-1.txt'
 assert 103  = part2 inx=. getin 'inputs/day-12-example-2.txt'
 assert 3509 = part2 inx=. getin 'inputs/day-12-example-3.txt'
@@ -1882,11 +1906,433 @@ assert 3509 = part2 inx=. getin 'inputs/day-12-example-3.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day12.ijs
+#+BEGIN_SRC j :results output value :tangle src/day12.ijs
 assert 118242 = part2 in=. getin 'inputs/day-12.txt'
 #+END_SRC
 
 #+RESULTS:
+
+** [[https://adventofcode.com/2021/day/13][Day 13: Transparent Origami]]
+
+#+TOC: headlines 2 local
+*** Setup
+
+#+BEGIN_SRC j :results output silent
+cocurrent <'day13'
+#+END_SRC
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+load <'utils.ijs'
+#+END_SRC
+
+*** Approach 1
+
+This approach closely follows [[https://www.youtube.com/watch?v=w15Z1xObd4U][Russ' Ivy-based solution]].
+
+**** Read and process data
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+rplcxy=: rplc&('y=';'0 ';'x=';'';',';' ')
+rawin=: 3 : '>&.> <;._1 (a: , ]) ({. ,&.> {:)"1 (".&.>) ;: rplcxy readin y'
+#+END_SRC
+
+=rawin= creates a 2-element boxed list,
+
+1. The first element is the list of dots converted, after removing the =,= (comma) between the numbers, to a two-column integer array.
+2. The second element is a two-column integer array of fold instructions as =(x, 0)= or =(0, y)= that is obtained after replacing ~y=~ with =0= and removing ~x=~. 
+
+#+BEGIN_SRC j :results output value :exports results
+rawin inx=.'inputs/day-13-example.txt'
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌─────┬───┐
+│ 6 10│0 7│
+│ 0 14│5 0│
+│ 9 10│   │
+│ 0  3│   │
+│10  4│   │
+│ 4 11│   │
+│ 6  0│   │
+│ 6 12│   │
+│ 4  1│   │
+│ 0 13│   │
+│10 12│   │
+│ 3  4│   │
+│ 3  0│   │
+│ 8  4│   │
+│ 1 10│   │
+│ 2 14│   │
+│ 8 10│   │
+│ 9  0│   │
+└─────┴───┘
+#+end_example
+
+Since the fold instructions have to be applied recursively to the list of dots, it is convenient to recast the data into a structure conducive for the application of =/\.=.
+The =procin= (/process input/) function below does exactly this.
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+procin=: <"1@|.@>@{:, {.
+#+END_SRC
+
+#+BEGIN_SRC j :results output value :exports both
+procin@rawin inx=.'inputs/day-13-example.txt'
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌───┬───┬─────┐
+│5 0│0 7│ 6 10│
+│   │   │ 0 14│
+│   │   │ 9 10│
+│   │   │ 0  3│
+│   │   │10  4│
+│   │   │ 4 11│
+│   │   │ 6  0│
+│   │   │ 6 12│
+│   │   │ 4  1│
+│   │   │ 0 13│
+│   │   │10 12│
+│   │   │ 3  4│
+│   │   │ 3  0│
+│   │   │ 8  4│
+│   │   │ 1 10│
+│   │   │ 2 14│
+│   │   │ 8 10│
+│   │   │ 9  0│
+└───┴───┴─────┘
+#+end_example
+
+=getin= is thusly defined,
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+getin=: procin@rawin
+#+END_SRC
+
+**** General function definition
+
+***** Fold
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs 
+NB. Fold point x across y
+fold=: (] - |@:-~)`[@.(0: = ])
+#+END_SRC
+
+#+BEGIN_SRC j :results output value :exports results
+(".&.> ,:~ ]) ('5 fold 3'; '8 fold 6'; '3 fold 0'; '0 fold 4')
+#+END_SRC
+
+#+RESULTS:
+: ┌────────┬────────┬────────┬────────┐
+: │5 fold 3│8 fold 6│3 fold 0│0 fold 4│
+: ├────────┼────────┼────────┼────────┤
+: │1       │4       │3       │0       │
+: └────────┴────────┴────────┴────────┘
+
+***** Origami
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+NB. Recursively apply folds x to series of points y
+origami=: <@(>@[ (fold"0)~"1/ >@])/\.
+#+END_SRC
+
+***** Marks
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+NB. Creates grid of 0s with 1s (marks) at locations of points in y
+marks=: 3 : '1 (|.&.> <"1 y) } (0 * i. |. >: >./ y)'
+#+END_SRC
+
+**** Part 1
+
+***** Function definition
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+part1=: 3 : '+/ ~: > _2&{ origami y'
+#+END_SRC
+
+***** Test
+
+ #+BEGIN_SRC j :results output value :tangle src/day13.ijs
+assert 17 = part1 inx=. getin 'inputs/day-13-example.txt'
+ #+END_SRC
+
+ #+RESULTS:
+
+***** Solution
+
+ #+BEGIN_SRC j :results output value :tangle src/day13.ijs
+assert 827 = part1 in=. getin 'inputs/day-13.txt'
+ #+END_SRC
+
+ #+RESULTS:
+
+**** Part 2
+
+***** Function definition
+
+ #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+part2=: 3 : '_ * -. >  marks ~. > @ {. origami y'
+ #+END_SRC
+
+***** Solution
+
+ #+BEGIN_SRC j :results output value :exports both :tangle src/day13.ijs
+part2 in=. getin 'inputs/day-13.txt' NB. EAHKRECP
+ #+END_SRC
+
+ #+RESULTS:
+ : 0 0 0 0 _ _ 0 0 _ _ 0 _ _ 0 _ 0 _ _ 0 _ 0 0 0 _ _ 0 0 0 0 _ _ 0 0 _ _ 0 0 0 _
+ : 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ 0 _ _ 0 _ _ 0 _ 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ 0
+ : 0 0 0 _ _ 0 _ _ 0 _ 0 0 0 0 _ 0 0 _ _ _ 0 _ _ 0 _ 0 0 0 _ _ 0 _ _ _ _ 0 _ _ 0
+ : 0 _ _ _ _ 0 0 0 0 _ 0 _ _ 0 _ 0 _ 0 _ _ 0 0 0 _ _ 0 _ _ _ _ 0 _ _ _ _ 0 0 0 _
+ : 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ _
+ : 0 0 0 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 0 0 0 _ _ 0 0 _ _ 0 _ _ _
+ 
+
+*** Approach 2
+
+This approach follows that laid out in the problem.
+
+**** Read and process data
+
+***** Raw input
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+rplcxy=: rplc&('y=';'_';'x=';'';',';' ')
+rawin=: 3 : '>&.> <;._1 (a: , ]) ({. ,&.> {:)"1 (".&.>) ;: rplcxy readin y'
+#+END_SRC
+
+=rawin= creates a 2-element boxed list,
+
+1. The first element is the list of dots converted, after removing the =,= (comma) between the numbers, to a two-column integer array.
+2. The second element is an integer array of fold instructions with negative numbers used to denote folds along =y= 
+(the convention of [[*Approach 1]] could also have been used but this is simpler in this case).
+
+
+#+BEGIN_SRC j :results output value :exports results
+rawin inx=.'inputs/day-13-example.txt'
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌─────┬──┐
+│ 6 10│_7│
+│ 0 14│ 5│
+│ 9 10│  │
+│ 0  3│  │
+│10  4│  │
+│ 4 11│  │
+│ 6  0│  │
+│ 6 12│  │
+│ 4  1│  │
+│ 0 13│  │
+│10 12│  │
+│ 3  4│  │
+│ 3  0│  │
+│ 8  4│  │
+│ 1 10│  │
+│ 2 14│  │
+│ 8 10│  │
+│ 9  0│  │
+└─────┴──┘
+#+end_example
+
+***** Points to grid 
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+marks=: 3 : '1 (|.&.> <"1 y) } (0 * i. |. >: >./ y)'
+#+END_SRC
+
+As in [[*Approach 1]], the =marks= function expands a set of =(x, y)= points on a grid,
+
+#+BEGIN_SRC j :results output value :exports results
+y=. 10 2 $ ?.20#10
+(".&.> ,:~ ]) ('y'; 'marks y')
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌───┬───────────────────┐
+│y  │marks y            │
+├───┼───────────────────┤
+│4 6│0 0 0 0 0 0 0 1 0 0│
+│8 6│0 0 0 1 0 0 0 0 0 0│
+│5 8│0 0 0 1 0 0 0 0 0 1│
+│6 6│0 0 0 0 0 0 0 0 0 0│
+│6 9│0 0 0 0 0 0 0 0 0 0│
+│3 2│0 0 0 0 0 0 0 0 0 1│
+│3 1│0 0 0 0 1 0 1 0 1 0│
+│9 2│0 0 0 0 0 0 0 0 0 0│
+│7 0│0 0 0 0 0 1 0 0 0 0│
+│9 5│0 0 0 0 0 0 1 0 0 0│
+└───┴───────────────────┘
+#+end_example
+
+***** Instructions
+
+Since indexing starts at zero, both the =x= (positive) and =y= (negative) fold instructions must be incremented,
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+instrxns=: ,@(* * >:@|)
+#+END_SRC
+
+
+***** Process input
+
+The =procin= (/process input/) function takes the output from =rawin= and applies =marks= and =instrxns= to the respective data,
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+procin=: <"0@|.@instrxns&>@{: , marks&.>@{.
+#+END_SRC
+
+=procin= casts the data in a format conducive for the application of =/\.= since the folds are to be applied recursively. 
+
+***** Get input
+
+=getin= is thusly defined,
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+getin=: procin@rawin
+#+END_SRC
+
+#+BEGIN_SRC j :results output value :exports results
+getin inx=. 'inputs/day-13-example.txt'
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌─┬──┬─────────────────────┐
+│6│_8│0 0 0 1 0 0 1 0 0 1 0│
+│ │  │0 0 0 0 1 0 0 0 0 0 0│
+│ │  │0 0 0 0 0 0 0 0 0 0 0│
+│ │  │1 0 0 0 0 0 0 0 0 0 0│
+│ │  │0 0 0 1 0 0 0 0 1 0 1│
+│ │  │0 0 0 0 0 0 0 0 0 0 0│
+│ │  │0 0 0 0 0 0 0 0 0 0 0│
+│ │  │0 0 0 0 0 0 0 0 0 0 0│
+│ │  │0 0 0 0 0 0 0 0 0 0 0│
+│ │  │0 0 0 0 0 0 0 0 0 0 0│
+│ │  │0 1 0 0 0 0 1 0 1 1 0│
+│ │  │0 0 0 0 1 0 0 0 0 0 0│
+│ │  │0 0 0 0 0 0 1 0 0 0 1│
+│ │  │1 0 0 0 0 0 0 0 0 0 0│
+│ │  │1 0 1 0 0 0 0 0 0 0 0│
+└─┴──┴─────────────────────┘
+#+end_example
+
+**** General function definitions
+
+***** ❖ Fold
+
+A generic function to fold along any axis is defined as,
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs 
+fold=: 2 : '|.@(+./)@(u ,: v)'
+#+END_SRC
+
+This conjunction makes use of the auto fill property of [[https://code.jsoftware.com/wiki/Vocabulary/commaco#dyadic][laminate]],
+
+#+BEGIN_SRC j :results output value :exports results
+y=. 5 4 $ ?.20#10
+(".&.> ,:~ ]) ('y'; '(}. y) ,: ({. y)')
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌───────┬────────────────┐
+│y      │(}. y) ,: ({. y)│
+├───────┼────────────────┤
+│4 6 8 6│5 8 6 6         │
+│5 8 6 6│6 9 3 2         │
+│6 9 3 2│3 1 9 2         │
+│3 1 9 2│7 0 9 5         │
+│7 0 9 5│                │
+│       │4 6 8 6         │
+│       │0 0 0 0         │
+│       │0 0 0 0         │
+│       │0 0 0 0         │
+└───────┴────────────────┘
+#+end_example
+
+that is, =,:= can be used to split the rows or columns of the matrix into separate matrices of the same size!
+
+***** Horizontal and vertical folds
+
+The horizontal fold is now easily defined by providing the appropriate =u= and =v=,
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+foldh=: |.@}:@{. fold }.
+#+END_SRC
+
+The vertical fold is the horizontal fold on the transposed matrix,
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+foldv=: foldh&.|: 
+#+END_SRC
+
+Lastly, by the convention adopted above, vertical folds are applied to the positive instructions and horizontal to the negative instructions,
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
+#+END_SRC
+
+
+***** Origami
+
+Defines the recursive application of vertical and horizontal folds to the input grid,
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+origami=: <@(>@[ foldvh >@])/\.
+#+END_SRC
+
+**** Part 1
+
+***** Function definition
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+part1=: 3 : '+/ , > (_2&{) origami y'
+#+END_SRC
+
+***** Test
+
+#+BEGIN_SRC j :results output value :tangle src/day13.ijs
+assert 17 = part1 inx=. getin 'inputs/day-13-example.txt'
+#+END_SRC
+
+ #+RESULTS:
+
+***** Solution
+
+#+BEGIN_SRC j :results output value :tangle src/day13.ijs
+assert 827 = part1 in=. getin 'inputs/day-13.txt'
+#+END_SRC
+
+ #+RESULTS:
+
+**** Part 2
+
+***** Function definition
+
+#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+part2=: 3 : '_ * -. > @ {. origami y'
+#+END_SRC
+
+***** Solution
+
+#+BEGIN_SRC j :results output value :tangle src/day13.ijs
+part2 in=. getin 'inputs/day-13.txt'
+#+END_SRC
+
+ #+RESULTS:
+ : 0 0 0 0 _ _ 0 0 _ _ 0 _ _ 0 _ 0 _ _ 0 _ 0 0 0 _ _ 0 0 0 0 _ _ 0 0 _ _ 0 0 0 _ _
+ : 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ 0 _ _ 0 _ _ 0 _ 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ 0 _
+ : 0 0 0 _ _ 0 _ _ 0 _ 0 0 0 0 _ 0 0 _ _ _ 0 _ _ 0 _ 0 0 0 _ _ 0 _ _ _ _ 0 _ _ 0 _
+ : 0 _ _ _ _ 0 0 0 0 _ 0 _ _ 0 _ 0 _ 0 _ _ 0 0 0 _ _ 0 _ _ _ _ 0 _ _ _ _ 0 0 0 _ _
+ : 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ _ _
+ : 0 0 0 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 0 0 0 _ _ 0 0 _ _ 0 _ _ _ _
+
 
 ** [[https://adventofcode.com/2021/day/x][Day 0X: Template]]
 
@@ -1898,13 +2344,13 @@ assert 118242 = part2 in=. getin 'inputs/day-12.txt'
 cocurrent <'day0x'
 #+END_SRC
 
-#+BEGIN_SRC j :results output silent :tangle day0x.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day0x.ijs
 load <'utils.ijs'
 #+END_SRC
 
 *** Read data
 
-#+BEGIN_SRC j :results output silent :tangle day0x.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day0x.ijs
 getin=: ". readin
 #+END_SRC
 
@@ -1912,7 +2358,7 @@ getin=: ". readin
 *** General function definition
 
 Generic function to calculate number of increases in data for a given moving window size,
-#+BEGIN_SRC j :results output silent :tangle day0x.ijs 
+#+BEGIN_SRC j :results output silent :tangle src/day0x.ijs 
 f=: 1:
 #+END_SRC
 
@@ -1920,13 +2366,13 @@ f=: 1:
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day0x.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day0x.ijs
 part1=: 1:
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day0x.ijs
+#+BEGIN_SRC j :results output value :tangle src/day0x.ijs
 assert 1 = part1 inx=. getin 'inputs/day-0x-example.txt'
 #+END_SRC
 
@@ -1934,7 +2380,7 @@ assert 1 = part1 inx=. getin 'inputs/day-0x-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day0x.ijs
+#+BEGIN_SRC j :results output value :tangle src/day0x.ijs
 assert 1111 = part1 in=. getin 'inputs/day-0x.txt'
 #+END_SRC
 
@@ -1944,13 +2390,13 @@ assert 1111 = part1 in=. getin 'inputs/day-0x.txt'
 
 **** Function definition
 
-#+BEGIN_SRC j :results output silent :tangle day0x.ijs
+#+BEGIN_SRC j :results output silent :tangle src/day0x.ijs
 part2=: 2:
 #+END_SRC
 
 **** Test
 
-#+BEGIN_SRC j :results output value :tangle day0x.ijs
+#+BEGIN_SRC j :results output value :tangle src/day0x.ijs
 assert 2 = part1 inx=. getin 'inputs/day-0x-example.txt'
 #+END_SRC
 
@@ -1958,7 +2404,7 @@ assert 2 = part1 inx=. getin 'inputs/day-0x-example.txt'
 
 **** Solution
 
-#+BEGIN_SRC j :results output value :tangle day0x.ijs
+#+BEGIN_SRC j :results output value :tangle src/day0x.ijs
 assert 2222 = part2 in=. getin 'inputs/day-0x.txt'
 #+END_SRC
 
