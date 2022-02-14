@@ -2352,8 +2352,7 @@ part2 in=. getin 'inputs/day-13.txt'  NB. EAHKRECP
  : 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ _ _ _ 0 _ _ 0 _ 0 _ _ _ _
  : 0 0 0 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 _ _ 0 _ 0 0 0 0 _ _ 0 0 _ _ 0 _ _ _ _
 
-
-** [[https://adventofcode.com/2021/day/x][Day 0X: Template]]
+** [[https://adventofcode.com/2021/day/x][Day 0X: Template]]                                                :noexport:
 
 #+TOC: headlines 2 local
 
