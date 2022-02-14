@@ -41,22 +41,23 @@ procin=: <"0@|.@instrxns&>@{: , marks&.>@{.
 
 getin=: procin@rawin
 
-NB. Conjunction to split boolean matrix y by u and v across x and join resulting submatrices
+NB. Conjunction to split boolean matrix y by u and v across x and 
+NB. join resulting submatrices
 NB. y = input matrix
 NB. x = integer (fold along)
 NB. u, v = 'selection' verbs => {., }., {:, }:, m&}
 fold=: 2 : '|.@(+./)@(u ,: v)'
 
-NB. Fold matrix y along rows x
+NB. Fold boolean matrix y along rows x
 foldh=: |.@}:@{. fold }.
 
-NB. Fold matrix x along columns y
+NB. Fold boolean matrix x along columns y
 foldv=: foldh&.|:
 
-NB. Fold matrix y along column or row x
+NB. Fold boolean matrix y along column or row x
 foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
 
-NB. Recursively apply folds x to matrix y
+NB. Recursively apply folds x to boolean matrix y
 origami=: <@(>@[ foldvh >@])/\.
 
 part1=: 3 : '+/ , > (_2&{) origami y'
