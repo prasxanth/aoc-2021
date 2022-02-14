@@ -74,6 +74,11 @@ apply the same x to different ys rather than the other way around.
 General functions that would be useful beyond the scope of the solution are indicated with the ❖ symbol.
 #+end_attention
 
+The approach to formulating solutions is as follows,
+
++ To the extent possible, function definitions are general enough for use in both parts of the problem.
++ Each part should be independently executable, that is, it should not rely on any results from the other part.
+
 *** Site
 
 This site was generated using *Emacs 26.3* with *Org mode 9.1.9*. A custom CSS and [[https://orgmode.org/worg/code/org-info-js/][Org-Info.JS]] were used to style the exported HTML.
@@ -2106,7 +2111,7 @@ rawin=: 3 : '>&.> <;._1 (a: , ]) ({. ,&.> {:)"1 (".&.>) ;: rplcxy readin y'
 =rawin= creates a 2-element boxed list,
 
 1. The first element is the list of dots converted, after removing the =,= (comma) between the numbers, to a two-column integer array.
-2. The second element is an integer array of fold instructions with negative numbers used to denote folds along =y= 
+2. The second element is an integer array of fold instructions with the convention that negative numbers are used to denote folds along =y= 
 (the convention of [[*Approach 1]] could also have been used but this is simpler in this case).
 
 
@@ -2141,6 +2146,7 @@ rawin inx=.'inputs/day-13-example.txt'
 ***** Points to grid 
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+NB. Creates grid of 0s with 1s (marks) at locations of points in y
 marks=: 3 : '1 (|.&.> <"1 y) } (0 * i. |. >: >./ y)'
 #+END_SRC
 
@@ -2171,12 +2177,25 @@ y=. 10 2 $ ?.20#10
 
 ***** Instructions
 
-Since indexing starts at zero, both the =x= (positive) and =y= (negative) fold instructions must be incremented,
+Since indexing starts at zero, magnitudes of both the =x= (positive) and =y= (negative) fold instructions must be incremented,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+NB. Increments magnitude of y preserving sign
+NB. instrxns 5 ] 6
+NB. instrxns _3 ] _4
 instrxns=: ,@(* * >:@|)
 #+END_SRC
 
+#+BEGIN_SRC j :results output value :exports results
+(".&.> ,:~ ]) ('instrxns 3'; 'instrxns _7')
+#+END_SRC
+
+#+RESULTS:
+: ┌──────────┬───────────┐
+: │instrxns 3│instrxns _7│
+: ├──────────┼───────────┤
+: │4         │_8         │
+: └──────────┴───────────┘
 
 ***** Process input
 
@@ -2228,6 +2247,10 @@ getin inx=. 'inputs/day-13-example.txt'
 A generic function to fold along any axis is defined as,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs 
+NB. Conjunction to split matrix y by u and v across x and +./ resulting submatrices
+NB. y = input matrix
+NB. x = integer (fold along)
+NB. u, v = 'structural' verbs => {., }., {:, }:
 fold=: 2 : '|.@(+./)@(u ,: v)'
 #+END_SRC
 
@@ -2255,25 +2278,28 @@ y=. 5 4 $ ?.20#10
 └───────┴────────────────┘
 #+end_example
 
-that is, =,:= can be used to split the rows or columns of the matrix into separate matrices of the same size!
+that is, =,:= can be used to split the rows or columns of the matrix into separate sub-matrices of the same size!
 
 ***** Horizontal and vertical folds
 
 The horizontal fold is now easily defined by providing the appropriate =u= and =v=,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+NB. Fold matrix y along rows x
 foldh=: |.@}:@{. fold }.
 #+END_SRC
 
 The vertical fold is the horizontal fold on the transposed matrix,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+NB. Fold matrix y along columns x
 foldv=: foldh&.|: 
 #+END_SRC
 
 Lastly, by the convention adopted above, vertical folds are applied to the positive instructions and horizontal to the negative instructions,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+NB. Fold matrix y along column x if x is positive else along row x
 foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
 #+END_SRC
 
@@ -2283,6 +2309,7 @@ foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
 Defines the recursive application of vertical and horizontal folds to the input grid,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
+NB. Recursively apply folds x to matrix y
 origami=: <@(>@[ foldvh >@])/\.
 #+END_SRC
 
