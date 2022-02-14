@@ -1946,34 +1946,6 @@ rawin=: 3 : '>&.> <;._1 (a: , ]) ({. ,&.> {:)"1 (".&.>) ;: rplcxy readin y'
 1. The first element is the list of dots converted, after removing the =,= (comma) between the numbers, to a two-column integer array.
 2. The second element is a two-column integer array of fold instructions as =(x, 0)= or =(0, y)= that is obtained after replacing ~y=~ with =0= and removing ~x=~. 
 
-#+BEGIN_SRC j :results output value :exports results
-rawin inx=.'inputs/day-13-example.txt'
-#+END_SRC
-
-#+RESULTS:
-#+begin_example
-┌─────┬───┐
-│ 6 10│0 7│
-│ 0 14│5 0│
-│ 9 10│   │
-│ 0  3│   │
-│10  4│   │
-│ 4 11│   │
-│ 6  0│   │
-│ 6 12│   │
-│ 4  1│   │
-│ 0 13│   │
-│10 12│   │
-│ 3  4│   │
-│ 3  0│   │
-│ 8  4│   │
-│ 1 10│   │
-│ 2 14│   │
-│ 8 10│   │
-│ 9  0│   │
-└─────┴───┘
-#+end_example
-
 Since the fold instructions have to be applied recursively to the list of dots, it is convenient to recast the data into a structure conducive for the application of =/\.=.
 The =procin= (/process input/) function below does exactly this.
 
@@ -1981,39 +1953,45 @@ The =procin= (/process input/) function below does exactly this.
 procin=: <"1@|.@>@{:, {.
 #+END_SRC
 
-#+BEGIN_SRC j :results output value :exports both
-procin@rawin inx=.'inputs/day-13-example.txt'
-#+END_SRC
-
-#+RESULTS:
-#+begin_example
-┌───┬───┬─────┐
-│5 0│0 7│ 6 10│
-│   │   │ 0 14│
-│   │   │ 9 10│
-│   │   │ 0  3│
-│   │   │10  4│
-│   │   │ 4 11│
-│   │   │ 6  0│
-│   │   │ 6 12│
-│   │   │ 4  1│
-│   │   │ 0 13│
-│   │   │10 12│
-│   │   │ 3  4│
-│   │   │ 3  0│
-│   │   │ 8  4│
-│   │   │ 1 10│
-│   │   │ 2 14│
-│   │   │ 8 10│
-│   │   │ 9  0│
-└───┴───┴─────┘
-#+end_example
-
 =getin= is thusly defined,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
 getin=: procin@rawin
 #+END_SRC
+
+#+BEGIN_SRC j :results output value :exports results
+y=. 'inputs/day-13-example.txt'
+(".&.> ,:~ ]) ('] readin y'; 'rawin y'; 'getin y')
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌──────────────┬───────────┬───────────────┐
+│] readin y    │rawin y    │getin y        │
+├──────────────┼───────────┼───────────────┤
+│6,10          │┌─────┬───┐│┌───┬───┬─────┐│
+│0,14          ││ 6 10│0 7│││5 0│0 7│ 6 10││
+│9,10          ││ 0 14│5 0│││   │   │ 0 14││
+│0,3           ││ 9 10│   │││   │   │ 9 10││
+│10,4          ││ 0  3│   │││   │   │ 0  3││
+│4,11          ││10  4│   │││   │   │10  4││
+│6,0           ││ 4 11│   │││   │   │ 4 11││
+│6,12          ││ 6  0│   │││   │   │ 6  0││
+│4,1           ││ 6 12│   │││   │   │ 6 12││
+│0,13          ││ 4  1│   │││   │   │ 4  1││
+│10,12         ││ 0 13│   │││   │   │ 0 13││
+│3,4           ││10 12│   │││   │   │10 12││
+│3,0           ││ 3  4│   │││   │   │ 3  4││
+│8,4           ││ 3  0│   │││   │   │ 3  0││
+│1,10          ││ 8  4│   │││   │   │ 8  4││
+│2,14          ││ 1 10│   │││   │   │ 1 10││
+│8,10          ││ 2 14│   │││   │   │ 2 14││
+│9,0           ││ 8 10│   │││   │   │ 8 10││
+│              ││ 9  0│   │││   │   │ 9  0││
+│fold along y=7│└─────┴───┘│└───┴───┴─────┘│
+│fold along x=5│           │               │
+└──────────────┴───────────┴───────────────┘
+#+end_example
 
 **** General function definition
 
@@ -2048,6 +2026,23 @@ origami=: <@(>@[ (fold"0)~"1/ >@])/\.
 NB. Creates grid of 0s with 1s (marks) at locations of points in y
 marks=: 3 : '1 (|.&.> <"1 y) } (0 * i. |. >: >./ y)'
 #+END_SRC
+
+#+BEGIN_SRC j :results output value :exports results
+yl=. (1 0, 3 1, 2 2, 1 3 ,: 2 4)
+y=. }. <@(>@[ {. >@])/\. ((<yl) ,~  (<"0 i.5))
+(; 5 # <('y'; 'marks y')) ,: , |: y ,: marks &.> y
+#+END_SRC
+
+#+RESULTS:
+: ┌───┬───────┬───┬───────┬───┬───────┬───┬───────┬───┬───────┐
+: │y  │marks y│y  │marks y│y  │marks y│y  │marks y│y  │marks y│
+: ├───┼───────┼───┼───────┼───┼───────┼───┼───────┼───┼───────┤
+: │1 0│0 1    │1 0│0 1 0 0│1 0│0 1 0 0│1 0│0 1 0 0│1 0│0 1 0 0│
+: │   │       │3 1│0 0 0 1│3 1│0 0 0 1│3 1│0 0 0 1│3 1│0 0 0 1│
+: │   │       │   │       │2 2│0 0 1 0│2 2│0 0 1 0│2 2│0 0 1 0│
+: │   │       │   │       │   │       │1 3│0 1 0 0│1 3│0 1 0 0│
+: │   │       │   │       │   │       │   │       │2 4│0 0 1 0│
+: └───┴───────┴───┴───────┴───┴───────┴───┴───────┴───┴───────┘
 
 **** Part 1
 
@@ -2112,36 +2107,7 @@ rawin=: 3 : '>&.> <;._1 (a: , ]) ({. ,&.> {:)"1 (".&.>) ;: rplcxy readin y'
 
 1. The first element is the list of dots converted, after removing the =,= (comma) between the numbers, to a two-column integer array.
 2. The second element is an integer array of fold instructions with the convention that negative numbers are used to denote folds along =y= 
-(the convention of [[*Approach 1]] could also have been used but this is simpler in this case).
-
-
-#+BEGIN_SRC j :results output value :exports results
-rawin inx=.'inputs/day-13-example.txt'
-#+END_SRC
-
-#+RESULTS:
-#+begin_example
-┌─────┬──┐
-│ 6 10│_7│
-│ 0 14│ 5│
-│ 9 10│  │
-│ 0  3│  │
-│10  4│  │
-│ 4 11│  │
-│ 6  0│  │
-│ 6 12│  │
-│ 4  1│  │
-│ 0 13│  │
-│10 12│  │
-│ 3  4│  │
-│ 3  0│  │
-│ 8  4│  │
-│ 1 10│  │
-│ 2 14│  │
-│ 8 10│  │
-│ 9  0│  │
-└─────┴──┘
-#+end_example
+(the convention of [[*Approach 1]] could also have been used but this is simpler).
 
 ***** Points to grid 
 
@@ -2150,37 +2116,31 @@ NB. Creates grid of 0s with 1s (marks) at locations of points in y
 marks=: 3 : '1 (|.&.> <"1 y) } (0 * i. |. >: >./ y)'
 #+END_SRC
 
-As in [[*Approach 1]], the =marks= function expands a set of =(x, y)= points on a grid,
+As in [[*Approach 1]], the =marks= function expands a set of =(x, y)= points on a (boolean) grid,
 
 #+BEGIN_SRC j :results output value :exports results
-y=. 10 2 $ ?.20#10
-(".&.> ,:~ ]) ('y'; 'marks y')
+yl=. (1 0, 3 1, 2 2, 1 3 ,: 2 4)
+y=. }. <@(>@[ {. >@])/\. ((<yl) ,~  (<"0 i.5))
+(; 5 # <('y'; 'marks y')) ,: , |: y ,: marks &.> y
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
-┌───┬───────────────────┐
-│y  │marks y            │
-├───┼───────────────────┤
-│4 6│0 0 0 0 0 0 0 1 0 0│
-│8 6│0 0 0 1 0 0 0 0 0 0│
-│5 8│0 0 0 1 0 0 0 0 0 1│
-│6 6│0 0 0 0 0 0 0 0 0 0│
-│6 9│0 0 0 0 0 0 0 0 0 0│
-│3 2│0 0 0 0 0 0 0 0 0 1│
-│3 1│0 0 0 0 1 0 1 0 1 0│
-│9 2│0 0 0 0 0 0 0 0 0 0│
-│7 0│0 0 0 0 0 1 0 0 0 0│
-│9 5│0 0 0 0 0 0 1 0 0 0│
-└───┴───────────────────┘
-#+end_example
+: ┌───┬───────┬───┬───────┬───┬───────┬───┬───────┬───┬───────┐
+: │y  │marks y│y  │marks y│y  │marks y│y  │marks y│y  │marks y│
+: ├───┼───────┼───┼───────┼───┼───────┼───┼───────┼───┼───────┤
+: │1 0│0 1    │1 0│0 1 0 0│1 0│0 1 0 0│1 0│0 1 0 0│1 0│0 1 0 0│
+: │   │       │3 1│0 0 0 1│3 1│0 0 0 1│3 1│0 0 0 1│3 1│0 0 0 1│
+: │   │       │   │       │2 2│0 0 1 0│2 2│0 0 1 0│2 2│0 0 1 0│
+: │   │       │   │       │   │       │1 3│0 1 0 0│1 3│0 1 0 0│
+: │   │       │   │       │   │       │   │       │2 4│0 0 1 0│
+: └───┴───────┴───┴───────┴───┴───────┴───┴───────┴───┴───────┘
 
 ***** Instructions
 
 Since indexing starts at zero, magnitudes of both the =x= (positive) and =y= (negative) fold instructions must be incremented,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
-NB. Increments magnitude of y preserving sign
+NB. Increments magnitude of y (preserving sign)
 NB. instrxns 5 ] 6
 NB. instrxns _3 ] _4
 instrxns=: ,@(* * >:@|)
@@ -2216,28 +2176,37 @@ getin=: procin@rawin
 #+END_SRC
 
 #+BEGIN_SRC j :results output value :exports results
-getin inx=. 'inputs/day-13-example.txt'
+y=. 'inputs/day-13-example.txt'
+(".&.> ,:~ ]) ('] readin y'; 'rawin y'; 'getin y')
 #+END_SRC
 
 #+RESULTS:
 #+begin_example
-┌─┬──┬─────────────────────┐
-│6│_8│0 0 0 1 0 0 1 0 0 1 0│
-│ │  │0 0 0 0 1 0 0 0 0 0 0│
-│ │  │0 0 0 0 0 0 0 0 0 0 0│
-│ │  │1 0 0 0 0 0 0 0 0 0 0│
-│ │  │0 0 0 1 0 0 0 0 1 0 1│
-│ │  │0 0 0 0 0 0 0 0 0 0 0│
-│ │  │0 0 0 0 0 0 0 0 0 0 0│
-│ │  │0 0 0 0 0 0 0 0 0 0 0│
-│ │  │0 0 0 0 0 0 0 0 0 0 0│
-│ │  │0 0 0 0 0 0 0 0 0 0 0│
-│ │  │0 1 0 0 0 0 1 0 1 1 0│
-│ │  │0 0 0 0 1 0 0 0 0 0 0│
-│ │  │0 0 0 0 0 0 1 0 0 0 1│
-│ │  │1 0 0 0 0 0 0 0 0 0 0│
-│ │  │1 0 1 0 0 0 0 0 0 0 0│
-└─┴──┴─────────────────────┘
+┌──────────────┬──────────┬────────────────────────────┐
+│] readin y    │rawin y   │getin y                     │
+├──────────────┼──────────┼────────────────────────────┤
+│6,10          │┌─────┬──┐│┌─┬──┬─────────────────────┐│
+│0,14          ││ 6 10│_7│││6│_8│0 0 0 1 0 0 1 0 0 1 0││
+│9,10          ││ 0 14│ 5│││ │  │0 0 0 0 1 0 0 0 0 0 0││
+│0,3           ││ 9 10│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│10,4          ││ 0  3│  │││ │  │1 0 0 0 0 0 0 0 0 0 0││
+│4,11          ││10  4│  │││ │  │0 0 0 1 0 0 0 0 1 0 1││
+│6,0           ││ 4 11│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│6,12          ││ 6  0│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│4,1           ││ 6 12│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│0,13          ││ 4  1│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│10,12         ││ 0 13│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│3,4           ││10 12│  │││ │  │0 1 0 0 0 0 1 0 1 1 0││
+│3,0           ││ 3  4│  │││ │  │0 0 0 0 1 0 0 0 0 0 0││
+│8,4           ││ 3  0│  │││ │  │0 0 0 0 0 0 1 0 0 0 1││
+│1,10          ││ 8  4│  │││ │  │1 0 0 0 0 0 0 0 0 0 0││
+│2,14          ││ 1 10│  │││ │  │1 0 1 0 0 0 0 0 0 0 0││
+│8,10          ││ 2 14│  ││└─┴──┴─────────────────────┘│
+│9,0           ││ 8 10│  ││                            │
+│              ││ 9  0│  ││                            │
+│fold along y=7│└─────┴──┘│                            │
+│fold along x=5│          │                            │
+└──────────────┴──────────┴────────────────────────────┘
 #+end_example
 
 **** General function definitions
@@ -2247,35 +2216,35 @@ getin inx=. 'inputs/day-13-example.txt'
 A generic function to fold along any axis is defined as,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs 
-NB. Conjunction to split matrix y by u and v across x and +./ resulting submatrices
+NB. Conjunction to split boolean matrix y by u and v across x and join resulting submatrices
 NB. y = input matrix
 NB. x = integer (fold along)
-NB. u, v = 'structural' verbs => {., }., {:, }:
+NB. u, v = 'selection' verbs => {., }., {:, }:, m&}
 fold=: 2 : '|.@(+./)@(u ,: v)'
 #+END_SRC
+
+Note that although this definition violates the [[*Conventions]] adapted but it is used as it results in a cleaner interface.
 
 This conjunction makes use of the auto fill property of [[https://code.jsoftware.com/wiki/Vocabulary/commaco#dyadic][laminate]],
 
 #+BEGIN_SRC j :results output value :exports results
-y=. 5 4 $ ?.20#10
+y=. 4 3 $ 2 < ?.12#6
 (".&.> ,:~ ]) ('y'; '(}. y) ,: ({. y)')
 #+END_SRC
 
 #+RESULTS:
 #+begin_example
-┌───────┬────────────────┐
-│y      │(}. y) ,: ({. y)│
-├───────┼────────────────┤
-│4 6 8 6│5 8 6 6         │
-│5 8 6 6│6 9 3 2         │
-│6 9 3 2│3 1 9 2         │
-│3 1 9 2│7 0 9 5         │
-│7 0 9 5│                │
-│       │4 6 8 6         │
-│       │0 0 0 0         │
-│       │0 0 0 0         │
-│       │0 0 0 0         │
-└───────┴────────────────┘
+┌─────┬────────────────┐
+│y    │(}. y) ,: ({. y)│
+├─────┼────────────────┤
+│0 0 1│0 1 1           │
+│0 1 1│1 1 0           │
+│1 1 0│0 1 0           │
+│0 1 0│                │
+│     │0 0 1           │
+│     │0 0 0           │
+│     │0 0 0           │
+└─────┴────────────────┘
 #+end_example
 
 that is, =,:= can be used to split the rows or columns of the matrix into separate sub-matrices of the same size!
@@ -2289,20 +2258,43 @@ NB. Fold matrix y along rows x
 foldh=: |.@}:@{. fold }.
 #+END_SRC
 
+
+#+BEGIN_SRC j :results output value :exports results
+y=. 8 5 $ 2 < ?.12#6
+(".&.> ,:~ ]) ('y'; '5 foldh y'; '6 foldh y')
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌─────────┬─────────┬─────────┐
+│y        │5 foldh y│6 foldh y│
+├─────────┼─────────┼─────────┤
+│0 0 1 0 1│0 0 1 0 1│0 0 1 0 1│
+│1 1 1 0 0│1 1 1 1 0│1 1 1 0 0│
+│1 0 0 0 1│1 1 0 0 1│1 0 0 0 1│
+│0 1 1 1 1│0 1 1 1 1│0 1 1 1 1│
+│0 0 1 0 0│         │1 1 1 0 1│
+│0 1 0 1 1│         │         │
+│1 1 0 0 1│         │         │
+│0 0 0 1 0│         │         │
+└─────────┴─────────┴─────────┘
+#+end_example
+
+Note that =foldh= works as expected only for =x >: # y=.
+
 The vertical fold is the horizontal fold on the transposed matrix,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
-NB. Fold matrix y along columns x
+NB. Fold matrix x along columns y
 foldv=: foldh&.|: 
 #+END_SRC
 
 Lastly, by the convention adopted above, vertical folds are applied to the positive instructions and horizontal to the negative instructions,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
-NB. Fold matrix y along column x if x is positive else along row x
+NB. Fold matrix y along column or row x
 foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
 #+END_SRC
-
 
 ***** Origami
 
@@ -2327,7 +2319,7 @@ part1=: 3 : '+/ , > (_2&{) origami y'
 assert 17 = part1 inx=. getin 'inputs/day-13-example.txt'
 #+END_SRC
 
- #+RESULTS:
+#+RESULTS:
 
 ***** Solution
 
