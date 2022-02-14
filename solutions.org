@@ -2216,7 +2216,8 @@ y=. 'inputs/day-13-example.txt'
 A generic function to fold along any axis is defined as,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs 
-NB. Conjunction to split boolean matrix y by u and v across x and join resulting submatrices
+NB. Conjunction to split boolean matrix y by u and v across x and 
+NB. join resulting submatrices
 NB. y = input matrix
 NB. x = integer (fold along)
 NB. u, v = 'selection' verbs => {., }., {:, }:, m&}
@@ -2254,7 +2255,7 @@ that is, =,:= can be used to split the rows or columns of the matrix into separa
 The horizontal fold is now easily defined by providing the appropriate =u= and =v=,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
-NB. Fold matrix y along rows x
+NB. Fold boolean matrix y along rows x
 foldh=: |.@}:@{. fold }.
 #+END_SRC
 
@@ -2285,14 +2286,14 @@ Note that =foldh= works as expected only for =x >: # y=.
 The vertical fold is the horizontal fold on the transposed matrix,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
-NB. Fold matrix x along columns y
+NB. Fold boolean matrix x along columns y
 foldv=: foldh&.|: 
 #+END_SRC
 
 Lastly, by the convention adopted above, vertical folds are applied to the positive instructions and horizontal to the negative instructions,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
-NB. Fold matrix y along column or row x
+NB. Fold boolean matrix y along column or row x
 foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
 #+END_SRC
 
@@ -2301,7 +2302,7 @@ foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
 Defines the recursive application of vertical and horizontal folds to the input grid,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
-NB. Recursively apply folds x to matrix y
+NB. Recursively apply folds x to boolean matrix y
 origami=: <@(>@[ foldvh >@])/\.
 #+END_SRC
 
