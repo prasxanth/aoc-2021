@@ -58,7 +58,7 @@ NB. Fold boolean matrix y along column or row x
 foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
 
 NB. Recursively apply folds x to boolean matrix y
-origami=: foldvh &.>/\.
+origami=: foldvh&.>/\.
 
 part1=: 3 : '+/ , > (_2&{) origami y'
 
