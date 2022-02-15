@@ -11,7 +11,7 @@ NB. Fold point x across y
 fold=: (] - |@:-~)`[@.(0: = ])
 
 NB. Recursively apply folds x to series of points y
-origami=: <@(>@[ (fold"0)~"1/ >@])/\.
+origami=: ((fold"0)~"1/)&.>/\.
 
 NB. Creates grid of 0s with 1s (marks) at locations of points in y
 marks=: 3 : '1 (|.&.> <"1 y) } (0 * i. |. >: >./ y)'
@@ -58,7 +58,7 @@ NB. Fold boolean matrix y along column or row x
 foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
 
 NB. Recursively apply folds x to boolean matrix y
-origami=: <@(>@[ foldvh >@])/\.
+origami=: foldvh &.>/\.
 
 part1=: 3 : '+/ , > (_2&{) origami y'
 
