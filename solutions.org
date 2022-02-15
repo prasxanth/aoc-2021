@@ -2303,7 +2303,7 @@ Defines the recursive application of vertical and horizontal folds to the input 
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
 NB. Recursively apply folds x to boolean matrix y
-origami=: foldvh &.>/\.
+origami=: foldvh&.>/\.
 #+END_SRC
 
 **** Part 1
