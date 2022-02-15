@@ -15,7 +15,7 @@ NB. u = comparison operator (< , > , >: , <: , =)
 filtrows=: 1 : '[ #~ {"1~ = -:@#@[ u +/@:({"1~)'
 
 NB. Reduce using verb 'u/\.' on a boxed list y
-foldr=: 1 : '[: <@(u&>)/\. ,&boxxopen'
+foldr=: 1 : '[: u&.>/\. ,&boxxopen'
 
 NB. Recursively filter rows using 'u' common elements from each column
 rating=: 1 : '[: >@(] #~ 1: = #&>) (] (u filtrows)~ foldr~ ;/@i.@-@{:@$)'
