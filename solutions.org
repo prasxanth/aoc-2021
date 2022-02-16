@@ -2135,78 +2135,48 @@ y=. }. {.&.>/\. ((<yl) ,~  (<"0 i.5))
 : │   │       │   │       │   │       │   │       │2 4│0 0 1 0│
 : └───┴───────┴───┴───────┴───┴───────┴───┴───────┴───┴───────┘
 
-***** Instructions
-
-Since indexing starts at zero, magnitudes of both the =x= (positive) and =y= (negative) fold instructions must be incremented,
-
-#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
-NB. Increments magnitude of y (preserving sign)
-NB. instrxns 5 ] 6
-NB. instrxns _3 ] _4
-instrxns=: ,@(* * >:@|)
-#+END_SRC
-
-#+BEGIN_SRC j :results output value :exports results
-(".&.> ,:~ ]) ('instrxns 3'; 'instrxns _7')
-#+END_SRC
-
-#+RESULTS:
-: ┌──────────┬───────────┐
-: │instrxns 3│instrxns _7│
-: ├──────────┼───────────┤
-: │4         │_8         │
-: └──────────┴───────────┘
-
-***** Process input
-
-The =procin= (/process input/) function takes the output from =rawin= and applies =marks= and =instrxns= to the respective data,
-
-#+BEGIN_SRC j :results output silent :tangle src/day13.ijs
-procin=: <"0@|.@instrxns&>@{: , marks&.>@{.
-#+END_SRC
-
-=procin= casts the data in a format conducive for the application of =/\.= since the folds are to be applied recursively. 
-
 ***** Get input
 
-=getin= is thusly defined,
+Since the folds are to be applied recursively, =getin= casts the data in a format conducive for the application of =/\.=
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
-getin=: procin@rawin
+getin=: 3 : '(;/@,@|.@(] + *) i) , <(marks d) [ ''d i''=. rawin y'
 #+END_SRC
+
+Indexing starts at zero, so magnitudes of both the =x= (positive) and =y= (negative) fold instructions are incremented (=(] + *) i=).
 
 #+BEGIN_SRC j :results output value :exports results
 y=. 'inputs/day-13-example.txt'
-(".&.> ,:~ ]) ('] readin y'; 'rawin y'; 'getin y')
+(".&.> ,:~ ]) ('] readin y'; 'getin y')
 #+END_SRC
 
 #+RESULTS:
 #+begin_example
-┌──────────────┬──────────┬────────────────────────────┐
-│] readin y    │rawin y   │getin y                     │
-├──────────────┼──────────┼────────────────────────────┤
-│6,10          │┌─────┬──┐│┌─┬──┬─────────────────────┐│
-│0,14          ││ 6 10│_7│││6│_8│0 0 0 1 0 0 1 0 0 1 0││
-│9,10          ││ 0 14│ 5│││ │  │0 0 0 0 1 0 0 0 0 0 0││
-│0,3           ││ 9 10│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
-│10,4          ││ 0  3│  │││ │  │1 0 0 0 0 0 0 0 0 0 0││
-│4,11          ││10  4│  │││ │  │0 0 0 1 0 0 0 0 1 0 1││
-│6,0           ││ 4 11│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
-│6,12          ││ 6  0│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
-│4,1           ││ 6 12│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
-│0,13          ││ 4  1│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
-│10,12         ││ 0 13│  │││ │  │0 0 0 0 0 0 0 0 0 0 0││
-│3,4           ││10 12│  │││ │  │0 1 0 0 0 0 1 0 1 1 0││
-│3,0           ││ 3  4│  │││ │  │0 0 0 0 1 0 0 0 0 0 0││
-│8,4           ││ 3  0│  │││ │  │0 0 0 0 0 0 1 0 0 0 1││
-│1,10          ││ 8  4│  │││ │  │1 0 0 0 0 0 0 0 0 0 0││
-│2,14          ││ 1 10│  │││ │  │1 0 1 0 0 0 0 0 0 0 0││
-│8,10          ││ 2 14│  ││└─┴──┴─────────────────────┘│
-│9,0           ││ 8 10│  ││                            │
-│              ││ 9  0│  ││                            │
-│fold along y=7│└─────┴──┘│                            │
-│fold along x=5│          │                            │
-└──────────────┴──────────┴────────────────────────────┘
+┌──────────────┬────────────────────────────┐
+│] readin y    │getin y                     │
+├──────────────┼────────────────────────────┤
+│6,10          │┌─┬──┬─────────────────────┐│
+│0,14          ││6│_8│0 0 0 1 0 0 1 0 0 1 0││
+│9,10          ││ │  │0 0 0 0 1 0 0 0 0 0 0││
+│0,3           ││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│10,4          ││ │  │1 0 0 0 0 0 0 0 0 0 0││
+│4,11          ││ │  │0 0 0 1 0 0 0 0 1 0 1││
+│6,0           ││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│6,12          ││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│4,1           ││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│0,13          ││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│10,12         ││ │  │0 0 0 0 0 0 0 0 0 0 0││
+│3,4           ││ │  │0 1 0 0 0 0 1 0 1 1 0││
+│3,0           ││ │  │0 0 0 0 1 0 0 0 0 0 0││
+│8,4           ││ │  │0 0 0 0 0 0 1 0 0 0 1││
+│1,10          ││ │  │1 0 0 0 0 0 0 0 0 0 0││
+│2,14          ││ │  │1 0 1 0 0 0 0 0 0 0 0││
+│8,10          │└─┴──┴─────────────────────┘│
+│9,0           │                            │
+│              │                            │
+│fold along y=7│                            │
+│fold along x=5│                            │
+└──────────────┴────────────────────────────┘
 #+end_example
 
 **** General function definitions
@@ -2221,10 +2191,10 @@ NB. join resulting submatrices
 NB. y = input matrix
 NB. x = integer (fold along)
 NB. u, v = 'selection' verbs => {., }., {:, }:, m&}
-fold=: 2 : '|.@(+./)@(u ,: v)'
+fold=: 2 : '|.@(+./)@(u ,: v)~'
 #+END_SRC
 
-Note that although this definition violates the [[*Conventions]] adapted but it is used as it results in a cleaner interface.
+=fold= is defined to be consistent with the adapted [[*Conventions]].
 
 This conjunction makes use of the auto fill property of [[https://code.jsoftware.com/wiki/Vocabulary/commaco#dyadic][laminate]],
 
@@ -2248,7 +2218,7 @@ y=. 4 3 $ 2 < ?.12#6
 └─────┴────────────────┘
 #+end_example
 
-that is, =,:= can be used to split the rows or columns of the matrix into separate sub-matrices of the same size!
+that is, =,:= can be used to split the rows or columns of the matrix into separate sub-matrices of the same size.
 
 ***** Horizontal and vertical folds
 
@@ -2262,13 +2232,14 @@ foldh=: |.@}:@{. fold }.
 
 #+BEGIN_SRC j :results output value :exports results
 y=. 8 5 $ 2 < ?.12#6
-(".&.> ,:~ ]) ('y'; '5 foldh y'; '6 foldh y')
+NB. (".&.> ,:~ ]) ('y'; '5 foldh y'; '6 foldh y')
+(".&.> ,:~ ]) ('y'; 'y foldh 5'; 'y foldh 6')
 #+END_SRC
 
 #+RESULTS:
 #+begin_example
 ┌─────────┬─────────┬─────────┐
-│y        │5 foldh y│6 foldh y│
+│y        │y foldh 5│y foldh 6│
 ├─────────┼─────────┼─────────┤
 │0 0 1 0 1│0 0 1 0 1│0 0 1 0 1│
 │1 1 1 0 0│1 1 1 1 0│1 1 1 0 0│
@@ -2281,7 +2252,7 @@ y=. 8 5 $ 2 < ?.12#6
 └─────────┴─────────┴─────────┘
 #+end_example
 
-Note that =foldh= works as expected only for =x >: # y=.
+Note that =foldh= works as expected only for =x >: (# y)=.
 
 The vertical fold is the horizontal fold on the transposed matrix,
 
@@ -2290,20 +2261,18 @@ NB. Fold boolean matrix x along columns y
 foldv=: foldh&.|: 
 #+END_SRC
 
-Lastly, by the convention adopted above, vertical folds are applied to the positive instructions and horizontal to the negative instructions,
+Lastly, by the convention adopted above, vertical folds are applied to the positive instructions and horizontal folds to the negative instructions,
 
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
 NB. Fold boolean matrix y along column or row x
-foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
+foldvh=: foldv`([ foldh |@]) @. (0: > ])
 #+END_SRC
 
 ***** Origami
 
-Defines the recursive application of vertical and horizontal folds to the input grid,
-
 #+BEGIN_SRC j :results output silent :tangle src/day13.ijs
 NB. Recursively apply folds x to boolean matrix y
-origami=: foldvh&.>/\.
+origami=: (foldvh~)&.>/\.
 #+END_SRC
 
 **** Part 1
