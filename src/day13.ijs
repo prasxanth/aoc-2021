@@ -32,21 +32,14 @@ rawin=: 3 : '>&.> <;._1 (a: , ]) ({. ,&.> {:)"1 (".&.>) ;: rplcxy readin y'
 NB. Creates grid of 0s with 1s (marks) at locations of points in y
 marks=: 3 : '1 (|.&.> <"1 y) } (0 * i. |. >: >./ y)'
 
-NB. Increments magnitude of y (preserving sign)
-NB. instrxns 5 ] 6
-NB. instrxns _3 ] _4
-instrxns=: ,@(* * >:@|)
-
-procin=: <"0@|.@instrxns&>@{: , marks&.>@{.
-
-getin=: procin@rawin
+getin=: 3 : '(;/@,@|.@(] + *) i) , <(marks d) [ ''d i''=. rawin y'
 
 NB. Conjunction to split boolean matrix y by u and v across x and 
 NB. join resulting submatrices
 NB. y = input matrix
 NB. x = integer (fold along)
 NB. u, v = 'selection' verbs => {., }., {:, }:, m&}
-fold=: 2 : '|.@(+./)@(u ,: v)'
+fold=: 2 : '|.@(+./)@(u ,: v)~'
 
 NB. Fold boolean matrix y along rows x
 foldh=: |.@}:@{. fold }.
@@ -55,10 +48,10 @@ NB. Fold boolean matrix x along columns y
 foldv=: foldh&.|:
 
 NB. Fold boolean matrix y along column or row x
-foldvh=: foldv`(|@[ foldh ]) @. (0 > [)
+foldvh=: foldv`([ foldh |@]) @. (0: > ])
 
 NB. Recursively apply folds x to boolean matrix y
-origami=: foldvh&.>/\.
+origami=: (foldvh~)&.>/\.
 
 part1=: 3 : '+/ , > (_2&{) origami y'
 
