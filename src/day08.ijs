@@ -19,8 +19,6 @@ NB. A digit can be uniquely identified by length,
 NB. intersection with 1 and intersection with 4
 tbluids=: _3 ]\ 6 2 3 2 2 2 5 1 2 5 2 3 4 2 4 5 1 3 6 1 3 3 2 2 7 2 4 6 2 4
 
-tbluids
-
 NB. Get identifiers of output x based on encodings in y
 NB. y = boxed list of outputs
 NB. x = boxed list of encoded entries (#y = 10)
