@@ -7,7 +7,7 @@ NB. y = input matrix
 NB. x = padding constant
 pad=: [,.~ [,~ [,. ,
 
-flash=:  ((9&>:) *. (0&<)) * ((1 1 ,: 3 3) (+/@,);._3 (0&pad)@(9&<)) + ]
+flash=: ((9&>:) *. (0&<)) * ((1 1 ,: 3 3) (+/@,);._3 (0&pad)@(9&<)) + ]
 
 NB. Increase the energy level and flash until no energy levels are greater than 9
 step=: flash^:_ @: >:
