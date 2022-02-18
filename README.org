@@ -23,5 +23,5 @@ Language and IDE details,
 - [[https://github.com/prasxanth/aoc-2021/tree/main/src][Source]] 
   - All source code tangled from the Org document
   - Comments, assertions and empty lines are removed using the =compijs.sh= bash script
-  - All files have =getin=, =part1= and =part2= functions. Assuming =ifn= is the input filename, the solutions for each part is obtained as =part1 (getin ifn)= and =part2 (getin ifn)=.
+  - All files have =getin=, =part1= and =part2= functions. Assuming =ifn= is the input filename, the solution for each part is obtained as =part1 (getin ifn)= and =part2 (getin ifn)=.
   
