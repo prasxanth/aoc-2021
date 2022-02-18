@@ -2580,7 +2580,81 @@ y=. getin 'inputs/day-14-example.txt'
 ***** Summarize element counts
 
 #+BEGIN_SRC j :results output silent :tangle src/day14.ijs 
-f=: 1:
+NB. Summarize count of elements in source molecule pairs after y generations
+NB. y = number of generations
+NB. x = two-element boxed array (as returned by 'getin')
+NB.     first element = template string
+NB.     second element = 3-column boxed table of rules
+summarize=: 4 : '(r addendum t) + ({.&.> {."1 r) +//. y [ ''t r''=. x' NB. t = template, r = rules
+#+END_SRC
+
+where,
+
+#+BEGIN_SRC j :results output silent :tangle src/day14.ijs 
+NB. Finds last element of template string in source molecule pairs
+NB. Used in 'summarize' function
+NB. y = template string
+NB. x = 3-column boxed table of rules
+addendum=: ([: ~. ({.&.>)@({."1)@[) e. {:@(;/)@]
+#+END_SRC
+
+The element counts can be obtained either from the first or last elements of the source molecule pairs. =summarize= uses the first (head), 
+of the source molecule pairs,
+
+#+BEGIN_SRC j :results output value :exports results
+'t r'=. y=. getin 'inputs/day-14-example.txt'
+({.&.> ,:~ ]) {."1 r
+#+END_SRC
+
+#+RESULTS:
+: ┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐
+: │CH│HH│CB│NH│HB│HC│HN│NN│BH│NC│NB│BN│BB│BC│CC│CN│
+: ├──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤
+: │C │H │C │N │H │H │H │N │B │N │N │B │B │B │C │C │
+: └──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘
+
+However, this will miss the single count from the /last/ element in the template string. =addendum= finds this,
+
+#+BEGIN_SRC j :results output value :exports results
+'t r'=. y=. getin 'inputs/day-14-example.txt'
+(".&.> ,.~ ]) ('t'; ', {."1 r'; '~. {.&.> {."1 r'; ';/ t'; 'r addendum t')
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌───────────────┬─────────────────────────────────────────────────┐
+│t              │NNCB                                             │
+├───────────────┼─────────────────────────────────────────────────┤
+│, {."1 r       │┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐│
+│               ││CH│HH│CB│NH│HB│HC│HN│NN│BH│NC│NB│BN│BB│BC│CC│CN││
+│               │└──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘│
+├───────────────┼─────────────────────────────────────────────────┤
+│~. {.&.> {."1 r│┌─┬─┬─┬─┐                                        │
+│               ││C│H│N│B│                                        │
+│               │└─┴─┴─┴─┘                                        │
+├───────────────┼─────────────────────────────────────────────────┤
+│;/ t           │┌─┬─┬─┬─┐                                        │
+│               ││N│N│C│B│                                        │
+│               │└─┴─┴─┴─┘                                        │
+├───────────────┼─────────────────────────────────────────────────┤
+│r addendum t   │0 0 0 1                                          │
+└───────────────┴─────────────────────────────────────────────────┘
+#+end_example
+
+and adds it to the summary.
+
+Note that if the last elements of the source molecule pairs had been used, then the count from the /first/ element of the template string would
+have to be added back to the summary.
+
+***** Range
+
+#+BEGIN_SRC j :results output silent :tangle src/day14.ijs
+NB. Finds range (max - min) of element counts after y generations
+NB. y = number of generations
+NB. x = input as returned by getin
+NB.     first element = template string
+NB.     second element = 3-column boxed table of rules        
+range=: [: (>./ - <./) [: (] #~ 0: < ]) [ summarize +/@:polymerize
 #+END_SRC
 
 
@@ -2589,13 +2663,13 @@ f=: 1:
 **** Function definition
 
 #+BEGIN_SRC j :results output silent :tangle src/day14.ijs
-part1=: 1:
+part1=: range&10
 #+END_SRC
 
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle src/day14.ijs
-assert 1 = part1 inx=. getin 'inputs/day-14-example.txt'
+assert 1588 = part1 inx=. getin 'inputs/day-14-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -2603,7 +2677,7 @@ assert 1 = part1 inx=. getin 'inputs/day-14-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle src/day14.ijs
-assert 1111 = part1 in=. getin 'inputs/day-14.txt'
+assert 3406 = part1 in=. getin 'inputs/day-14.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -2613,13 +2687,13 @@ assert 1111 = part1 in=. getin 'inputs/day-14.txt'
 **** Function definition
 
 #+BEGIN_SRC j :results output silent :tangle src/day14.ijs
-part2=: 2:
+part2=: range&40
 #+END_SRC
 
 **** Test
 
 #+BEGIN_SRC j :results output value :tangle src/day14.ijs
-assert 2 = part1 inx=. getin 'inputs/day-14-example.txt'
+assert 2188189693529 = part2 inx=. getin 'inputs/day-14-example.txt'
 #+END_SRC
 
 #+RESULTS:
@@ -2627,7 +2701,7 @@ assert 2 = part1 inx=. getin 'inputs/day-14-example.txt'
 **** Solution
 
 #+BEGIN_SRC j :results output value :tangle src/day14.ijs
-assert 2222 = part2 in=. getin 'inputs/day-14.txt'
+assert 3941782230241 = part2 in=. getin 'inputs/day-14.txt'
 #+END_SRC
 
 #+RESULTS:
