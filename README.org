@@ -22,4 +22,5 @@ Language and IDE details,
 - [[https://github.com/prasxanth/aoc-2021/blob/main/solutions.org][Org document]]
 - [[https://github.com/prasxanth/aoc-2021/tree/main/src][Source]] 
   - All source code tangled from the Org document
-  - Comments, assertions and empty lines are removed from using the =compijs.sh= bash script
+  - Comments, assertions and empty lines are removed from using the =compijs.sh= bash script in the =src/= folder
+  
