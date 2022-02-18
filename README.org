@@ -20,4 +20,5 @@ Language and IDE details,
 
 - [[https://prasxanth.github.io/aoc-2021/][Github pages]]
 - [[https://github.com/prasxanth/aoc-2021/blob/main/solutions.org][Org document]]
-- [[https://github.com/prasxanth/aoc-2021/tree/main/src][Source]] (tangled from Org document)
+- [[https://github.com/prasxanth/aoc-2021/tree/main/src][Source]] 
+  - All source code tangled from the Org document. Comments, assertions and empty lines are removed (using the =compijs.sh= bash script).
